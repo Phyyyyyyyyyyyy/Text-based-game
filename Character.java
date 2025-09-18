@@ -26,6 +26,13 @@ public class Character {
     
     }
 
+    public void regenerateMana(int amount) {
+    this.mana += amount;
+    if (this.mana > 100) {
+        this.mana = 100;
+    }
+}
+
     void displayStats() {
         System.out.println("\nYou chose: " + name);               //display stats mehtod after picking para isa ra tanan para way kapoy, kay tapulan kong dako.
         System.out.println("Stats - HP: " + hp + " | Attack: " + attack + " | Mana: +  " + mana + " \n Skill 1: " + skill1 + " \n Skill 2: " + skill2 + " \n Skill 3: " + skill3  + " ");
