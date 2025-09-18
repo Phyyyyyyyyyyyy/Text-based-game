@@ -12,12 +12,12 @@ public class GameMechanics {
     public void startBattle() {
        Scanner sc = new Scanner(System.in);
        boolean turn = true;
-
-
+      System.out.println(" opaw ");
        if (turn) {
 
        } 
     }
+
 
 
 
