@@ -80,12 +80,14 @@ public class MarvelGame {
 
         clearScreen();
 
-
+        Enemy enemy = Enemy.getRandomEnemy(); //to conenct sa enem.java nga object 
+        enemy.displayStats();         //display but from enem.java
 
 
 
         sc.close();
     }
 }
+
 
 
