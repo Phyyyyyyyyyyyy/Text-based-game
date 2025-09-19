@@ -8,10 +8,14 @@ public class Character {
     String skill3;
     int sk1Cost;
     int sk2Cost;
-    int sk3Cost;           
+    int sk3Cost;  
+    int sk1Damage;
+    int sk2Damage;
+    int sk3Damage;         
     int mana;
 
-        public Character(String name, int hp, int maxHp, int attack, String skill1, String skill2, String skill3, int sk1Cost, int sk2Cost, int sk3Cost, int mana) {
+        public Character(String name, int hp, int maxHp, int attack, String skill1, String skill2, String skill3, int sk1Cost, int sk2Cost, int sk3Cost, int sk1Damage, int sk2Damage, int sk3Damage, 
+        int mana) {
         this.name = name;
         this.hp = hp;
         this.maxHp = maxHp;
@@ -22,6 +26,9 @@ public class Character {
         this.sk1Cost = sk1Cost;
         this.sk2Cost = sk2Cost;
         this.sk3Cost = sk3Cost;
+        this.sk1Damage = sk1Damage;
+        this.sk2Damage = sk2Damage;
+        this.sk3Damage = sk3Damage;
         this.mana = mana;
     
     }
