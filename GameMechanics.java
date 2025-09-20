@@ -1,19 +1,19 @@
 import java.util.*;
 
 public class GameMechanics {
-    Character player;
-    Character enemy;
+    Character player; // player from Chacracfer anjsfhjkasbfhjkas class.
+    Enemy enemy;  //enemy from Enemy class
 
-    public GameMechanics(Character player, Character enemy) {
+    public GameMechanics(Character player, Enemy  enemy) {
         this.player = player;
-        this.enemy = enemy;       //constructor for game mechanics includes player and enemy obj
+        this.enemy = enemy;       //constructor includes player and enemy obj
     }
      
     public void startBattle() {
        Scanner sc = new Scanner(System.in);
        boolean playerTurn = true;
 
-       while(player.hp > 0 && enemy.hp > 0) {   // loop wont stop if both playerhp and enemyhp is greater than 0
+       while(player.hp > 0 && enemy.hp > 0) {   // loop wont stop if both playerhp and enemyhp is greater than 0 for short dapat naay mapilde gyud.
           System.out.print("It's Your Turn!");
           player.displayStats();
           enemy.displayStats();
@@ -47,3 +47,4 @@ public class GameMechanics {
 
 
 }
+
