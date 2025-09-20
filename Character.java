@@ -3,7 +3,7 @@ public class Character {
     int hp;
     int maxHp = hp;
     int attack;
-    String skill1;                 
+    String skill1;                             
     String skill2;
     String skill3;
     int sk1Cost;
@@ -11,7 +11,7 @@ public class Character {
     int sk3Cost;  
     int sk1Damage;
     int sk2Damage;
-    int sk3Damage;         
+    int sk3Damage;        //kinsay gawala sa sk1sk2sk3 ? akong g add balik ayaw tangtanga personalNote. reyuben. //sorry.
     int mana;
 
         public Character(String name, int hp, int maxHp, int attack, String skill1, String skill2, String skill3, int sk1Cost, int sk2Cost, int sk3Cost, int sk1Damage, int sk2Damage, int sk3Damage, 
@@ -45,3 +45,4 @@ public class Character {
         System.out.println("Stats - HP: " + hp + " | Attack: " + attack + " | Mana: +  " + mana + " \n Skill 1: " + skill1 + " \n Skill 2: " + skill2 + " \n Skill 3: " + skill3  + " ");
     }
 }
+
