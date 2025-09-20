@@ -24,7 +24,7 @@ public class GameMechanics {
           switch(action) {
             
             case 1: System.out.println("\nYou attack!");
-            enemy.hp -= player.attack;
+            enemy.hp -= player.attack;                          /// skill1,2 and 3 mana system      cases1-4
             break;
 
             case 2: if (player.mana >= player.sk1Cost) {
@@ -66,5 +66,6 @@ public class GameMechanics {
 
 
 }
+
 
 
