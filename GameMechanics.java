@@ -35,6 +35,25 @@ public class GameMechanics {
                 System.out.println("Not enough mana to attack!");
             }
             break;
+                  
+            case 3: if (player.mana >= player.sk2Cost) {
+                System.out.println("You use " + player.skill2 + "!");
+                enemy.hp -= player.sk2Damage;
+                player.mana -= player.sk2Cost;
+            } else {
+                System.out.println("Not enough mana to attack!");
+            }
+            break;
+
+            case 4: if (player.mana >= player.sk3Cost) {
+                System.out.println("You use " + player.skill3 + "!");
+                enemy.hp -= player.sk3Damage;
+                player.mana -= player.sk3Cost;
+            } else {
+                System.out.println("Not enough mana to attack!");
+            }
+            break;
+
             
           } 
        }
@@ -47,4 +66,5 @@ public class GameMechanics {
 
 
 }
+
 
