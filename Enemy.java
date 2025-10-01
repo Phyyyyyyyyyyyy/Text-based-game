@@ -8,6 +8,7 @@ public class Enemy extends Character {
         super(name, hp, maxHp, attack, skill1, skill2, skill3, sk1Cost, sk2Cost, sk3Cost, sk1Damage, sk2Damage, sk3Damage, mana);  //to call the constructor of parent character class since same raman ug data types for stats g extends or inherit nalangni sya
     }
 
+    
     @Override    //<-- put because we are copying a method from the parent class. // salamat men.
     void displayStats() {
         System.out.println("\nEnemy: " + name);
