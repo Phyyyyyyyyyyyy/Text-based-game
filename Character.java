@@ -32,6 +32,33 @@ public class Character {
         this.mana = mana;
     
     }
+    
+    public void setSkill1(String skill1) {
+        this.skill1 = skill1;
+    }
+
+
+    public String getSkill1() {
+        return skill1;
+    }
+
+    public void setSkill2(String skill2) {
+        this.skill2 = skill2;
+    }
+
+
+    public String getSkill2() {
+        return skill2;
+    }
+
+    public void setSkill3(String skill3) {
+        this.skill3 = skill3;
+    }
+
+
+    public String getSkill3() {
+        return skill3;
+    }
 
     public void regenerateMana(int amount) {
     this.mana += amount;
@@ -45,4 +72,3 @@ public class Character {
         System.out.println("Stats - HP: " + hp + " | Attack: " + attack + " | Mana: +  " + mana + " \n Skill 1: " + skill1 + " \n Skill 2: " + skill2 + " \n Skill 3: " + skill3  + " ");
     }
 }
-
