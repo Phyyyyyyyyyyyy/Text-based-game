@@ -14,7 +14,9 @@ public class MarvelGame {
         clearScreen();   // clear screen after displaying player stats
         Enemy enemy = Enemy.getRandomEnemy(); //enemyclass
         enemy.displayStats();         //displaystats() from enemy class
-
-        sc.close();
+        clearScreen();
+        GameMechanics game = new GameMechanics(player, enemy);
+        game.game();
+        
     }
 }
