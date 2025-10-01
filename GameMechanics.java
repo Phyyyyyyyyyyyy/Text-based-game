@@ -1,15 +1,23 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class GameMechanics {
+public class GameMechanics extends Character{
     Character player; // player from Chacracfer anjsfhjkasbfhjkas class.
     Enemy enemy;  //enemy from Enemy class
+    public int turnCount = 0;
 
     public GameMechanics(Character player, Enemy  enemy) {
+        super(player.name ,player.hp, player.maxHp, player.attack, player.skill1, player.skill2, player.skill3, player.sk1Cost, player.sk2Cost, player.sk3Cost, player.sk1Damage, player.sk2Damage, player.sk3Damage, player.mana);
         this.player = player;
         this.enemy = enemy;       //constructor includes player and enemy obj
     }
     
+    private int calculateBasicAttackDamage(int baseAttack) {
+        double minMultiplier = 0.8;
+        double maxMultiplier = 1.2;
+        double multiplier = minMultiplier + (maxMultiplier - minMultiplier) * rand.nextDouble();
+        return (int) (baseAttack * multipler);
+    }
 
     public void game() {
         Scanner sc = new Scanner(System.in);
@@ -22,7 +30,8 @@ public class GameMechanics {
             System.out.println("==============================");
 
             if (playerTurn) {
-                System.out.println("Your Turn! Choose your action:");
+                System.out.println("Turn " + turnCount);
+                turnCount++;
                 System.out.println("1. Attack");
                 System.out.println("2. Skill 1");
                 System.out.println("3. Skill 2");
@@ -82,7 +91,7 @@ public class GameMechanics {
                             player.hp -= enemy.sk1Damage;
                             enemy.mana -= enemy.sk1Cost;
                         } else {
-                            System.out.println(enemy.name + " tried to use " + enemy.skill1 + " but failed!");
+                            System.out.println(enemy.name + " tried to use " + enemy.skill1 + " but has no mana, skill failed!");
                         }
                         break;
                     case 3:
@@ -91,7 +100,7 @@ public class GameMechanics {
                             player.hp -= enemy.sk2Damage;
                             enemy.mana -= enemy.sk2Cost;
                         } else {
-                            System.out.println(enemy.name + " tried to use " + enemy.skill2 + " but failed!");
+                            System.out.println(enemy.name + " tried to use " + enemy.skill2 + " but has no mana, skill failed! ");
                         }
                         break;
                     case 4:
@@ -100,12 +109,11 @@ public class GameMechanics {
                             player.hp -= enemy.sk3Damage;
                             enemy.mana -= enemy.sk3Cost;
                         } else {
-                            System.out.println(enemy.name + " tried to use " + enemy.skill3 + " but failed!");
+                            System.out.println(enemy.name + " tried to use " + enemy.skill3 + " but has no mana, skill failed!");
                         }
                         break;
                 }
             }
-
             
             if (player.hp < 0) player.hp = 0;
             if (enemy.hp < 0) enemy.hp = 0;
@@ -125,4 +133,3 @@ public class GameMechanics {
 
      
 }
-
