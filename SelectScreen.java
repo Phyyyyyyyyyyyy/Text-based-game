@@ -93,6 +93,12 @@ public class SelectScreen {
                         System.out.println("He may complain about studying, but when the battle starts, he gives his all.");
                         System.out.println("With raw persistence and sharp comebacks, he pushes through any challenge.\n");
                         break;
+                    case 8700:
+                         player = new Character("Ethan Manto", 150, 150, 20, "Hollaback Girl!", "Soulja Boy Superman!", "Bye Bye Bye!", 20, 30, 35, 20, 30, 35, 100);
+                         System.out.println("\nEthan Manto: A warrior fueled by rhythm and style.");
+                         System.out.println("He turns every battle into a stage with iconic moves.");
+                         System.out.println("Behind the flair, he fights with loyalty and heart.\n");
+                         break;
                     case 7355608: 
                         player = new Character("Thanos", 500, 500, 200, "Power Stone Blast - deals 200 damage ", "Snap - Eliminates enemy in an instant", "Power Stone Punch! - deals 100 damage", 30, 50, 30, 200, 999, 100, 100);
                         System.out.println("\nThanos: The Mad Titan who believes balance is the key to the universe.");
@@ -115,3 +121,4 @@ public class SelectScreen {
     }
 
 }
+
