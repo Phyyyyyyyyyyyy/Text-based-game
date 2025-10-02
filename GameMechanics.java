@@ -1,22 +1,26 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class GameMechanics extends Character{
-    Character player; // player from Chacracfer anjsfhjkasbfhjkas class.
-    Enemy enemy;  //enemy from Enemy class
-    public int turnCount = 0;
+public class GameMechanics extends Character {
+    Character player;
+    Enemy enemy;
+    public int turnCount = 1;
+    private Random rand = new Random();
 
-    public GameMechanics(Character player, Enemy  enemy) {
-        super(player.name ,player.hp, player.maxHp, player.attack, player.skill1, player.skill2, player.skill3, player.sk1Cost, player.sk2Cost, player.sk3Cost, player.sk1Damage, player.sk2Damage, player.sk3Damage, player.mana);
+    public GameMechanics(Character player, Enemy enemy) {
+        super(player.name, player.hp, player.maxHp, player.attack,
+                player.skill1, player.skill2, player.skill3,
+                player.sk1Cost, player.sk2Cost, player.sk3Cost,
+                player.sk1Damage, player.sk2Damage, player.sk3Damage, player.mana);
         this.player = player;
-        this.enemy = enemy;       //constructor includes player and enemy obj
+        this.enemy = enemy;
     }
-    
+
     private int calculateBasicAttackDamage(int baseAttack) {
         double minMultiplier = 0.8;
         double maxMultiplier = 1.2;
         double multiplier = minMultiplier + (maxMultiplier - minMultiplier) * rand.nextDouble();
-        return (int) (baseAttack * multipler);
+        return (int) (baseAttack * multiplier);
     }
 
     public void game() {
@@ -32,39 +36,35 @@ public class GameMechanics extends Character{
             if (playerTurn) {
                 System.out.println("Turn " + turnCount);
                 turnCount++;
-                System.out.println("1. Attack");
-                System.out.println("2. Skill 1");
-                System.out.println("3. Skill 2");
-                System.out.println("4. Skill 3");
+                System.out.println(player.getName() + " - Choose your action:");
+                System.out.println("1. " + player.getSkill1());
+                System.out.println("2. " + player.getSkill2());
+                System.out.println("3. " + player.getSkill3());
                 System.out.print("> ");
                 int action = sc.nextInt();
 
                 switch (action) {
                     case 1:
-                        System.out.println("You attack!");
-                        enemy.hp -= player.attack;
-                        break;
-                    case 2:
                         if (player.mana >= player.sk1Cost) {
-                            System.out.println("You use " + player.skill1 + "!");
+                            System.out.println("You use " + player.getSkill1() + "!");
                             enemy.hp -= player.sk1Damage;
                             player.mana -= player.sk1Cost;
                         } else {
                             System.out.println("Not enough mana!");
                         }
                         break;
-                    case 3:
+                    case 2:
                         if (player.mana >= player.sk2Cost) {
-                            System.out.println("You use " + player.skill2 + "!");
+                            System.out.println("You use " + player.getSkill2() + "!");
                             enemy.hp -= player.sk2Damage;
                             player.mana -= player.sk2Cost;
                         } else {
                             System.out.println("Not enough mana!");
                         }
                         break;
-                    case 4:
+                    case 3:
                         if (player.mana >= player.sk3Cost) {
-                            System.out.println("You use " + player.skill3 + "!");
+                            System.out.println("You use " + player.getSkill3() + "!");
                             enemy.hp -= player.sk3Damage;
                             player.mana -= player.sk3Cost;
                         } else {
@@ -76,14 +76,12 @@ public class GameMechanics extends Character{
                         break;
                 }
             } else {
-                
-                Random rand = new Random();
                 int action = rand.nextInt(4) + 1;
                 System.out.println("Enemy's Turn!");
                 switch (action) {
                     case 1:
                         System.out.println(enemy.name + " attacks!");
-                        player.hp -= enemy.attack;
+                        player.hp -= calculateBasicAttackDamage(enemy.attack);
                         break;
                     case 2:
                         if (enemy.mana >= enemy.sk1Cost) {
@@ -91,7 +89,7 @@ public class GameMechanics extends Character{
                             player.hp -= enemy.sk1Damage;
                             enemy.mana -= enemy.sk1Cost;
                         } else {
-                            System.out.println(enemy.name + " tried to use " + enemy.skill1 + " but has no mana, skill failed!");
+                            System.out.println(enemy.name + " tried to use " + enemy.skill1 + " but has no mana!");
                         }
                         break;
                     case 3:
@@ -100,7 +98,7 @@ public class GameMechanics extends Character{
                             player.hp -= enemy.sk2Damage;
                             enemy.mana -= enemy.sk2Cost;
                         } else {
-                            System.out.println(enemy.name + " tried to use " + enemy.skill2 + " but has no mana, skill failed! ");
+                            System.out.println(enemy.name + " tried to use " + enemy.skill2 + " but has no mana!");
                         }
                         break;
                     case 4:
@@ -109,19 +107,18 @@ public class GameMechanics extends Character{
                             player.hp -= enemy.sk3Damage;
                             enemy.mana -= enemy.sk3Cost;
                         } else {
-                            System.out.println(enemy.name + " tried to use " + enemy.skill3 + " but has no mana, skill failed!");
+                            System.out.println(enemy.name + " tried to use " + enemy.skill3 + " but has no mana!");
                         }
                         break;
                 }
             }
-            
+
             if (player.hp < 0) player.hp = 0;
             if (enemy.hp < 0) enemy.hp = 0;
 
-            playerTurn = !playerTurn; 
+            playerTurn = !playerTurn;
         }
 
-        
         if (player.hp <= 0 && enemy.hp <= 0) {
             System.out.println("It's a draw!");
         } else if (player.hp <= 0) {
@@ -130,6 +127,4 @@ public class GameMechanics extends Character{
             System.out.println("Congratulations! You defeated " + enemy.name + "!");
         }
     }
-
-     
 }
