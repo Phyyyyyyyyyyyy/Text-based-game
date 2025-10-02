@@ -56,7 +56,7 @@ public class SelectScreen {
                     case 4:
                         player = new Character("Spider-Man", 90, 90, 14, "Spidey Swing! - avoids damage", "Web Shot! - deals 15 damage", "Spidey-sense - doubles attack damage", 20, 15, 20, 0, 15, 0,100);
                         MarvelGame.typeWriter("\nSpider-Man: Bitten by a radioactive spider, Peter Parker gained amazing powers.", 40);
-                        MarvelGame.typeWriter("Haunted by Uncle Ben’s words, he lives by 'with great power comes great responsibility.'", 40);
+                        MarvelGame.typeWriter("Haunted by Uncle Ben's words, he lives by 'with great power comes great responsibility.'", 40);
                         MarvelGame.typeWriter("He balances life as a hero and a teenager.\n", 40);
                         break;
                     case 5:
