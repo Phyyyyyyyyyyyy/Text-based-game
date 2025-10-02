@@ -26,6 +26,7 @@ public class SelectScreen {
             System.out.println("\t|     6. Black Widow                    |");
             System.out.println("\t|     7. Ant-Man                        |");
             System.out.println("\t|     8. The Falcon                     |");
+            System.out.println("\t|     9. Back                           |");
             System.out.println("\t|     Enter choice:                     |");
             System.out.print("\t > ");
 
@@ -44,6 +45,7 @@ public class SelectScreen {
                         System.out.println("\nCaptain America: Steve Rogers was enhanced to peak strength during WWII.");
                         System.out.println("Armed with his vibranium shield, he defends freedom and justice.");
                         System.out.println("He is the living symbol of courage and hope.\n");
+
                         break;
                     case 3:
                         player = new Character("Thor", 130, 130, 18, "Lightning Blast! - deals 30 damage", "Mjolnir throw! - deals 20 damage", "God of Thunder - doubles attack for 3 turns", 30, 20, 20, 30, 20, 20, 100);
@@ -58,7 +60,7 @@ public class SelectScreen {
                         System.out.println("He balances life as a hero and a teenager.\n");
                         break;
                     case 5:
-                        player = new Character("Hulk", 150, 150, 20, "Hulk Smash! - Deals 30 damage", "Thunderclap - Deals 25 damage", "Hulk Rage - Doubles attack damage", 30, 25, 20, 30, 25, 0,100);              
+                        player = new Character("Hulk", 150, 150, 20, "Hulk Smash! - Deals 30 damage", "Thunderclap - Deals 25 damage", "Hulk Rage - Doubles attack damage", 30, 25, 20, 30, 25, 0,100);        
                         System.out.println("\nHulk: Dr. Bruce Banner transforms into the Hulk when angered.");
                         System.out.println("His unstoppable strength makes him both feared and admired.");
                         System.out.println("He struggles to control the monster within while protecting others.\n");
@@ -81,6 +83,9 @@ public class SelectScreen {
                         System.out.println("A loyal soldier and hero, he fights with unmatched speed.");
                         System.out.println("His bravery makes him one of the Avengers’ most trusted allies.\n");
                         break;
+                    case 9: 
+                           MainMenu.start(sc);
+                        break;
                     case 69: 
                         player = new Character("Jan Clark", 150, 150, 20, "Lisora aning OOP uy! - deals 20 damage", "Eternal Drip! - deals 30 damage",  "Lisora aning DSA uy! - deals 40 damage", 20, 30 , 40, 20, 30, 40, 100);
                         System.out.println("\nJan Clark: Known for his unstoppable drip and endless energy in class.");
@@ -93,6 +98,12 @@ public class SelectScreen {
                         System.out.println("He may complain about studying, but when the battle starts, he gives his all.");
                         System.out.println("With raw persistence and sharp comebacks, he pushes through any challenge.\n");
                         break;
+                    case 8700:
+                         player = new Character("Ethan Manto", 150, 150, 20, "Hollaback Girl!", "Soulja Boy Superman!", "Bye Bye Bye!", 20, 30, 35, 20, 30, 35, 100);
+                         System.out.println("\nEthan Manto: A warrior fueled by rhythm and style.");
+                         System.out.println("He turns every battle into a stage with iconic moves.");
+                         System.out.println("Behind the flair, he fights with loyalty and heart.\n");
+                         break;
                     case 7355608: 
                         player = new Character("Thanos", 500, 500, 200, "Power Stone Blast - deals 200 damage ", "Snap - Eliminates enemy in an instant", "Power Stone Punch! - deals 100 damage", 30, 50, 30, 200, 999, 100, 100);
                         System.out.println("\nThanos: The Mad Titan who believes balance is the key to the universe.");
@@ -101,7 +112,7 @@ public class SelectScreen {
                         break;
                     default:
                         
-                        System.out.println("Invalid choice! Please select a valid hero number.\n");                ///characteuryghjasgfv hjgasasvghjfk
+                        System.out.println("Invalid choice! Please select a valid hero number.\n");                ///characteuryghjasgfv hjgasasvghjfk we love joanna
                         break;
                 }
             } else {
