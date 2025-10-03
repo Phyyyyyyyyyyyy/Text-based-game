@@ -43,7 +43,7 @@ public class MainMenu {
         sc.nextLine(); // catch extra newline
 
         MarvelGame.clearScreen();
-        GameMechanics game = new GameMechanics(player1, player2);
+        GameMechanics game = new GameMechanics(player1, (Enemy) player2);
         game.game();
     }
 
