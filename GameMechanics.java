@@ -27,15 +27,16 @@ public class GameMechanics extends Character {
         Scanner sc = new Scanner(System.in);
         boolean playerTurn = true;
 
+         
+
         while (player.hp > 0 && enemy.hp > 0) {
-            System.out.println("\n==============================");
+            System.out.println("\n\n\nTurn " + turnCount);
+            System.out.println("==============================");
             player.displayStats();
             enemy.displayStats();
             System.out.println("==============================");
 
             if (playerTurn) {
-                System.out.println("Turn " + turnCount);
-                turnCount++;
                 System.out.println(player.getName() + " - Choose your action:");
                 System.out.println("1. " + player.getSkill1());
                 System.out.println("2. " + player.getSkill2());
@@ -77,7 +78,7 @@ public class GameMechanics extends Character {
                 }
             } else {
                 int action = rand.nextInt(4) + 1;
-                System.out.println("Enemy's Turn!");
+                System.out.println("AI's Turn:");
                 switch (action) {
                     case 1:
                         System.out.println(enemy.name + " attacks!");
@@ -117,6 +118,7 @@ public class GameMechanics extends Character {
             if (enemy.hp < 0) enemy.hp = 0;
 
             playerTurn = !playerTurn;
+            turnCount++; // Increment after every action (player or enemy)
         }
 
         if (player.hp <= 0 && enemy.hp <= 0) {
