@@ -114,8 +114,16 @@ public class GameMechanics extends Character {
                 }
             }
 
+
+            player.regenerateMana(10);
+            enemy.regenerateMana(10);
+
             if (player.hp < 0) player.hp = 0;
             if (enemy.hp < 0) enemy.hp = 0;
+            System.out.println();
+            System.out.println(player.getName() + " passive mana regeneration - +10 mana!");
+             System.out.println(enemy.getName() + " passive mana regeneration - +10 mana!");
+
 
             playerTurn = !playerTurn;
             turnCount++; // Increment after every action (player or enemy)
