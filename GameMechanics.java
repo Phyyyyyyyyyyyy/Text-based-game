@@ -1,4 +1,4 @@
-import java.util.Random;
+import java.util.Random; 
 import java.util.Scanner;
 
 public class GameMechanics extends Character {
@@ -6,6 +6,7 @@ public class GameMechanics extends Character {
     Enemy enemy;
     public int turnCount = 1;
     private Random rand = new Random();
+    private CooldownManager cooldownManager = new CooldownManager();
 
     public GameMechanics(Character player, Enemy enemy) {
         super(player.name, player.hp, player.maxHp, player.attack,
@@ -27,8 +28,6 @@ public class GameMechanics extends Character {
         Scanner sc = new Scanner(System.in);
         boolean playerTurn = true;
 
-         
-
         while (player.hp > 0 && enemy.hp > 0) {
             System.out.println("\n\n\nTurn " + turnCount);
             System.out.println("==============================");
@@ -46,14 +45,20 @@ public class GameMechanics extends Character {
 
                 switch (action) {
                     case 1:
+                        if (!cooldownManager.isReady(player.getSkill1())) {
+                            System.out.println(player.getSkill1() + " is on cooldown!");
+                            break;
+                        }
                         if (player.mana >= player.sk1Cost) {
                             System.out.println("You use " + player.getSkill1() + "!");
                             enemy.hp -= player.sk1Damage;
                             player.mana -= player.sk1Cost;
+                            cooldownManager.startCooldown(player.getSkill1(), 1);
                         } else {
                             System.out.println("Not enough mana!");
                         }
                         break;
+
                     case 2:
                         if (player.mana >= player.sk2Cost) {
                             System.out.println("You use " + player.getSkill2() + "!");
@@ -63,15 +68,22 @@ public class GameMechanics extends Character {
                             System.out.println("Not enough mana!");
                         }
                         break;
+
                     case 3:
+                        if (!cooldownManager.isReady(player.getSkill3())) {
+                            System.out.println(player.getSkill3() + " is on cooldown!");
+                            break;
+                        }
                         if (player.mana >= player.sk3Cost) {
                             System.out.println("You use " + player.getSkill3() + "!");
                             enemy.hp -= player.sk3Damage;
                             player.mana -= player.sk3Cost;
+                            cooldownManager.startCooldown(player.getSkill3(), 2);
                         } else {
                             System.out.println("Not enough mana!");
                         }
                         break;
+
                     default:
                         System.out.println("Invalid action! You lose your turn.");
                         break;
@@ -114,7 +126,6 @@ public class GameMechanics extends Character {
                 }
             }
 
-
             player.regenerateMana(10);
             enemy.regenerateMana(10);
 
@@ -122,11 +133,13 @@ public class GameMechanics extends Character {
             if (enemy.hp < 0) enemy.hp = 0;
             System.out.println();
             System.out.println(player.getName() + " passive mana regeneration - +10 mana!");
-             System.out.println(enemy.getName() + " passive mana regeneration - +10 mana!");
+            System.out.println(enemy.getName() + " passive mana regeneration - +10 mana!");
 
+            cooldownManager.reduceCooldowns();
+            cooldownManager.displayCooldowns();
 
             playerTurn = !playerTurn;
-            turnCount++; // Increment after every action (player or enemy)
+            turnCount++;
         }
 
         if (player.hp <= 0 && enemy.hp <= 0) {
