@@ -1,0 +1,37 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CooldownManager {
+    private Map<String, Integer> cooldowns = new HashMap<>();
+
+    public void startCooldown(String skillName, int turns) {
+        cooldowns.put(skillName, turns);
+    }
+
+    public void reduceCooldowns() {
+        for (String skill : cooldowns.keySet()) {
+            int remaining = cooldowns.get(skill);
+            if (remaining > 0) {
+                cooldowns.put(skill, remaining - 1);
+            }
+        }
+    }
+
+    public boolean isReady(String skillName) {
+        return !cooldowns.containsKey(skillName) || cooldowns.get(skillName) <= 0;
+    }
+
+    public void displayCooldowns() {
+        boolean hasCooldowns = false;
+        for (String skill : cooldowns.keySet()) {
+            int remaining = cooldowns.get(skill);
+            if (remaining > 0) {
+                if (!hasCooldowns) {
+                    System.out.println("\nCooldowns:");
+                    hasCooldowns = true;
+                }
+                System.out.println(" - " + skill + ": " + remaining + " turn(s) left");
+            }
+        }
+    }
+}
