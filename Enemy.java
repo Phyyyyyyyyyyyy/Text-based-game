@@ -14,9 +14,9 @@ public class Enemy extends Character {
     void displayIntro() {
         System.out.println("\nEnemy: " + name);
         System.out.println("Stats - HP: " + hp + " | Attack: " + attack + " | Mana: " + mana);
-        System.out.println("1 " + skill1);
-        System.out.println("2 " + skill2);
-        System.out.println("3 " + skill3);
+        System.out.println("1 " + skill1 + " - " +sk1Cost+" mana");
+        System.out.println("2 " + skill2 + " - " +sk2Cost+" mana");
+        System.out.println("3 " + skill3 + " - " +sk3Cost+" mana");
         System.out.println();
     }
 
@@ -44,3 +44,4 @@ public class Enemy extends Character {
         return enemies.get(rand.nextInt(enemies.size()));
     }
 }
+
