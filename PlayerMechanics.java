@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class PlayerMechanics {
     Character player1;
     Character player2;
-    public int turnCount = 1;
+    public int turnCount = 0;
 
     public PlayerMechanics(Character player1, Character player2) {
         this.player1 = player1;
@@ -14,6 +14,7 @@ public class PlayerMechanics {
         Scanner sc = new Scanner(System.in);
         boolean player1Turn = true;
 
+        clearScreen();
         System.out.println("\n==============================");
         System.out.println("Player 1: ");
         player1.displayStats();
@@ -37,6 +38,7 @@ public class PlayerMechanics {
                 turnLabel = "Player 2's Turn (" + player2.getName() + ")";
             }
 
+            turnCount++;
             System.out.println("\n==============================");
             System.out.println("Turn " + turnCount + " - " + turnLabel);
             System.out.println("==============================");
@@ -45,13 +47,19 @@ public class PlayerMechanics {
             System.out.println("2. " + currentPlayer.getSkill2() + " - " + currentPlayer.sk2Cost + " mana");
             System.out.println("3. " + currentPlayer.getSkill3() + " - " + currentPlayer.sk3Cost + " mana");
             System.out.print("> ");
+           
 
             int action = sc.nextInt();
 
             switch (action) {
                 case 1:
                     if (currentPlayer.mana >= currentPlayer.sk1Cost) {
+                        
+                        System.out.println();
+                        System.out.println();
+                        clearScreen();
                         System.out.println(currentPlayer.getName() + " uses " + currentPlayer.getSkill1() + "!");
+                         System.out.println();
                         opponent.hp -= currentPlayer.sk1Damage;
                         currentPlayer.mana -= currentPlayer.sk1Cost;
                     } else {
@@ -60,7 +68,12 @@ public class PlayerMechanics {
                     break;
                 case 2:
                     if (currentPlayer.mana >= currentPlayer.sk2Cost) {
+                        
+                         System.out.println();
+                         System.out.println();
+                          clearScreen();
                         System.out.println(currentPlayer.getName() + " uses " + currentPlayer.getSkill2() + "!");
+                        System.out.println();
                         opponent.hp -= currentPlayer.sk2Damage;
                         currentPlayer.mana -= currentPlayer.sk2Cost;
                     } else {
@@ -69,7 +82,12 @@ public class PlayerMechanics {
                     break;
                 case 3:
                     if (currentPlayer.mana >= currentPlayer.sk3Cost) {
+                         
+                         System.out.println();
+                         System.out.println();
+                         clearScreen();
                         System.out.println(currentPlayer.getName() + " uses " + currentPlayer.getSkill3() + "!");
+                        System.out.println();
                         opponent.hp -= currentPlayer.sk3Damage;
                         currentPlayer.mana -= currentPlayer.sk3Cost;
                     } else {
@@ -96,6 +114,7 @@ public class PlayerMechanics {
             
                 player1.regenerateMana(10);
                 player2.regenerateMana(10);
+
         }
 
      
@@ -110,5 +129,10 @@ public class PlayerMechanics {
         System.out.println("==============================");
 
         sc.close();
+    }
+
+    public void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }
