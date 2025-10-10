@@ -1,4 +1,4 @@
-public class Character {
+public class Character{
     String name;
     int hp;
     int maxHp;
@@ -45,12 +45,37 @@ public class Character {
     }
 
     void displayIntro() {
-        System.out.println("\nYou chose: " + name);
-        System.out.println("Stats - HP: " + hp + " | Attack: " + attack + " | Mana: " + mana +
-                "\n Skill 1: " + skill1 + 
-                "\n Skill 2: " + skill2 + 
-                "\n Skill 3: " + skill3);
-        System.out.println();
+        System.out.println("\nYou choose: " + name);
+        System.out.println("Stats - HP: " + hp + " | Attack: " + attack + " | Mana: " + mana );
+        if ("Iron Man".equals(name)) {
+            System.out.println("Skills:");
+            System.out.println("  " + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("  " + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("  " + skill3 + " - " + sk3Cost + " mana");
+        }
+       
+         
+        if ("Captain America".equals(name)) {
+            System.out.println("Skills:");
+            System.out.println("  " + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("  " + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("  " + skill3 + " - " + sk3Cost + " mana");
+        }
+        
+        if ("Thor".equals(name)) {
+            System.out.println("Skills:");
+            System.out.println("  " + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("  " + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("  " + skill3 + " - " + sk3Cost + " mana");
+        }
+       
+        if ("Spider-Man".equals(name)) {
+            System.out.println("Skills:");
+            System.out.println("  " + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("  " + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("  " + skill3 + " - " + sk3Cost + " mana");
+        }
+       System.out.println();
     }
 
     void displayStats() {
