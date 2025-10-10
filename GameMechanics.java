@@ -26,21 +26,27 @@ public class GameMechanics extends Character {
     public void game() {
         Scanner sc = new Scanner(System.in);
         boolean playerTurn = true;
-
-         
-
-        while (player.hp > 0 && enemy.hp > 0) {
-            System.out.println("\n\n\nTurn " + turnCount);
-            System.out.println("==============================");
+              
+        System.out.println("\n==============================");
+             System.out.println("Your Character: ");
             player.displayStats();
+             System.out.println("\nEnemy: ");
             enemy.displayStats();
             System.out.println("==============================");
 
+        while (player.hp > 0 && enemy.hp > 0) {
+            
+
             if (playerTurn) {
+                System.out.println("\n==============================");
+                System.out.println("Turn " + turnCount);
+                player.displayStats();
+                 System.out.println("==============================");
+                turnCount++;
                 System.out.println(player.getName() + " - Choose your action:");
-                System.out.println("1. " + player.getSkill1());
-                System.out.println("2. " + player.getSkill2());
-                System.out.println("3. " + player.getSkill3());
+                System.out.println("1. " + player.getSkill1() + " - "+player.sk1Cost+" mana");
+                System.out.println("2. " + player.getSkill2() + " - "+player.sk2Cost+" mana");
+                System.out.println("3. " + player.getSkill3() + " - "+player.sk3Cost+" mana");
                 System.out.print("> ");
                 int action = sc.nextInt();
 
@@ -76,9 +82,16 @@ public class GameMechanics extends Character {
                         System.out.println("Invalid action! You lose your turn.");
                         break;
                 }
+
+                // Show stats after action and mana reduction, before regeneration
+                System.out.println();
+                player.displayStats();
+                
+
+                
             } else {
                 int action = rand.nextInt(4) + 1;
-                System.out.println("AI's Turn:");
+                System.out.println("\nEnemy's Turn!");
                 switch (action) {
                     case 1:
                         System.out.println(enemy.name + " attacks!");
@@ -112,21 +125,22 @@ public class GameMechanics extends Character {
                         }
                         break;
                 }
+                // Show stats after action and mana reduction, before regeneration
+                System.out.println();
+                  
+                System.out.println("Your character: ");
+                player.displayStats();
+
+                 System.out.println("Enemy: ");
+                enemy.displayStats();
+
+                 player.regenerateMana(10); // Regenerate mana for player after their turn
+                enemy.regenerateMana(10); // Regenerate mana for enemy after their turn
             }
-
-
-            player.regenerateMana(10);
-            enemy.regenerateMana(10);
-
             if (player.hp < 0) player.hp = 0;
             if (enemy.hp < 0) enemy.hp = 0;
-            System.out.println();
-            System.out.println(player.getName() + " passive mana regeneration - +10 mana!");
-             System.out.println(enemy.getName() + " passive mana regeneration - +10 mana!");
-
 
             playerTurn = !playerTurn;
-            turnCount++; // Increment after every action (player or enemy)
         }
 
         if (player.hp <= 0 && enemy.hp <= 0) {
@@ -136,5 +150,7 @@ public class GameMechanics extends Character {
         } else {
             System.out.println("Congratulations! You defeated " + enemy.name + "!");
         }
+         sc.close();
     }
+   
 }
