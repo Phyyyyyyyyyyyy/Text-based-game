@@ -31,24 +31,29 @@ public class MainMenu {
     }
 
     public static void playerVsPlayerMenu(Scanner sc) {
-        System.out.println("\n\t>>> PvP Match Starting...\n");
-        Character player1 = SelectScreen.select();
-        Character player2 = SelectScreen.select();
+    System.out.println("\n\t>>> PvP Match Starting...\n");
 
-        player1.displayIntro();
-        player2.displayIntro();
+    Character player1 = Player1.select();
 
-        System.out.println("Press ENTER to begin the battle...");
-        sc.nextLine();
-        sc.nextLine(); // catch extra newline
+    System.out.println("\nPress ENTER for Player 2 to choose...");
+    sc.nextLine(); // clear newline
+    sc.nextLine(); // wait for Enter 
 
-        MarvelGame.clearScreen();
-        GameMechanics game = new GameMechanics(player1, (Enemy) player2);
-        game.game();
-    }
+
+    Character player2 = Player2.select();
+
+    System.out.println("\nPress ENTER to begin the battle...");
+    sc.nextLine();
+   
+
+    MarvelGame.clearScreen();
+    PlayerMechanics game = new PlayerMechanics(player1, player2);
+    game.game();
+}
 
     public static void playerVsAiMenu(Scanner sc) {
         System.out.println("\n\t>>> PvAI Match Starting...\n");
+
         Character player = SelectScreen.select();
         player.displayIntro();
 
@@ -57,8 +62,8 @@ public class MainMenu {
 
         System.out.println("Press ENTER to begin the battle...");
         sc.nextLine();
-        sc.nextLine(); // catch extra newline
-
+        sc.nextLine();
+        
         MarvelGame.clearScreen();
         GameMechanics game = new GameMechanics(player, enemy);
         game.game();
