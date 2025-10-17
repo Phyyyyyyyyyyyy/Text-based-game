@@ -9,15 +9,16 @@ public class Player2 {
     }
       
     public static Character select() {
+        Player1 obj1 = new Player1();
         Character player = null;
         int choice;
            clearScreen();
         while (player == null) {
            try{
               
-            System.out.println("\t== =======================================");
-            System.out.println("\t====    MARVEL CLASH! TURN BASED    ====");
-            System.out.println("\t====       Player 2 Choose Hero     ====");
+            System.out.println("\t=========================================");
+            System.out.println("\t====    MARVEL CLASH! TURN BASED     ====");
+            System.out.println("\t====       Player 2 Choose Hero      ====");
             System.out.println("\t=========================================");
             System.out.println("\t|   Choose your hero:                   |");
             System.out.println("\t|     1. Iron Man                       |");
@@ -125,7 +126,7 @@ public class Player2 {
                         }, 40, player);
                         break;
                     case 9:
-                        MainMenu.start(sc);
+                        obj1.select();
                         break;
                     case 69:
                         player = new Character("Jan Clark", 150, 150, 20,
