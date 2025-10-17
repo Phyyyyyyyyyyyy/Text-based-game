@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class MainMenu {
     public static void start(Scanner sc) {
         int choice;
+
         do {
             System.out.println("\t=========================================");
             System.out.println("\t====       MARVEL CLASH! MENU       ====");
@@ -12,8 +13,12 @@ public class MainMenu {
             System.out.println("\t|     2. Player vs AI                  |");
             System.out.println("\t|     3. Exit                          |");
             System.out.print("\t > ");
+            while (!sc.hasNextInt()) {
+                System.out.print("\n\t>>> Invalid input, enter a number: ");
+                sc.next();
+            }
             choice = sc.nextInt();
-
+         
             switch (choice) {
                 case 1:
                     playerVsPlayerMenu(sc);
@@ -23,7 +28,7 @@ public class MainMenu {
                     break;
                 case 3:
                     System.out.println("\n\t>>> Exiting... Goodbye!\n");
-                    break;
+                    System.exit(1);
                 default:
                     System.out.println("\n\t>>> Invalid choice, please try again!\n");
             }
@@ -31,39 +36,40 @@ public class MainMenu {
     }
 
     public static void playerVsPlayerMenu(Scanner sc) {
-    System.out.println("\n\t>>> PvP Match Starting...\n");
+        System.out.println("\n\t>>> PvP Match Starting...\n");
 
-    Character player1 = Player1.select();
+        Character player1 = Player1.select();
+        if (player1 == null) return; // back to main menu
 
-    System.out.println("\nPress ENTER for Player 2 to choose...");
-    sc.nextLine(); // clear newline
-    sc.nextLine(); // wait for Enter 
+        System.out.println("\nPress ENTER for Player 2 to choose...");
+        sc.nextLine();
+        sc.nextLine();
 
+        Character player2 = Player2.select();
+        if (player2 == null) return; // back to main menu
 
-    Character player2 = Player2.select();
+        System.out.println("\nPress ENTER to begin the battle...");
+        sc.nextLine();
 
-    System.out.println("\nPress ENTER to begin the battle...");
-    sc.nextLine();
-   
-
-    MarvelGame.clearScreen();
-    PlayerMechanics game = new PlayerMechanics(player1, player2);
-    game.game();
-}
+        MarvelGame.clearScreen();
+        PlayerMechanics game = new PlayerMechanics(player1, player2);
+        game.game();
+    }
 
     public static void playerVsAiMenu(Scanner sc) {
         System.out.println("\n\t>>> PvAI Match Starting...\n");
 
         Character player = SelectScreen.select();
+        if (player == null) return; 
         player.displayIntro();
 
-        Enemy enemy = Enemy.getRandomEnemy();
+        Enemy enemy = Enemy.getRandomEnemy();   
         enemy.displayIntro();
 
         System.out.println("Press ENTER to begin the battle...");
         sc.nextLine();
         sc.nextLine();
-        
+
         MarvelGame.clearScreen();
         GameMechanics game = new GameMechanics(player, enemy);
         game.game();
