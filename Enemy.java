@@ -39,6 +39,9 @@ public class Enemy extends Character {
         enemies.add(new Enemy("Venom", 130, 130, 17,
                 "Symbiote Strike - 25 damage", "Web Trap - 15 damage", "Rage - doubles attack",
                 25, 15, 20, 30, 20, 20, 100));
+        enemies.add(new Enemy("Thanos", 150, 150, 20,
+                "Power Stone Punch - 30 damage", "Space Stone Snap - eliminates opponent", "Reality Warp - avoids damage",
+                30, 40, 20, 30, 0, 0, 100));
 
         Random rand = new Random();
         return enemies.get(rand.nextInt(enemies.size()));
