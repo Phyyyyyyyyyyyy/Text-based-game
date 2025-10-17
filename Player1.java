@@ -15,9 +15,9 @@ public class Player1 {
         while (player == null) {
            try{
               
-            System.out.println("\t=========================================");
-            System.out.println("\t====    MARVEL CLASH! TURN BASED     ====");
-            System.out.println("\t====       Player 1 Choose Hero      ====");
+            System.out.println("\t== =======================================");
+            System.out.println("\t====    MARVEL CLASH! TURN BASED    ====");
+            System.out.println("\t====    Player 1 Choose Hero        ====");
             System.out.println("\t=========================================");
             System.out.println("\t|   Choose your hero:                   |");
             System.out.println("\t|     1. Iron Man                       |");
@@ -52,7 +52,7 @@ public class Player1 {
                                 "Shield Throw! - Deals 25 damage",
                                 "Shield Bash! - Deals 12 damage",
                                 "Inspire - Deals 20 damage",
-                                25, 12, 15, 25, 12, 15, 100);
+                                25, 12, 20, 25, 12, 20, 100);
                         showStoryWithSkip("Captain America", new String[]{
                                 "\nSteve Rogers - the super soldier from WWII.",
                                 "Armed with his vibranium shield, he defends freedom and justice.\n"
@@ -125,8 +125,8 @@ public class Player1 {
                         }, 40, player);
                         break;
                     case 9:
-                        MainMenu.start(sc);
-                        break;
+                         MainMenu.start(sc);
+                        return null;
                     case 69:
                         player = new Character("Jan Clark", 150, 150, 20,
                                 "Lisora aning OOP uy! - deals 20 damage",
@@ -186,20 +186,40 @@ public class Player1 {
 
 
     public static void showStoryWithSkip(String heroName, String[] storyLines, int delay, Character hero) {
+        try{
         sc.nextLine(); 
-        System.out.print("Press ENTER to view " + heroName + "'s story, or type 'skip' to skip: ");
-        String input = sc.nextLine();
+        
+        String input="";
+        boolean validInput=false;
 
-        if (!input.trim().equalsIgnoreCase("skip")) {
-            for (String line : storyLines) {
-                MarvelGame.typeWriter(line, delay);
-            }
-        } else {
-            System.out.println("\nYou skipped the story.\n");
+         while(!validInput){
+                 System.out.print("Press ENTER to view " + heroName + "'s story, or type 'skip' to skip: ");
+                 input = sc.nextLine().trim();
+         
+         if (input.isEmpty()) {
+                for(String line:storyLines){
+                    MarvelGame.typeWriter(line, delay);
+                }
+                validInput=true;
+         }
+         else if(input.equalsIgnoreCase("skip")){
+                System.out.println("\nYou chose to skip " + heroName + "'s story.\n");
+                validInput=true;
+         } else {
+                System.out.println("Invalid input. Please try again.");
+         }
         }
+         System.out.println("--- " + heroName + "s Stats ---");
+             hero.displayIntro();
+       
+    
+        } catch (Exception e) {
+            System.out.println("Unexpected exception caught: " +e);
+            sc.next();
 
-        // ✅ Show stats no matter what
-        System.out.println("--- " + heroName + "s Stats ---");
-        hero.displayIntro();
+              System.out.println("--- " + heroName + "s Stats ---");
+             hero.displayIntro();
+}
+        
     }
 }
