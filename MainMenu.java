@@ -57,7 +57,7 @@ public class MainMenu {
     }
 
     public static void playerVsAiMenu(Scanner sc) {
-        System.out.println("\n\t>>> PvAI Match Starting...\n");
+        System.out.println("\n\t>>> PlayerVsAI Match Starting...\n");
 
         Character player = SelectScreen.select();
         if (player == null) return; 
