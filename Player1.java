@@ -15,9 +15,9 @@ public class Player1 {
         while (player == null) {
            try{
               
-            System.out.println("\t== =======================================");
-            System.out.println("\t====    MARVEL CLASH! TURN BASED    ====");
-            System.out.println("\t====       Player 2 Choose Hero     ====");
+            System.out.println("\t=========================================");
+            System.out.println("\t====    MARVEL CLASH! TURN BASED     ====");
+            System.out.println("\t====       Player 1 Choose Hero      ====");
             System.out.println("\t=========================================");
             System.out.println("\t|   Choose your hero:                   |");
             System.out.println("\t|     1. Iron Man                       |");
