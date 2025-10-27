@@ -39,8 +39,8 @@ public class Player1 {
                         player = new Character("Iron Man", 110, 110, 20,
                                 "Repulsor Blast - Deals 30 damage",
                                 "Unibeam - Deals 20 damage",
-                                "Rocket Barrage - Deals 50 damage",
-                                30, 20, 50, 30, 20, 50, 100);
+                                "Rocket Barrage - Deals 40 damage",
+                                30, 20, 40, 30, 20, 40, 100);
                         showStoryWithSkip("Iron Man", new String[]{
                                  "\nIron Man: Genius billionaire Tony Stark built his armored suit after a near-death experience.",
                             "He uses advanced technology to protect the world as Iron Man.",
@@ -49,10 +49,10 @@ public class Player1 {
                         break;
                     case 2:
                         player = new Character("Captain America", 120, 120, 12,
-                                "Shield Throw! - Deals 25 damage",
                                 "Shield Bash! - Deals 12 damage",
-                                "Inspire - Deals 20 damage",
-                                25, 12, 20, 25, 12, 20, 100);
+                                "Shield Throw! - Deals 25 damage",
+                                "Inspire - Deals 30 damage",
+                                12, 25, 30, 12, 25, 30, 100);
                         showStoryWithSkip("Captain America", new String[]{
                                 "\nSteve Rogers - the super soldier from WWII.",
                                 "Armed with his vibranium shield, he defends freedom and justice.\n"
@@ -62,19 +62,19 @@ public class Player1 {
                         player = new Character("Thor", 130, 130, 18,
                                 "Lightning Blast! - Deals 30 damage",
                                 "Mjolnir throw! - Deals 20 damage",
-                                "God of Thunder - Deals 20 damage",
-                                30, 20, 20, 30, 20, 20, 100);
+                                "God of Thunder - Deals 40 damage",
+                                30, 20, 40, 30, 20, 40, 100);
                         showStoryWithSkip("Thor", new String[]{
                                 "\nThor: The God of Thunder wields Mjolnir to protect the Nine Realms.",
                                 "He commands storms and possesses incredible strength.\n"
                         }, 40, player);
                         break;
                     case 4:
-                        player = new Character("Spider-Man", 90, 90, 14,
-                                "Spidey Swing! - Avoids damage",
+                        player = new Character("Spider-Man", 120, 120, 14,
                                 "Web Shot! - Deals 15 damage",
-                                "Spidey-sense - Doubles attack damage",
-                                20, 15, 20, 0, 15, 0, 100);
+                                "Web Swing Strike! - Deals 25 damage",
+                                "Spider Combo! - Deals 30 damage",
+                                15, 25, 30, 15, 25, 30, 100);
                         showStoryWithSkip("Spider-Man", new String[]{
                                 "\nPeter Parker: Bitten by a radioactive spider, he gained amazing powers.",
                                 "Lives by 'with great power comes great responsibility.'\n"
@@ -93,10 +93,10 @@ public class Player1 {
                         break;
                     case 6:
                         player = new Character("Black Widow", 100, 100, 10,
-                                "Stealth - Invisible for 1 turn",
+                                "Widow's Bite! - Deals 15 damage",
                                 "Widow's Kick! - Deals 20 damage",
-                                "Espionage - Deals 50 damage",
-                                30, 20, 50, 0, 20, 50, 100);
+                                "Espionage - Deals 30 damage",
+                                15, 20, 30, 15, 20, 30, 100);
                         showStoryWithSkip("Black Widow", new String[]{
                                 "\nNatasha Romanoff: Trained as a deadly assassin.",
                                 "Now an Avenger, agile and cunning.\n"
@@ -105,9 +105,9 @@ public class Player1 {
                     case 7:
                         player = new Character("Ant-Man", 100, 100, 20,
                                 "Pym Particle Punch! - Deals 20 damage",
-                                "Shrink - Dodges next attack",
+                                "Disc Launcher - Deals 20 damage",
                                 "Giant-Man - Deals 30 damage",
-                                20, 30, 25, 20, 0, 20, 100);
+                                20, 20, 30, 20, 20, 30, 100);
                         showStoryWithSkip("Ant-Man", new String[]{
                                 "\nScott Lang uses Hank Pyms shrinking technology.",
                                 "A thief turned hero protecting those in need.\n"
@@ -115,10 +115,10 @@ public class Player1 {
                         break;
                     case 8:
                         player = new Character("The Falcon", 150, 150, 10,
-                                "Flight - avoids damage",
+                                "Wing Blast - deals 15 damage",
                                 "Redwing Strike! - deals 20 damage",
                                 "Tactical Barrage - deals 30 damage",
-                                20, 20, 30, 0, 20, 30, 100);
+                                15, 20, 30, 15, 20, 30, 100);
                         showStoryWithSkip("The Falcon", new String[]{
                                 "\nSam Wilson uses advanced wing technology to soar the skies.",
                                 "A loyal soldier and hero with unmatched speed.\n"
@@ -141,18 +141,18 @@ public class Player1 {
                     case 70:
                         player = new Character("John Micoh", 150, 150, 20,
                                 "CIT lang ya! - deals 20 damage",
-                                "Lahus ni ug Cambuntan ya? - deals 40 damage",
-                                "Kapoyag tuon oy! - deals 50 damage",
-                                20, 30, 35, 20, 40, 50, 100);
+                                "Lahus ni ug Cambuntan ya? - deals 20 damage",
+                                "Kapoyag tuon oy! - deals 40 damage",
+                                20, 20, 40, 20, 20, 40, 100);
                         showStoryWithSkip("John Micoh", new String[]{
                                 "\nJohn Micoh: Laid-back warrior balancing jokes and determination.\n"
                         }, 40, player);
                         break;
                     case 8700:
                         player = new Character("Ethan Manto", 150, 150, 20,
-                                "Hollaback Girl!",
-                                "Soulja Boy Superman!",
-                                "Bye Bye Bye!",
+                                "Hollaback Girl! - deals 20 damage",
+                                "Soulja Boy Superman! - deals 30 damage",
+                                "Bye Bye Bye! - deals 35 damage",
                                 20, 30, 35, 20, 30, 35, 100);
                         showStoryWithSkip("Ethan Manto", new String[]{
                                 "\nEthan Manto: A warrior fueled by rhythm and style.",
@@ -162,9 +162,9 @@ public class Player1 {
                     case 7355608:
                         player = new Character("Thanos", 500, 500, 200,
                                 "Power Stone Blast - Deals 200 damage",
+                                "Power Stone Punch! - Deals 100 damage", 
                                 "Snap - Eliminates enemy in an instant",
-                                "Power Stone Punch! - Deals 100 damage",
-                                30, 50, 30, 200, 999, 100, 100);
+                                30, 30, 50, 200, 100, 999, 100);
                         showStoryWithSkip("Thanos", new String[]{
                                 "\nThanos: The Mad Titan seeking universal balance.",
                                 "Armed with Infinity Stones, bends reality with a flick of his hand.\n"
@@ -188,21 +188,22 @@ public class Player1 {
     public static void showStoryWithSkip(String heroName, String[] storyLines, int delay, Character hero) {
         try{
         sc.nextLine(); 
-        
-        String input="";
+
+        String input;
         boolean validInput=false;
 
          while(!validInput){
-                 System.out.print("Press ENTER to view " + heroName + "'s story, or type 'skip' to skip: ");
+                 System.out.print("Press ENTER to view " + heroName + "'s story, or type '0' to skip: ");
                  input = sc.nextLine().trim();
-         
+
          if (input.isEmpty()) {
                 for(String line:storyLines){
                     MarvelGame.typeWriter(line, delay);
                 }
                 validInput=true;
          }
-         else if(input.equalsIgnoreCase("skip")){
+         else if(input.equalsIgnoreCase("0")){
+
                 System.out.println("\nYou chose to skip " + heroName + "'s story.\n");
                 validInput=true;
          } else {
@@ -211,15 +212,16 @@ public class Player1 {
         }
          System.out.println("--- " + heroName + "s Stats ---");
              hero.displayIntro();
-       
-    
+
+
         } catch (Exception e) {
             System.out.println("Unexpected exception caught: " +e);
             sc.next();
 
               System.out.println("--- " + heroName + "s Stats ---");
              hero.displayIntro();
-}
-        
+        }
+
     }
+        
 }
