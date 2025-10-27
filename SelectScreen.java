@@ -11,9 +11,10 @@ public class SelectScreen {
     public static Character select() {
         Character player = null;
         int choice;
-
-        while (player == null) {
             clearScreen();
+        while (player == null) {
+            try{
+           
             System.out.println("\t=========================================");
             System.out.println("\t====    MARVEL CLASH! TURN BASED    ====");
             System.out.println("\t=========================================");
@@ -30,9 +31,8 @@ public class SelectScreen {
             System.out.println("\t|     Enter choice:                     |");
             System.out.print("\t > ");
 
-            if (sc.hasNextInt()) {
                  choice = sc.nextInt();
-                  clearScreen(); 
+                clearScreen();
                 switch (choice) {
                     case 1:
                         player = new Character("Iron Man", 110, 110, 20, "Repulsor blast - deals 30 damage ", "Unibeam- deals 20 damage ", "Rocket Barrage - deals 50 damage", 30, 20, 50 , 30, 20, 50, 100);
@@ -130,11 +130,12 @@ public class SelectScreen {
                         System.out.println("Invalid choice! Please select a valid hero number.\n");                
                         break;
                 }
-            } else {
-                System.out.println("Invalid input! Please enter a number.\n");
+           
+                
+            } catch (Exception e) {
+                clearScreen();
+                System.out.println("Unexpected exception caught: " +e);
                 sc.next();
-                
-                
             }
         }
         return player;
