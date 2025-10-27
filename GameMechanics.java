@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class GameMechanics extends Character {
+public class GameMechanics{
     Character player;
     Enemy enemy;
     public int turnCount = 1;
@@ -10,10 +10,7 @@ public class GameMechanics extends Character {
     private CooldownManager enemyCD  = new CooldownManager();
 
     public GameMechanics(Character player, Enemy enemy) {
-        super(player.name, player.hp, player.maxHp, player.attack,
-                player.skill1, player.skill2, player.skill3,
-                player.sk1Cost, player.sk2Cost, player.sk3Cost,
-                player.sk1Damage, player.sk2Damage, player.sk3Damage, player.mana);
+        
         this.player = player;
         this.enemy = enemy;
     }
@@ -24,30 +21,48 @@ public class GameMechanics extends Character {
         String skillName = skillNumber == 1 ? user.getSkill1() : (skillNumber == 2 ? user.getSkill2() : user.getSkill3());
 
         if (!cd.canUseSkill(skillNumber)) {
+            
             System.out.println("Skill is on cooldown! (" + cd.getFormattedCooldown(skillNumber) + ")");
+            
+            System.out.println("Press ENTER to continue...");
+            Scanner sc = new Scanner(System.in);
+            sc.nextLine();
+            MarvelGame.clearScreen();
             return;
         }
 
-        if (user.mana < cost) {
-            System.out.println("Not enough mana!");
-            return;
-        }
-
-        System.out.println(user.getName() + " uses " + skillName + "!");
-        
-        // Handle special abilities and damage
-        if (skillName.toLowerCase().contains("heal") || skillName.toLowerCase().contains("repair")) {
-            user.hp = Math.min(user.hp + damage, user.maxHp);
-        } else if (skillName.toLowerCase().contains("doubles attack") || skillName.toLowerCase().contains("rage")) {
-            user.attack *= 2;
-        } else if (skillName.toLowerCase().contains("avoids") || skillName.toLowerCase().contains("invisible") || 
-                   skillName.toLowerCase().contains("dodges")) {
-            // Avoidance skills don't deal damage
-        } else if (skillName.toLowerCase().contains("eliminates")) {
-            target.hp = 0; // Instant elimination (e.g., Thanos's snap)
-        } else {
+        if (damage < 0) {
+        user.hp = Math.min(user.hp - damage, user.maxHp); // negative damage = heal
+        System.out.println(user.getName() + " heals for " + (-damage) + " HP!");
+    }
+    // Handle instant elimination
+    else if (skillName.toLowerCase().contains("eliminates")) {
+        target.hp = 0;
+        System.out.println(target.getName() + " was instantly eliminated!");
+    }
+    // Handle buffs that double attack
+    else if (skillName.toLowerCase().contains("doubles attack") || skillName.toLowerCase().contains("rage")) {
+        user.attack *= 2;
+        System.out.println(user.getName() + "'s attack is doubled for this turn!");
+        if (damage > 0) { // still deal damage if specified
             target.hp -= damage;
+            System.out.println(target.getName() + " takes " + damage + " damage!");
         }
+    }
+    // Handle avoidance buffs
+    else if (skillName.toLowerCase().contains("avoids") || skillName.toLowerCase().contains("invisible") ||
+             skillName.toLowerCase().contains("dodges")) {
+        System.out.println(user.getName() + " becomes harder to hit this turn!");
+        if (damage > 0) {
+            target.hp -= damage;
+            System.out.println(target.getName() + " takes " + damage + " damage!");
+        }
+    }
+    // Default: deal damage
+    else {
+        target.hp -= damage;
+        System.out.println(target.getName() + " takes " + damage + " damage!");
+    }
         
         user.mana -= cost;
         cd.applyCooldown(skillNumber);
@@ -99,6 +114,7 @@ public class GameMechanics extends Character {
                     case 1:
                     case 2:
                     case 3:
+                        
                         useSkill(action, player, enemy, playerCD);
                         break;
                     default:
