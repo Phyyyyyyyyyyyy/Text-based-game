@@ -9,6 +9,7 @@ public class PlayerMechanics {
    private Scanner sc;
    private CooldownManager p1CD;
    private CooldownManager p2CD;
+   private static final int MAX_MANA = 100;
 
    public PlayerMechanics(Character var1, Character var2) {
       this.sc = new Scanner(System.in);
@@ -78,8 +79,6 @@ public class PlayerMechanics {
          var10001 = var4.getFormattedCooldown(var1);
          var10000.println("Skill is on cooldown! (" + var10001 + ")");
       } else {
-         boolean var5 = false;
-         boolean var6 = false;
          String var7 = "";
          int var8;
          int var9;
@@ -173,20 +172,28 @@ public class PlayerMechanics {
          }
       }
 
+      int currentMana = var1.mana;
       var1.regenerateMana(10);
-      if (var2.hp < 0) {
-         var2.hp = 0;
-      }
+      int manaGained = var1.mana - currentMana;
 
-      if (var1.hp < 0) {
-         var1.hp = 0;
-      }
+      if (var2.hp < 0) var2.hp = 0;
+      if (var1.hp < 0) var1.hp = 0;
 
       System.out.println();
       System.out.println("Player 1: ");
-      this.player1.displayStats();
+      if (manaGained > 0 && player1.mana < MAX_MANA) {
+         System.out.println(player1.getName() + " - HP: " + player1.hp + "/" + player1.maxHp + " | Mana: " + player1.mana + "/" + MAX_MANA + " (+" + manaGained + ")");
+      } else {
+         System.out.println(player1.getName() + " - HP: " + player1.hp + "/" + player1.maxHp + " | Mana: " + player1.mana + "/" + MAX_MANA);
+      }
+
+      System.out.println();
       System.out.println("Player 2: ");
-      this.player2.displayStats();
+      if (manaGained > 0 && player2.mana < MAX_MANA) {
+         System.out.println(player2.getName() + " - HP: " + player2.hp + "/" + player2.maxHp + " | Mana: " + player2.mana + "/" + MAX_MANA + " (+" + manaGained + ")");
+      } else {
+         System.out.println(player2.getName() + " - HP: " + player2.hp + "/" + player2.maxHp + " | Mana: " + player2.mana + "/" + MAX_MANA);
+      }
    }
 
    public void clearScreen() {
