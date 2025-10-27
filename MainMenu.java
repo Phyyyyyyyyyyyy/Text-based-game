@@ -1,11 +1,12 @@
 import java.util.Scanner;
 
-public class MainMenu {
+public class MainMenu{
     public static void start(Scanner sc) {
         int choice;
-
+      
         while(true){
              try{
+            
             System.out.println("\t=========================================");
             System.out.println("\t====       MARVEL CLASH! MENU       ====");
             System.out.println("\t=========================================");
@@ -16,6 +17,7 @@ public class MainMenu {
             System.out.print("\t > ");
           
             choice = sc.nextInt();
+            
             switch (choice) {
                 case 1:
                     playerVsPlayerMenu(sc);
@@ -27,17 +29,17 @@ public class MainMenu {
                     System.out.println("\n\t>>> Exiting... Goodbye!\n");
                     System.exit(0);
                 default:
+                    MarvelGame.clearScreen();
                     System.out.println("\n\t>>> Invalid choice, please try again!\n");
-                   
-                    break;
-                    
+                    break; 
             }
         }catch(Exception e){
+           MarvelGame.clearScreen();
             System.out.println("\t"+e);
             sc.next(); 
             choice = 0;
        }
-        }
+   }
 }
 
     public static void playerVsPlayerMenu(Scanner sc) {
