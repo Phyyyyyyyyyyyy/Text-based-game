@@ -156,7 +156,7 @@ public class PlayerMechanics {
          System.out.print("> ");
 
          int var5;
-         clearScreen();
+         
          try {
             var5 = Integer.parseInt(this.sc.nextLine());
          } catch (NumberFormatException var7) {
