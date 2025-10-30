@@ -20,6 +20,7 @@ public class PlayerMechanics {
    }
 
    public void game() {
+      clearScreen();
       System.out.println("\n==============================");
       System.out.println("Player 1: ");
       this.player1.displayStats();
@@ -28,6 +29,7 @@ public class PlayerMechanics {
       System.out.println("==============================");
 
       while(this.player1.hp > 0 && this.player2.hp > 0) {
+         clearScreen();
          System.out.println("\n==============================");
          System.out.println("Turn " + this.turnCount);
          System.out.println("==============================");
@@ -41,7 +43,11 @@ public class PlayerMechanics {
             break;
          }
 
-         System.out.println("\n" + this.player2.getName() + "'s Turn");
+         clearScreen();
+         System.out.println("\n==============================");
+         System.out.println("Turn " + ++this.turnCount);
+         System.out.println("==============================");
+         System.out.println(this.player2.getName() + "'s Turn");
          var10000 = System.out;
          var10001 = this.p2CD.getFormattedCooldown(1);
          var10000.println("Player 2 Cooldowns - S1: " + var10001 + " | S2: " + this.p2CD.getFormattedCooldown(2) + " | S3: " + this.p2CD.getFormattedCooldown(3));
@@ -52,6 +58,8 @@ public class PlayerMechanics {
          ++this.turnCount;
       }
 
+
+      clearScreen();    
       System.out.println("\n==============================");
       if (this.player1.hp <= 0 && this.player2.hp <= 0) {
          System.out.println("It's a draw!");
@@ -148,6 +156,7 @@ public class PlayerMechanics {
          System.out.print("> ");
 
          int var5;
+         clearScreen();
          try {
             var5 = Integer.parseInt(this.sc.nextLine());
          } catch (NumberFormatException var7) {
@@ -180,6 +189,8 @@ public class PlayerMechanics {
       if (var1.hp < 0) var1.hp = 0;
 
       System.out.println();
+      clearScreen();
+       System.out.println("\n==============================");
       System.out.println("Player 1: ");
       if (manaGained > 0 && player1.mana < MAX_MANA) {
          System.out.println(player1.getName() + " - HP: " + player1.hp + "/" + player1.maxHp + " | Mana: " + player1.mana + "/" + MAX_MANA + " (+" + manaGained + ")");
@@ -194,6 +205,7 @@ public class PlayerMechanics {
       } else {
          System.out.println(player2.getName() + " - HP: " + player2.hp + "/" + player2.maxHp + " | Mana: " + player2.mana + "/" + MAX_MANA);
       }
+       System.out.println("\n==============================");
    }
 
    public void clearScreen() {
