@@ -14,10 +14,18 @@ public class Player1 {
            clearScreen();
         while (player == null) {
            try{
+
+        System.out.println(" __  __                      _    ____ _           _     _ ");
+        System.out.println("|  \\/  | __ _ _ ____   _____| |  / ___| | __ _ ___| |__ | |");
+        System.out.println("| |\\/| |/ _` | '__\\ \\ / / _ \\ | | |   | |/ _` / __| '_ \\| |");
+        System.out.println("| |  | | (_| | |   \\ V /  __/ | | |___| | (_| \\__ \\ | | |_|");
+        System.out.println("|_|  |_|\\__,_|_|    \\_/ \\___|_|  \\____|_|\\__,_|___/_| |_(_)");
+        System.out.println();
+        System.out.println();
               
-            System.out.println("\t== =======================================");
-            System.out.println("\t====    MARVEL CLASH! TURN BASED    ====");
-            System.out.println("\t====    Player 1 Choose Hero        ====");
+            System.out.println("\t=========================================");
+            System.out.println("\t====    MARVEL CLASH! TURN BASED     ====");
+            System.out.println("\t====    Player 1 Choose Hero         ====");
             System.out.println("\t=========================================");
             System.out.println("\t|   Choose your hero:                   |");
             System.out.println("\t|     1. Iron Man                       |");
