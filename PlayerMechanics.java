@@ -20,7 +20,6 @@ public class PlayerMechanics {
    }
 
    public void game() {
-      clearScreen();
       System.out.println("\n==============================");
       System.out.println("Player 1: ");
       this.player1.displayStats();
@@ -29,7 +28,7 @@ public class PlayerMechanics {
       System.out.println("==============================");
 
       while(this.player1.hp > 0 && this.player2.hp > 0) {
-         clearScreen();
+        
          System.out.println("\n==============================");
          System.out.println("Turn " + this.turnCount);
          System.out.println("==============================");
@@ -43,7 +42,6 @@ public class PlayerMechanics {
             break;
          }
 
-         clearScreen();
          System.out.println("\n==============================");
          System.out.println("Turn " + ++this.turnCount);
          System.out.println("==============================");
@@ -59,7 +57,7 @@ public class PlayerMechanics {
       }
 
 
-      clearScreen();    
+    
       System.out.println("\n==============================");
       if (this.player1.hp <= 0 && this.player2.hp <= 0) {
          System.out.println("It's a draw!");
@@ -110,7 +108,9 @@ public class PlayerMechanics {
                System.out.println("Invalid skill number!");
                return;
          }
+         
 
+         clearScreen();
          if (var2.mana < var8) {
             System.out.println("Not enough mana!");
          } else {
@@ -189,7 +189,7 @@ public class PlayerMechanics {
       if (var1.hp < 0) var1.hp = 0;
 
       System.out.println();
-      clearScreen();
+    
        System.out.println("\n==============================");
       System.out.println("Player 1: ");
       if (manaGained > 0 && player1.mana < MAX_MANA) {
