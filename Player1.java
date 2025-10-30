@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Player2 {
+public class Player1 {
     static Scanner sc = new Scanner(System.in);
 
     public static void clearScreen() {
@@ -27,7 +27,7 @@ public class Player2 {
               
             System.out.println("\t=========================================");
             System.out.println("\t====    MARVEL CLASH! TURN BASED     ====");
-            System.out.println("\t====       Player 2 Choose Hero      ====");
+            System.out.println("\t====    Player 1 Choose Hero         ====");
             System.out.println("\t=========================================");
             System.out.println("\t|   Choose your hero:                   |");
             System.out.println("\t|     1. Iron Man                       |");
@@ -195,7 +195,7 @@ public class Player2 {
 }
 
 
-   public static void showStoryWithSkip(String heroName, String[] storyLines, int delay, Character hero) {
+    public static void showStoryWithSkip(String heroName, String[] storyLines, int delay, Character hero) {
         try{
         sc.nextLine(); 
 
