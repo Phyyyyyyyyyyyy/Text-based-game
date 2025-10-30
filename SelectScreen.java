@@ -11,17 +11,26 @@ public class SelectScreen {
     public static Character select() {
         Character player = null;
         int choice;
+        final String RESET = "\u001B[0m";
+        final String RED = "\u001B[31m";
+        final String GREEN = "\u001B[32m";
+        final String YELLOW = "\u001B[33m";
+        final String BLUE = "\u001B[34m";
+        final String PURPLE = "\u001B[35m";
+        final String CYAN = "\u001B[36m";
+        final String WHITE = "\u001B[37m";
             clearScreen();
         while (player == null) {
             try{
 
-        System.out.println(" __  __                      _    ____ _           _     _ ");
-        System.out.println("|  \\/  | __ _ _ ____   _____| |  / ___| | __ _ ___| |__ | |");
-        System.out.println("| |\\/| |/ _` | '__\\ \\ / / _ \\ | | |   | |/ _` / __| '_ \\| |");
-        System.out.println("| |  | | (_| | |   \\ V /  __/ | | |___| | (_| \\__ \\ | | |_|");
-        System.out.println("|_|  |_|\\__,_|_|    \\_/ \\___|_|  \\____|_|\\__,_|___/_| |_(_)");
+        System.out.println(RED + " __  __                      _    ____ _           _     _ " + RESET);
+        System.out.println(RED + "|  \\/  | __ _ _ ____   _____| |  / ___| | __ _ ___| |__ | |" + RESET);
+        System.out.println(RED + "| |\\/| |/ _` | '__\\ \\ / / _ \\ | | |   | |/ _` / __| '_ \\| |" + RESET);
+        System.out.println(RED + "| |  | | (_| | |   \\ V /  __/ | | |___| | (_| \\__ \\ | | |_|" + RESET);
+        System.out.println(RED + "|_|  |_|\\__,_|_|    \\_/ \\___|_|  \\____|_|\\__,_|___/_| |_(_)" + RESET);
         System.out.println();
         System.out.println();
+              
            
             System.out.println("\t=========================================");
             System.out.println("\t====    MARVEL CLASH! TURN BASED    ====");
