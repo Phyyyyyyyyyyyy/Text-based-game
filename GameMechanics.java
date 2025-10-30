@@ -8,7 +8,7 @@ public class GameMechanics{
     private Random rand = new Random();
     private CooldownManager playerCD = new CooldownManager();
     private CooldownManager enemyCD  = new CooldownManager();
-
+     Scanner sc = new Scanner(System.in);
     public GameMechanics(Character player, Enemy enemy) {
         
         this.player = player;
@@ -25,12 +25,14 @@ public class GameMechanics{
             System.out.println("Skill is on cooldown! (" + cd.getFormattedCooldown(skillNumber) + ")");
             
             System.out.println("Press ENTER to continue...");
-            Scanner sc = new Scanner(System.in);
+             sc.nextLine();
             sc.nextLine();
-            MarvelGame.clearScreen();
+            
+           
             return;
+            
         }
-
+       
         if (damage < 0) {
         user.hp = Math.min(user.hp - damage, user.maxHp); // negative damage = heal
         System.out.println(user.getName() + " heals for " + (-damage) + " HP!");
@@ -40,7 +42,7 @@ public class GameMechanics{
         target.hp = 0;
         System.out.println(target.getName() + " was instantly eliminated!");
     }
-    // Handle buffs that double attack
+    
     else if (skillName.toLowerCase().contains("doubles attack") || skillName.toLowerCase().contains("rage")) {
         user.attack *= 2;
         System.out.println(user.getName() + "'s attack is doubled for this turn!");
@@ -74,10 +76,11 @@ public class GameMechanics{
         double maxMultiplier = 1.2;
         double multiplier = minMultiplier + (maxMultiplier - minMultiplier) * rand.nextDouble();
         return (int) (baseAttack * multiplier);
+        
     }
-
+   
     public void game() {
-        Scanner sc = new Scanner(System.in);
+       
         boolean playerTurn = true;
 
         System.out.println("\n==============================");
@@ -207,6 +210,9 @@ public class GameMechanics{
                 enemyCD.reduceCooldowns();
             }
             playerTurn = !playerTurn;
+            System.out.println("\nPress ENTER to continue...");
+            sc.nextLine();
+            MarvelGame.clearScreen();
         }
 
         if (player.hp <= 0 && enemy.hp <= 0) {
@@ -216,7 +222,6 @@ public class GameMechanics{
         } else {
             System.out.println("Congratulations! You defeated " + enemy.name + "!");
         }
-     
     }
-   
+     
 }
