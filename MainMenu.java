@@ -6,14 +6,21 @@ public class MainMenu{
       
         while(true){
              try{
-            
+
+        System.out.println(" __  __                      _    ____ _           _     _ ");
+        System.out.println("|  \\/  | __ _ _ ____   _____| |  / ___| | __ _ ___| |__ | |");
+        System.out.println("| |\\/| |/ _` | '__\\ \\ / / _ \\ | | |   | |/ _` / __| '_ \\| |");
+        System.out.println("| |  | | (_| | |   \\ V /  __/ | | |___| | (_| \\__ \\ | | |_|");
+        System.out.println("|_|  |_|\\__,_|_|    \\_/ \\___|_|  \\____|_|\\__,_|___/_| |_(_)");
+        System.out.println();
+        System.out.println();
             System.out.println("\t=========================================");
-            System.out.println("\t====       MARVEL CLASH! MENU       ====");
+            System.out.println("\t====       MARVEL CLASH! MENU        ====");
             System.out.println("\t=========================================");
-            System.out.println("\t|   Select Game Mode:                  |");
-            System.out.println("\t|     1. Player vs Player              |");
-            System.out.println("\t|     2. Player vs AI                  |");
-            System.out.println("\t|     3. Exit                          |");
+            System.out.println("\t|   Select Game Mode:                   |");
+            System.out.println("\t|     1. Player vs Player               |");
+            System.out.println("\t|     2. Player vs AI                   |");
+            System.out.println("\t|     3. Exit                           |");
             System.out.print("\t > ");
           
             choice = sc.nextInt();
