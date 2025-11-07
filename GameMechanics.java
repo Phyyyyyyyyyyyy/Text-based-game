@@ -2,6 +2,15 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GameMechanics{
+final String BLACK   = "\u001B[30m";
+final String RED     = "\u001B[31m";
+final String GREEN   = "\u001B[32m";
+final String YELLOW  = "\u001B[33m";
+final String BLUE    = "\u001B[34m";
+final String PURPLE  = "\u001B[35m";
+final String CYAN    = "\u001B[36m";
+final String WHITE   = "\u001B[37m";
+ final String RESET = "\u001B[0m";
     Character player;
     Enemy enemy;
     public int turnCount = 1;
@@ -23,7 +32,6 @@ public class GameMechanics{
         if (!cd.canUseSkill(skillNumber)) {
             
             System.out.println("Skill is on cooldown! (" + cd.getFormattedCooldown(skillNumber) + ")");
-            
             System.out.println("Press ENTER to continue...");
              sc.nextLine();
             sc.nextLine();
@@ -34,19 +42,19 @@ public class GameMechanics{
         }
        
         if (damage < 0) {
-        user.hp = Math.min(user.hp - damage, user.maxHp); // negative damage = heal
+        user.hp = Math.min(user.hp - damage, user.maxHp);
         System.out.println(user.getName() + " heals for " + (-damage) + " HP!");
     }
-    // Handle instant elimination
+
     else if (skillName.toLowerCase().contains("eliminates")) {
-        target.hp = 0;
+        target.hp = 0;        //test kung mo gana ni sila baw lang 
         System.out.println(target.getName() + " was instantly eliminated!");
     }
     
     else if (skillName.toLowerCase().contains("doubles attack") || skillName.toLowerCase().contains("rage")) {
         user.attack *= 2;
         System.out.println(user.getName() + "'s attack is doubled for this turn!");
-        if (damage > 0) { // still deal damage if specified
+        if (damage > 0) { 
             target.hp -= damage;
             System.out.println(target.getName() + " takes " + damage + " damage!");
         }
@@ -89,16 +97,18 @@ public class GameMechanics{
         System.out.println("\nEnemy: ");
         enemy.displayStats();
         System.out.println("==============================");
-
+      
         while (player.hp > 0 && enemy.hp > 0) {
 
             if (playerTurn) {
+                MarvelGame.clearScreen();
                 System.out.println("\n==============================");
                 System.out.println("Turn " + turnCount);
                 player.displayStats();
                 System.out.println("==============================");
                 turnCount++;
-                System.out.println(player.getName() + " - Choose your action:");
+                 
+                System.out.println(player.getName() + " - Choose your action:"); 
                 System.out.println("Cooldowns - S1: " + playerCD.getFormattedCooldown(1) +
                                    " | S2: " + playerCD.getFormattedCooldown(2) +
                                    " | S3: " + playerCD.getFormattedCooldown(3));
@@ -107,8 +117,9 @@ public class GameMechanics{
                 System.out.println("2. " + player.getSkill2() + " - "+player.sk2Cost+" mana");
                 System.out.println("3. " + player.getSkill3() + " - "+player.sk3Cost+" mana");
                 System.out.print("> ");
+               try{
                 int action = sc.nextInt();
-
+                
                 switch (action) {
                     case 0:
                         System.out.println("You perform a basic attack!");
@@ -117,20 +128,22 @@ public class GameMechanics{
                     case 1:
                     case 2:
                     case 3:
-                        
                         useSkill(action, player, enemy, playerCD);
                         break;
                     default:
                         System.out.println("Invalid action! You lose your turn.");
                         break;
-                }
-
+            }
+        }catch(Exception e){
+               System.out.println("Invalid action! You lose your turn."+e);
+        }
                 player.regenerateMana(10);
 
                 System.out.println();
                 player.displayStats();
 
-            } else {
+         } else {
+                  MarvelGame.clearScreen();
                 System.out.println("\nEnemy's Turn!");
                 System.out.println("Cooldowns - S1: " + enemyCD.getFormattedCooldown(1) +
                                    " | S2: " + enemyCD.getFormattedCooldown(2) +
@@ -204,24 +217,67 @@ public class GameMechanics{
             if (player.hp < 0) player.hp = 0;
             if (enemy.hp < 0) enemy.hp = 0;
 
-            // Reduce cooldowns at the end of each full turn
+          
             if (!playerTurn) {
                 playerCD.reduceCooldowns();
                 enemyCD.reduceCooldowns();
             }
             playerTurn = !playerTurn;
+
+          
             System.out.println("\nPress ENTER to continue...");
             sc.nextLine();
-            MarvelGame.clearScreen();
+            sc.nextLine();
+            
         }
-
+        System.out.println("\n==============================");
+        MarvelGame.clearScreen();
         if (player.hp <= 0 && enemy.hp <= 0) {
             System.out.println("It's a draw!");
         } else if (player.hp <= 0) {
+        System.out.println(RED + "_____                                           _____ " + RESET);
+        System.out.println( RED + "( ___ )-----------------------------------------( ___ )" + RESET);
+        System.out.println( RED + " |   |                                           |   | " + RESET);
+        System.out.println(RED + " |   | __   __            _                   _  |   | " + RESET);
+        System.out.println(RED + " |   | \\ \\ / /__  _   _  | |    ___  ___  ___| | |   | " + RESET);
+        System.out.println(RED + " |   |  \\ V / _ \\| | | | | |   / _ \\/ __|/ _ \\ | |   | " + RESET);
+        System.out.println(RED + " |   |   | | (_) | |_| | | |__| (_) \\__ \\  __/_| |   | " + RESET);
+        System.out.println(RED + " |   |   |_|\\___/ \\__,_| |_____\\___/|___/\\___(_) |   | " + RESET);
+        System.out.println(RED + " |___|                                           |___| " + RESET);
+        System.out.println(RED + "(_____)-----------------------------------------(_____)" + RESET);
             System.out.println("You lost! " + enemy.name + " wins!");
+            System.out.println("\nPress ENTER to continue...");
+            sc.nextLine();
+            sc.nextLine();
+             MarvelGame.clearScreen();
+
         } else {
+        System.out.println(GREEN + " _____                                          _____ " + RESET);
+        System.out.println(GREEN + "( ___ )----------------------------------------( ___ )" + RESET);
+        System.out.println(GREEN + " |   |                                          |   | " + RESET);
+        System.out.println(GREEN + " |   | __   __           __        ___       _  |   | " + RESET);
+        System.out.println(GREEN + " |   | \\ \\ / /__  _   _  \\ \\      / (_)_ __ | | |   | " + RESET);
+        System.out.println(GREEN + " |   |  \\ V / _ \\| | | |  \\ \\ /\\ / /| | '_ \\| | |   | " + RESET);
+        System.out.println(GREEN + " |   |   | | (_) | |_| |   \\ V  V / | | | | |_| |   | " + RESET);
+        System.out.println(GREEN + " |   |   |_|\\___/ \\__,_|    \\_/\\_/  |_|_| |_(_) |   | " + RESET);
+        System.out.println(GREEN + " |___|                                          |___| " + RESET);
+        System.out.println(GREEN + "(_____)----------------------------------------(_____)" + RESET);
             System.out.println("Congratulations! You defeated " + enemy.name + "!");
+            System.out.println("\nPress ENTER to continue...");
+            sc.nextLine();
+            sc.nextLine();
+             MarvelGame.clearScreen();
+
         }
+       
+   //    final String BLACK   = "\u001B[30m";
+//final String RED     = "\u001B[31m";
+////final String GREEN   = "\u001B[32m";
+//final String YELLOW  = "\u001B[33m";
+//final String BLUE    = "\u001B[34m";
+//final String PURPLE  = "\u001B[35m";
+//final String CYAN    = "\u001B[36m";
+//final String WHITE   = "\u001B[37m";
     }
      
 }
