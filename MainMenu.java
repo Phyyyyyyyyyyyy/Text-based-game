@@ -3,15 +3,18 @@ import java.util.Scanner;
 public class MainMenu{
     public static void start(Scanner sc) {
         int choice;
+
+        final String RESET = "\u001B[0m";
+        final String RED = "\u001B[31m";
       
         while(true){
              try{
 
-        System.out.println(" __  __                      _    ____ _           _     _ ");
-        System.out.println("|  \\/  | __ _ _ ____   _____| |  / ___| | __ _ ___| |__ | |");
-        System.out.println("| |\\/| |/ _` | '__\\ \\ / / _ \\ | | |   | |/ _` / __| '_ \\| |");
-        System.out.println("| |  | | (_| | |   \\ V /  __/ | | |___| | (_| \\__ \\ | | |_|");
-        System.out.println("|_|  |_|\\__,_|_|    \\_/ \\___|_|  \\____|_|\\__,_|___/_| |_(_)");
+        System.out.println(RED + " __  __                      _    ____ _           _     _ " + RESET);
+        System.out.println(RED + "|  \\/  | __ _ _ ____   _____| |  / ___| | __ _ ___| |__ | |" + RESET);
+        System.out.println(RED + "| |\\/| |/ _` | '__\\ \\ / / _ \\ | | |   | |/ _` / __| '_ \\| |" + RESET);
+        System.out.println(RED + "| |  | | (_| | |   \\ V /  __/ | | |___| | (_| \\__ \\ | | |_|" + RESET);
+        System.out.println(RED + "|_|  |_|\\__,_|_|    \\_/ \\___|_|  \\____|_|\\__,_|___/_| |_(_)" + RESET);
         System.out.println();
         System.out.println();
             System.out.println("\t=========================================");
