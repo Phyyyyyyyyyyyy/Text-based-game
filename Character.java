@@ -49,32 +49,64 @@ public class Character{
         System.out.println("Stats - HP: " + hp + " | Attack: " + attack + " | Mana: " + mana );
         if ("Iron Man".equals(name)) {
             System.out.println("Skills:");
-            System.out.println("  " + skill1 + " - " + sk1Cost + " mana");
-            System.out.println("  " + skill2 + " - " + sk2Cost + " mana");
-            System.out.println("  " + skill3 + " - " + sk3Cost + " mana");
+            System.out.println("1. " + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("2.  " + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("3.  " + skill3 + " - " + sk3Cost + " mana");
         }
        
          
         if ("Captain America".equals(name)) {
             System.out.println("Skills:");
-            System.out.println("  " + skill1 + " - " + sk1Cost + " mana");
-            System.out.println("  " + skill2 + " - " + sk2Cost + " mana");
-            System.out.println("  " + skill3 + " - " + sk3Cost + " mana");
+            System.out.println("1.  " + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("2.  " + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("3.  " + skill3 + " - " + sk3Cost + " mana");
         }
         
         if ("Thor".equals(name)) {
             System.out.println("Skills:");
-            System.out.println("  " + skill1 + " - " + sk1Cost + " mana");
-            System.out.println("  " + skill2 + " - " + sk2Cost + " mana");
-            System.out.println("  " + skill3 + " - " + sk3Cost + " mana");
+            System.out.println("1.  " + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("2.  " + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("3.  " + skill3 + " - " + sk3Cost + " mana");
         }
        
-        if ("Spider-Man".equals(name)) {
+        if ("Spider-Man".equals(name)) {                                                     //////////kani sila tanan kay mao niy mo gawas kung .equals sa ing ana nga string so if Spider-man ang na pili ing ana ang mo print ug gawas sa ilaha para sa displya nga method
             System.out.println("Skills:");
-            System.out.println("  " + skill1 + " - " + sk1Cost + " mana");
-            System.out.println("  " + skill2 + " - " + sk2Cost + " mana");
-            System.out.println("  " + skill3 + " - " + sk3Cost + " mana");
+            System.out.println("1. " + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("2. " + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("3. " + skill3 + " - " + sk3Cost + " mana");
         }
+
+        if ("Hulk".equals(name)) {
+            System.out.println("Skills:");
+            System.out.println("1. " + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("2. " + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("3. " + skill3 + " - " + sk3Cost + " mana");
+        }
+
+        if ("Black Widow".equals(name)) {
+            System.out.println("Skills:");
+            System.out.println("1. " + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("2. " + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("3. " + skill3 + " - " + sk3Cost + " mana");
+        }
+
+
+        if ("Ant-Man".equals(name)) {
+            System.out.println("Skills:");
+            System.out.println("1. " + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("2. " + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("3. " + skill3 + " - " + sk3Cost + " mana");
+        }
+
+
+        if ("The Falcon".equals(name)) {
+            System.out.println("Skills:");
+            System.out.println("1. " + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("2. " + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("3. " + skill3 + " - " + sk3Cost + " mana");
+        }
+
+
        System.out.println();
     }
 
@@ -82,3 +114,4 @@ public class Character{
         System.out.println(name + " - HP: " + hp + "/" + maxHp + " | Mana: " + mana);
     }
 }
+            
