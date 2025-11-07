@@ -3,6 +3,15 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 public class PlayerMechanics {
+final String BLACK   = "\u001B[30m";
+final String RED     = "\u001B[31m";
+final String GREEN   = "\u001B[32m";
+final String YELLOW  = "\u001B[33m";
+final String BLUE    = "\u001B[34m";
+final String PURPLE  = "\u001B[35m";
+final String CYAN    = "\u001B[36m";
+final String WHITE   = "\u001B[37m";
+final String RESET = "\u001B[0m";
    Character player1;
    Character player2;
    public int turnCount = 1;
@@ -57,17 +66,49 @@ public class PlayerMechanics {
       }
 
 
-    
+      
       System.out.println("\n==============================");
+       clearScreen();
       if (this.player1.hp <= 0 && this.player2.hp <= 0) {
          System.out.println("It's a draw!");
       } else if (this.player1.hp <= 0) {
+         System.out.println(GREEN + "( ___ )------------------------------------------------------------------( ___ )" + RESET);
+        System.out.println(GREEN + " |   |                                                                    |   | " + RESET);
+        System.out.println(GREEN + " |   |  ____  _                         ____   __        ___           _  |   | " + RESET);
+        System.out.println(GREEN +" |   | |  _ \\| | __ _ _   _  ___ _ __  |___ \\  \\ \\      / (_)_ __  ___| | |   | " + RESET);
+        System.out.println(GREEN +" |   | | |_) | |/ _` | | | |/ _ \\ '__|   __) |  \\ \\ /\\ / /| | '_ \\/ __| | |   | " + RESET);
+        System.out.println(GREEN +" |   | |  __/| | (_| | |_| |  __/ |     / __/    \\ V  V / | | | | \\__ \\_| |   | " + RESET);
+        System.out.println(GREEN +" |   | |_|   |_|\\__,_|\\__, |\\___|_|    |_____|    \\_/\\_/  |_|_| |_|___(_) |   | " + RESET);
+        System.out.println(GREEN +" |   |                |___/                                               |   | " + RESET);
+        System.out.println(GREEN +" |___|                                                                    |___| " + RESET);
+        System.out.println(GREEN + "(_____)------------------------------------------------------------------(_____)" + RESET);
          System.out.println(this.player2.getName() + " wins!");
+
+            System.out.println("\nPress ENTER to continue...");
+            sc.nextLine();
+            sc.nextLine();
+            clearScreen();
       } else {
+                 System.out.println("_____                                                                _____ " + RESET);
+        System.out.println(GREEN + "( ___ )--------------------------------------------------------------( ___ )" + RESET);
+        System.out.println(GREEN + " |   |                                                                |   | " + RESET);
+        System.out.println(GREEN + " |   |  ____  _                         _  __        ___           _  |   | " + RESET);
+        System.out.println(GREEN + " |   | |  _ \\| | __ _ _   _  ___ _ __  / | \\ \\      / (_)_ __  ___| | |   | " + RESET);
+        System.out.println(GREEN + " |   | | |_) | |/ _` | | | |/ _ \\ '__| | |  \\ \\ /\\ / /| | '_ \\/ __| | |   | " + RESET);
+        System.out.println(GREEN + " |   | |  __/| | (_| | |_| |  __/ |    | |   \\ V  V / | | | | \\__ \\_| |   | " + RESET);
+        System.out.println(GREEN + " |   | |_|   |_|\\__,_|\\__, |\\___|_|    |_|    \\_/\\_/  |_|_| |_|___(_) |   | " + RESET);
+        System.out.println(GREEN + " |   |                |___/                                           |   | " + RESET);
+        System.out.println(GREEN + " |___|                                                                |___| " + RESET);
+        System.out.println(GREEN + "(_____)--------------------------------------------------------------(_____)" + RESET);
          System.out.println(this.player1.getName() + " wins!");
+         
+            System.out.println("\nPress ENTER to continue...");
+            sc.nextLine();
+            sc.nextLine();
+            clearScreen();
       }
 
-      System.out.println("==============================");
+
    }
 
    private int calculateBasicAttackDamage(int var1) {
