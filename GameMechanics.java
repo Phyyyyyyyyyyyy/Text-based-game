@@ -58,7 +58,7 @@ public class GameMechanics {
         String skillName = skillNumber == 1 ? user.getSkill1() : (skillNumber == 2 ? user.getSkill2() : user.getSkill3());
 
         if (!cd.canUseSkill(skillNumber)) {
-            System.out.println(BRIGHT_YELLOW + "Skill is on cooldown! (" + cd.getFormattedCooldown(skillNumber) + ")" + RESET + RED + ", You missed your turn, Enemy's turn now." + RESET);
+            System.out.println(BRIGHT_YELLOW + "Skill is on cooldown! " + RESET + "(" + cd.getFormattedCooldown(skillNumber) + ")" + ", " + BRIGHT_RED + "You missed your turn, Enemy's turn now." + RESET);
             System.out.println("Press ENTER to continue...");
             sc.nextLine();
             return;
@@ -73,7 +73,7 @@ public class GameMechanics {
 
         target.hp -= damage;
         //System.out.println(user.getName() + " uses " + skillName + "!"); 
-        System.out.println(target.getName() + " takes " + BRIGHT_RED + damage + " damage!" + RESET);
+        System.out.println(BRIGHT_RED + target.getName() + " takes " + damage + " damage!" + RESET);
         
         user.mana -= cost;
         cd.applyCooldown(skillNumber);
@@ -158,6 +158,7 @@ public class GameMechanics {
 
             } else {
                 clearScreen();
+                System.out.println(BRIGHT_BLUE + "==============================" + RESET);
                 System.out.println("\n" + BRIGHT_RED + "Enemy's Turn!" + RESET);
                 System.out.println("Cooldowns - S1: " + enemyCD.getFormattedCooldown(1) +
                                    " | S2: " + enemyCD.getFormattedCooldown(2) +
