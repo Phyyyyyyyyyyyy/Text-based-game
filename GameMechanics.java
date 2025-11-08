@@ -58,7 +58,7 @@ public class GameMechanics {
         String skillName = skillNumber == 1 ? user.getSkill1() : (skillNumber == 2 ? user.getSkill2() : user.getSkill3());
 
         if (!cd.canUseSkill(skillNumber)) {
-            System.out.println(BRIGHT_YELLOW + "Skill is on cooldown! (" + cd.getFormattedCooldown(skillNumber) + ")" + RESET);
+            System.out.println(BRIGHT_YELLOW + "Skill is on cooldown! (" + cd.getFormattedCooldown(skillNumber) + ")" + RESET + RED + ", You missed your turn, Enemy's turn now." + RESET);
             System.out.println("Press ENTER to continue...");
             sc.nextLine();
             return;
@@ -93,12 +93,12 @@ public class GameMechanics {
         boolean playerTurn = true;
 
         System.out.println("\n" + BRIGHT_BLUE + "==============================" + RESET);
-        System.out.println("Your Character: ");
+        System.out.println(GREEN + "Your Character: " + RESET);
         String playerHPColor = getHPColor(player.hp, player.maxHp);
         System.out.println(player.getName() + " - " + playerHPColor + "HP: " + player.hp + "/" + player.maxHp + RESET + 
                          " | " + BRIGHT_BLUE + "Mana: " + player.mana + "/" + MAX_MANA + RESET);
 
-        System.out.println("\nEnemy: ");
+        System.out.println(RED + "\nEnemy: " + RESET);
         String enemyHPColor = getHPColor(enemy.hp, enemy.maxHp);
         if (enemyManaGained > 0 && enemy.mana < MAX_MANA) {
             System.out.println(enemy.getName() + " - " + enemyHPColor + "HP: " + enemy.hp + "/" + enemy.maxHp + RESET + 
@@ -118,12 +118,12 @@ public class GameMechanics {
                 System.out.println(BRIGHT_BLUE + "==============================" + RESET);
                 turnCount++;
                  
-                System.out.println(player.getName() + " - Choose your action:"); 
+                System.out.println(player.getName() + BRIGHT_YELLOW  + " - Choose your action: " + RESET); 
                 System.out.println("Cooldowns - S1: " + playerCD.getFormattedCooldown(1) +
                                    " | S2: " + playerCD.getFormattedCooldown(2) +
                                    " | S3: " + playerCD.getFormattedCooldown(3));
                 System.out.println("0. Basic Attack");
-                System.out.println("1. " + player.getSkill1() + " - " + BRIGHT_BLUE + player.sk1Cost + " mana" + RESET);
+                System.out.println("1. " +  player.getSkill1() + " - " + BRIGHT_BLUE + player.sk1Cost + " mana" + RESET);
                 System.out.println("2. " + player.getSkill2() + " - " + BRIGHT_BLUE + player.sk2Cost + " mana" + RESET);
                 System.out.println("3. " + player.getSkill3() + " - " + BRIGHT_BLUE + player.sk3Cost + " mana" + RESET);
                 System.out.print("> ");
@@ -213,13 +213,13 @@ public class GameMechanics {
                         break;
                 }
                 System.out.println();
-
-                System.out.println("Your character: ");
+                System.out.println(BRIGHT_BLUE + "==============================" + RESET);
+                System.out.println(BRIGHT_GREEN + "Your character: " + RESET);
                 displayPlayerStats();
 
-                System.out.println("Enemy: ");
+                System.out.println(BRIGHT_RED + "Enemy: " + RESET);
                 displayEnemyStats();
-
+                 System.out.println(BRIGHT_BLUE + "==============================" + RESET);
                 player.regenerateMana(10);
                 enemy.regenerateMana(10);
             }
