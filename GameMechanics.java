@@ -119,9 +119,9 @@ public class GameMechanics {
                 turnCount++;
                  
                 System.out.println(player.getName() + BRIGHT_YELLOW  + " - Choose your action: " + RESET); 
-                System.out.println("Cooldowns - S1: " + playerCD.getFormattedCooldown(1) +
-                                   " | S2: " + playerCD.getFormattedCooldown(2) +
-                                   " | S3: " + playerCD.getFormattedCooldown(3));
+                System.out.println(BRIGHT_YELLOW + "Cooldowns - S1: " + RESET + playerCD.getFormattedCooldown(1) + " |" + BRIGHT_YELLOW +
+                                   " S2: " + playerCD.getFormattedCooldown(2) + RESET +
+                                   " | " + BRIGHT_YELLOW + "S3: " + playerCD.getFormattedCooldown(3) + RESET);
                 System.out.println("0. Basic Attack");
                 System.out.println("1. " +  player.getSkill1() + " - " + BRIGHT_BLUE + player.sk1Cost + " mana" + RESET);
                 System.out.println("2. " + player.getSkill2() + " - " + BRIGHT_BLUE + player.sk2Cost + " mana" + RESET);
