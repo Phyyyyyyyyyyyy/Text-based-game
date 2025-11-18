@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Player2 {
     static Scanner sc = new Scanner(System.in);
@@ -44,9 +45,10 @@ public class Player2 {
                 choice = sc.nextInt();
                 clearScreen();
 
+                int basicAttackRange =  ThreadLocalRandom.current().nextInt(10, 20);
                 switch (choice) {
                     case 1:
-                        player = new Character("Iron Man", 110, 110, 20,
+                        player = new Character("Iron Man", 110, 110, basicAttackRange,
                                 "Repulsor Blast - Deals 30 damage",
                                 "Unibeam - Deals 20 damage",
                                 "Rocket Barrage - Deals 40 damage",
@@ -58,7 +60,7 @@ public class Player2 {
                         }, 40, player);
                         break;
                     case 2:
-                        player = new Character("Captain America", 120, 120, 12,
+                        player = new Character("Captain America", 120, 120, basicAttackRange,
                                 "Shield Bash! - Deals 12 damage",
                                 "Shield Throw! - Deals 25 damage",
                                 "Inspire - Deals 30 damage",
@@ -69,7 +71,7 @@ public class Player2 {
                         }, 40, player);
                         break;
                     case 3:
-                        player = new Character("Thor", 130, 130, 18,
+                        player = new Character("Thor", 130, 130, basicAttackRange,
                                 "Lightning Blast! - Deals 30 damage",
                                 "Mjolnir throw! - Deals 20 damage",
                                 "God of Thunder - Deals 40 damage",
@@ -80,7 +82,7 @@ public class Player2 {
                         }, 40, player);
                         break;
                     case 4:
-                        player = new Character("Spider-Man", 120, 120, 14,
+                        player = new Character("Spider-Man", 120, 120, basicAttackRange,
                                 "Web Shot! - Deals 15 damage",
                                 "Web Swing Strike! - Deals 25 damage",
                                 "Spider Combo! - Deals 30 damage",
@@ -91,7 +93,7 @@ public class Player2 {
                         }, 40, player);
                         break;
                     case 5:
-                        player = new Character("Hulk", 150, 150, 20,
+                        player = new Character("Hulk", 150, 150, basicAttackRange,
                                 "Hulk Smash! - Deals 30 damage",
                                 "Thunderclap - Deals 25 damage",
                                 "Hulk Rage - Deals 25 damage",
@@ -102,7 +104,7 @@ public class Player2 {
                         }, 40, player);
                         break;
                     case 6:
-                        player = new Character("Black Widow", 100, 100, 10,
+                        player = new Character("Black Widow", 100, 100, basicAttackRange,
                                 "Widow's Bite! - Deals 15 damage",
                                 "Widow's Kick! - Deals 20 damage",
                                 "Espionage - Deals 30 damage",
@@ -113,7 +115,7 @@ public class Player2 {
                         }, 40, player);
                         break;
                     case 7:
-                        player = new Character("Ant-Man", 100, 100, 20,
+                        player = new Character("Ant-Man", 100, 100, basicAttackRange,
                                 "Pym Particle Punch! - Deals 20 damage",
                                 "Disc Launcher - Deals 20 damage",
                                 "Giant-Man - Deals 30 damage",
@@ -124,7 +126,7 @@ public class Player2 {
                         }, 40, player);
                         break;
                     case 8:
-                        player = new Character("The Falcon", 150, 150, 10,
+                        player = new Character("The Falcon", 150, 150, basicAttackRange,
                                 "Wing Blast - deals 15 damage",
                                 "Redwing Strike! - deals 20 damage",
                                 "Tactical Barrage - deals 30 damage",
@@ -138,7 +140,7 @@ public class Player2 {
                          MainMenu.start(sc);
                         return null;
                     case 69:
-                        player = new Character("Jan Clark", 150, 150, 20,
+                        player = new Character("Jan Clark", 150, 150, basicAttackRange,
                                 "Lisora aning OOP uy! - deals 20 damage",
                                 "Eternal Drip! - deals 30 damage",
                                 "Lisora aning DSA uy! - deals 40 damage",
@@ -149,7 +151,7 @@ public class Player2 {
                         }, 40, player);
                         break;
                     case 70:
-                        player = new Character("John Micoh", 150, 150, 20,
+                        player = new Character("John Micoh", 150, 150, basicAttackRange,
                                 "CIT lang ya! - deals 20 damage",
                                 "Lahus ni ug Cambuntan ya? - deals 20 damage",
                                 "Kapoyag tuon oy! - deals 40 damage",
@@ -158,8 +160,8 @@ public class Player2 {
                                 "\nJohn Micoh: Laid-back warrior balancing jokes and determination.\n"
                         }, 40, player);
                         break;
-                    case 8700:
-                        player = new Character("Ethan Manto", 150, 150, 20,
+                    case 71:
+                        player = new Character("Ethan Manto", 150, 150, basicAttackRange,
                                 "Hollaback Girl! - deals 20 damage",
                                 "Soulja Boy Superman! - deals 30 damage",
                                 "Bye Bye Bye! - deals 35 damage",
@@ -169,6 +171,9 @@ public class Player2 {
                                 "Turns every battle into a stage with iconic moves.\n"
                         }, 40, player);
                         break;
+
+
+                        //test/demo character thanos
                     case 7355608:
                         player = new Character("Thanos", 500, 500, 200,
                                 "Power Stone Blast - Deals 200 damage",
