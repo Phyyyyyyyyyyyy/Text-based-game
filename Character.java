@@ -45,40 +45,40 @@ public class Character{
     }
 
     void displayIntro() {
-        System.out.println("\nYou choose: " + name);
-        System.out.println("Stats - HP: " + hp + " | Attack: " + attack + " | Mana: " + mana );
+        System.out.println("\n\t\t\t\tYou choose: " + name);
+        System.out.println("\t\t\t\tStats - HP: " + hp + " | Attack: " + attack + " | Mana: " + mana );
         if ("Iron Man".equals(name)) {
-            System.out.println("Skills:");
-            System.out.println("  " + skill1 + " - " + sk1Cost + " mana");
-            System.out.println("  " + skill2 + " - " + sk2Cost + " mana");
-            System.out.println("  " + skill3 + " - " + sk3Cost + " mana");
+            System.out.println("\t\t\t\tSkills:");
+            System.out.println("\t\t\t\t" + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("\t\t\t\t" + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("\t\t\t\t" + skill3 + " - " + sk3Cost + " mana");
         }
        
          
         if ("Captain America".equals(name)) {
-            System.out.println("Skills:");
-            System.out.println("  " + skill1 + " - " + sk1Cost + " mana");
-            System.out.println("  " + skill2 + " - " + sk2Cost + " mana");
-            System.out.println("  " + skill3 + " - " + sk3Cost + " mana");
+            System.out.println("\t\t\t\tSkills:");
+            System.out.println("\t\t\t\t" + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("\t\t\t\t" + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("\t\t\t\t" + skill3 + " - " + sk3Cost + " mana");
         }
         
         if ("Thor".equals(name)) {
-            System.out.println("Skills:");
-            System.out.println("  " + skill1 + " - " + sk1Cost + " mana");
-            System.out.println("  " + skill2 + " - " + sk2Cost + " mana");
-            System.out.println("  " + skill3 + " - " + sk3Cost + " mana");
+            System.out.println("\t\t\t\tSkills:");
+            System.out.println("\t\t\t\t" + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("\t\t\t\t" + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("\t\t\t\t" + skill3 + " - " + sk3Cost + " mana");
         }
        
         if ("Spider-Man".equals(name)) {
-            System.out.println("Skills:");
-            System.out.println("  " + skill1 + " - " + sk1Cost + " mana");
-            System.out.println("  " + skill2 + " - " + sk2Cost + " mana");
-            System.out.println("  " + skill3 + " - " + sk3Cost + " mana");
+            System.out.println("\t\t\t\tSkills:");
+            System.out.println("\t\t\t\t" + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("\t\t\t\t" + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("\t\t\t\t" + skill3 + " - " + sk3Cost + " mana");
         }
        System.out.println();
     }
 
     void displayStats() {
-        System.out.println(name + " - HP: " + hp + "/" + maxHp + " | Mana: " + mana);
+        System.out.println("\t\t\t\t" + name + " - HP: " + hp + "/" + maxHp + " | Mana: " + mana);
     }
 }
