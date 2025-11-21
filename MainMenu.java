@@ -18,7 +18,7 @@ public class MainMenu {
         System.out.println(RED + " \\ \\_\\ \\ \\_\\  \\ \\_\\ \\_\\  \\ \\_\\ \\_\\  \\ \\__|    \\ \\_____\\  \\ \\_____\\     \\ \\_____\\  \\ \\_____\\  \\ \\_\\ \\_\\  \\/\\_____\\  \\ \\_\\ \\_\\ " + RESET);
         System.out.println(RED + "  \\/_/  \\/_/   \\/_/\\/_/   \\/_/ /_/   \\/_/      \\/_____/   \\/_____/      \\/_____/   \\/_____/   \\/_/\\/_/   \\/_____/   \\/_/\\/_/ " + RESET);                                                                                                                 
         System.out.println();
-        System.out.println(); 
+        System.out.println(" \t\t\t\t\t >> A Turn-Queued Project <<"); 
         System.out.println();
         System.out.println();
         System.out.println();
