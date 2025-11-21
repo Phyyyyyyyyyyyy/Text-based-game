@@ -36,7 +36,7 @@ public class GameMechanics {
             try {
                 new ProcessBuilder("cmd", "/c", "color").inheritIO().start().waitFor();
             } catch (Exception e) {
-                System.out.println("Note: Some colors may not display properly in this terminal.");
+                System.out.println("\t\t\t\tNote: Some colors may not display properly in this terminal.");
             }
         }
     }
@@ -58,22 +58,22 @@ public class GameMechanics {
         String skillName = skillNumber == 1 ? user.getSkill1() : (skillNumber == 2 ? user.getSkill2() : user.getSkill3());
 
         if (!cd.canUseSkill(skillNumber)) {
-            System.out.println(BRIGHT_YELLOW + "Skill is on cooldown! " + RESET + "(" + cd.getFormattedCooldown(skillNumber) + ")" + ", " + BRIGHT_RED + "You missed your turn, Enemy's turn now." + RESET);
-            System.out.println("Press ENTER to continue...");
+            System.out.println("\t\t\t\t"+BRIGHT_YELLOW + "Skill is on cooldown! " + RESET + "(" + cd.getFormattedCooldown(skillNumber) + ")" + ", " + BRIGHT_RED + "You missed your turn, Enemy's turn now." + RESET);
+            System.out.println("\t\t\t\tPress ENTER to continue...");
             sc.nextLine();
             return;
         }
        
         if (user.mana < cost) {
-            System.out.println(BRIGHT_RED + "Not enough mana!" + RESET);
-            System.out.println("Press ENTER to continue...");
+            System.out.println("\t\t\t\t" + BRIGHT_RED + "Not enough mana!" + RESET);
+            System.out.println("\t\t\t\tPress ENTER to continue...");
             sc.nextLine();
             return;
         }
 
         target.hp -= damage;
         //System.out.println(user.getName() + " uses " + skillName + "!"); 
-        System.out.println(BRIGHT_RED + target.getName() + " takes " + damage + " damage!" + RESET);
+        System.out.println("\t\t\t\t" + BRIGHT_RED + target.getName() + " takes " + damage + " damage!" + RESET);
         
         user.mana -= cost;
         cd.applyCooldown(skillNumber);
@@ -92,41 +92,41 @@ public class GameMechanics {
         int enemyManaGained = enemy.mana - currentMana;
         boolean playerTurn = true;
 
-        System.out.println("\n" + BRIGHT_BLUE + "==============================" + RESET);
-        System.out.println(GREEN + "Your Character: " + RESET);
+        System.out.println("\n\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
+        System.out.println(GREEN + "\t\t\t\tYour Character: " + RESET);
         String playerHPColor = getHPColor(player.hp, player.maxHp);
-        System.out.println(player.getName() + " - " + playerHPColor + "HP: " + player.hp + "/" + player.maxHp + RESET + 
+        System.out.println("\t\t\t\t"+player.getName() + " - " + playerHPColor + "HP: " + player.hp + "/" + player.maxHp + RESET + 
                          " | " + BRIGHT_BLUE + "Mana: " + player.mana + "/" + MAX_MANA + RESET);
 
-        System.out.println(RED + "\nEnemy: " + RESET);
+        System.out.println("\t\t\t\t"+RED + "\nEnemy: " + RESET);
         String enemyHPColor = getHPColor(enemy.hp, enemy.maxHp);
         if (enemyManaGained > 0 && enemy.mana < MAX_MANA) {
-            System.out.println(enemy.getName() + " - " + enemyHPColor + "HP: " + enemy.hp + "/" + enemy.maxHp + RESET + 
+            System.out.println("\t\t\t\t"+ enemy.getName() + " - " + enemyHPColor + "HP: " + enemy.hp + "/" + enemy.maxHp + RESET + 
                              " | " + BRIGHT_BLUE + "Mana: " + enemy.mana + "/" + MAX_MANA + RESET + BRIGHT_GREEN + " (+" + enemyManaGained + ")" + RESET);
         } else {
-            System.out.println(enemy.getName() + " - " + enemyHPColor + "HP: " + enemy.hp + "/" + enemy.maxHp + RESET + 
+            System.out.println("\t\t\t\t"+enemy.getName() + " - " + enemyHPColor + "HP: " + enemy.hp + "/" + enemy.maxHp + RESET + 
                              " | " + BRIGHT_BLUE + "Mana: " + enemy.mana + "/" + MAX_MANA + RESET);
         }
-        System.out.println(BRIGHT_BLUE + "==============================" + RESET);
+        System.out.println("\t\t\t\t"+BRIGHT_BLUE + "==============================" + RESET);
       
         while (player.hp > 0 && enemy.hp > 0) {
             if (playerTurn) {
                 clearScreen();
-                System.out.println("\n" + BRIGHT_BLUE + "==============================" + RESET);
-                System.out.println(BRIGHT_YELLOW + "Turn " + turnCount + RESET);
+                System.out.println("\n\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
+                System.out.println("\t\t\t\t"+ BRIGHT_YELLOW + "Turn " + turnCount + RESET);
                 displayPlayerStats();
-                System.out.println(BRIGHT_BLUE + "==============================" + RESET);
+                System.out.println("\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
                 turnCount++;
                  
-                System.out.println(player.getName() + BRIGHT_YELLOW  + " - Choose your action: " + RESET); 
-                System.out.println(BRIGHT_YELLOW + "Cooldowns - S1: " + RESET + playerCD.getFormattedCooldown(1) + " |" + BRIGHT_YELLOW +
+                System.out.println("\t\t\t\t" + player.getName() + BRIGHT_YELLOW  + " - Choose your action: " + RESET); 
+                System.out.println("\t\t\t\t" + BRIGHT_YELLOW + "Cooldowns - S1: " + RESET + playerCD.getFormattedCooldown(1) + " |" + BRIGHT_YELLOW +
                                    " S2: " + playerCD.getFormattedCooldown(2) + RESET +
                                    " | " + BRIGHT_YELLOW + "S3: " + playerCD.getFormattedCooldown(3) + RESET);
-                System.out.println("0. Basic Attack");
-                System.out.println("1. " +  player.getSkill1() + " - " + BRIGHT_BLUE + player.sk1Cost + " mana" + RESET);
-                System.out.println("2. " + player.getSkill2() + " - " + BRIGHT_BLUE + player.sk2Cost + " mana" + RESET);
-                System.out.println("3. " + player.getSkill3() + " - " + BRIGHT_BLUE + player.sk3Cost + " mana" + RESET);
-                System.out.print("> ");
+                System.out.println("\t\t\t\t0. Basic Attack");
+                System.out.println("\t\t\t\t1. " +  player.getSkill1() + " - " + BRIGHT_BLUE + player.sk1Cost + " mana" + RESET);
+                System.out.println("\t\t\t\t2. " + player.getSkill2() + " - " + BRIGHT_BLUE + player.sk2Cost + " mana" + RESET);
+                System.out.println("\t\t\t\t3. " + player.getSkill3() + " - " + BRIGHT_BLUE + player.sk3Cost + " mana" + RESET);
+                System.out.print("\t\t\t\t> ");
                try {
                 int action = sc.nextInt();
                 sc.nextLine();
@@ -134,9 +134,9 @@ public class GameMechanics {
                 switch (action) {
                     case 0:
                         int damage = calculateBasicAttackDamage(player.attack);
-                        System.out.println("You perform a basic attack!");
+                        System.out.println("\t\t\t\tYou perform a basic attack!");
                         enemy.hp -= damage;
-                        System.out.println("You deal " + BRIGHT_RED + damage + " damage!" + RESET);
+                        System.out.println("\t\t\t\tYou deal " + BRIGHT_RED + damage + " damage!" + RESET);
                         break;
                     case 1:
                     case 2:
@@ -144,11 +144,11 @@ public class GameMechanics {
                         useSkill(action, player, enemy, playerCD);
                         break;
                     default:
-                        System.out.println(BRIGHT_RED + "Invalid action! You lose your turn." + RESET);
+                        System.out.println("\t\t\t\t" + BRIGHT_RED + "Invalid action! You lose your turn." + RESET);
                         break;
                 }
             } catch(Exception e) {
-                System.out.println(BRIGHT_RED + "Invalid action! You lose your turn." + RESET);
+                System.out.println("\t\t\t\t" + BRIGHT_RED + "Invalid action! You lose your turn." + RESET);
                 sc.nextLine();
             }
                 player.regenerateMana(10);
@@ -158,9 +158,9 @@ public class GameMechanics {
 
             } else {
                 clearScreen();
-                System.out.println(BRIGHT_BLUE + "==============================" + RESET);
-                System.out.println("\n" + BRIGHT_RED + "Enemy's Turn!" + RESET);
-                System.out.println("Cooldowns - S1: " + enemyCD.getFormattedCooldown(1) +
+                System.out.println("\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
+                System.out.println("\n\t\t\t\t" + BRIGHT_RED + "Enemy's Turn!" + RESET);
+                System.out.println("\t\t\t\tCooldowns - S1: " + enemyCD.getFormattedCooldown(1) +
                                    " | S2: " + enemyCD.getFormattedCooldown(2) +
                                    " | S3: " + enemyCD.getFormattedCooldown(3));
                 
@@ -178,49 +178,49 @@ public class GameMechanics {
                 switch (action) {
                     case 1:
                         int damage = calculateBasicAttackDamage(enemy.attack);
-                        System.out.println(enemy.name + " attacks!");
+                        System.out.println("\t\t\t\t" + enemy.name + " attacks!");
                         player.hp -= damage;
-                        System.out.println(enemy.name + " deals " + BRIGHT_RED + damage + " damage!" + RESET);
+                        System.out.println("\t\t\t\t" + enemy.name + " deals " + BRIGHT_RED + damage + " damage!" + RESET);
                         break;
                     case 2:
                         if (!enemyCD.canUseSkill(1)) {
-                            System.out.println(enemy.name + " tried to use " + enemy.skill1 + " but it's on cooldown!");
+                            System.out.println("\t\t\t\t" + enemy.name + " tried to use " + enemy.skill1 + " but it's on cooldown!");
                         } else if (enemy.mana >= enemy.sk1Cost) {
-                           System.out.println(enemy.name + " uses " + enemy.skill1 + "!");
+                           System.out.println("\t\t\t\t" + enemy.name + " uses " + enemy.skill1 + "!");
                             useSkill(1, enemy, player, enemyCD);
                         } else {
-                            System.out.println(enemy.name + " tried to use " + enemy.skill1 + " but has no mana!");
+                            System.out.println("\t\t\t\t" + enemy.name + " tried to use " + enemy.skill1 + " but has no mana!");
                         }
                         break;
                     case 3:
                         if (!enemyCD.canUseSkill(2)) {
-                            System.out.println(enemy.name + " tried to use " + enemy.skill2 + " but it's on cooldown!");
+                            System.out.println("\t\t\t\t" + enemy.name + " tried to use " + enemy.skill2 + " but it's on cooldown!");
                         } else if (enemy.mana >= enemy.sk2Cost) {
-                            System.out.println(enemy.name + " uses " + enemy.skill2 + "!");
+                            System.out.println("\t\t\t\t" + enemy.name + " uses " + enemy.skill2 + "!");
                             useSkill(2, enemy, player, enemyCD);
                         } else {
-                            System.out.println(enemy.name + " tried to use " + enemy.skill2 + " but has no mana!");
+                            System.out.println("\t\t\t\t" + enemy.name + " tried to use " + enemy.skill2 + " but has no mana!");
                         }
                         break;
                     case 4:
                         if (!enemyCD.canUseSkill(3)) {
-                            System.out.println(enemy.name + " tried to use " + enemy.skill3 + " but it's on cooldown!");
+                            System.out.println("\t\t\t\t" + enemy.name + " tried to use " + enemy.skill3 + " but it's on cooldown!");
                         } else if (enemy.mana >= enemy.sk3Cost) {
-                            System.out.println(enemy.name + " uses " + enemy.skill3 + "!");
+                            System.out.println("\t\t\t\t" + enemy.name + " uses " + enemy.skill3 + "!");
                             useSkill(3, enemy, player, enemyCD);
                         } else {
-                            System.out.println(enemy.name + " tried to use " + enemy.skill3 + " but has no mana!");
+                            System.out.println("\t\t\t\t" + enemy.name + " tried to use " + enemy.skill3 + " but has no mana!");
                         }
                         break;
                 }
                 System.out.println();
-                System.out.println(BRIGHT_BLUE + "==============================" + RESET);
-                System.out.println(BRIGHT_GREEN + "Your character: " + RESET);
+                System.out.println("\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
+                System.out.println("\t\t\t\t" + BRIGHT_GREEN + "Your character: " + RESET);
                 displayPlayerStats();
 
-                System.out.println(BRIGHT_RED + "Enemy: " + RESET);
+                System.out.println("\t\t\t\t" + BRIGHT_RED + "Enemy: " + RESET);
                 displayEnemyStats();
-                 System.out.println(BRIGHT_BLUE + "==============================" + RESET);
+                 System.out.println("\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
                 player.regenerateMana(10);
                 enemy.regenerateMana(10);
             }
@@ -234,42 +234,42 @@ public class GameMechanics {
             }
             playerTurn = !playerTurn;
 
-            System.out.println("\nPress ENTER to continue...");
+            System.out.println("\n\t\t\t\tPress ENTER to continue...");
             sc.nextLine();
         }
         
-        System.out.println("\n" + BRIGHT_BLUE + "==============================" + RESET);
+        System.out.println("\n\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
         clearScreen();
         if (player.hp <= 0 && enemy.hp <= 0) {
-            System.out.println(BRIGHT_YELLOW + "It's a draw!" + RESET);
+            System.out.println("\t\t\t\t" + BRIGHT_YELLOW + "It's a draw!" + RESET);
         } else if (player.hp <= 0) {
-            System.out.println(RED + "_____                                           _____ " + RESET);
-            System.out.println( RED + "( ___ )-----------------------------------------( ___ )" + RESET);
-            System.out.println( RED + " |   |                                           |   | " + RESET);
-            System.out.println(RED + " |   | __   __            _                   _  |   | " + RESET);
-            System.out.println(RED + " |   | \\ \\ / /__  _   _  | |    ___  ___  ___| | |   | " + RESET);
-            System.out.println(RED + " |   |  \\ V / _ \\| | | | | |   / _ \\/ __|/ _ \\ | |   | " + RESET);
-            System.out.println(RED + " |   |   | | (_) | |_| | | |__| (_) \\__ \\  __/_| |   | " + RESET);
-            System.out.println(RED + " |   |   |_|\\___/ \\__,_| |_____\\___/|___/\\___(_) |   | " + RESET);
-            System.out.println(RED + " |___|                                           |___| " + RESET);
-            System.out.println(RED + "(_____)-----------------------------------------(_____)" + RESET);
-            System.out.println(BRIGHT_RED + "You lost! " + enemy.name + " wins!" + RESET);
-            System.out.println("\nPress ENTER to continue...");
+            System.out.println(RED + "\t\t\t\t_____                                           _____ " + RESET);
+            System.out.println( RED + "\t\t\t\t( ___ )-----------------------------------------( ___ )" + RESET);
+            System.out.println( RED + "\t\t\t\t |   |                                           |   | " + RESET);
+            System.out.println(RED + "\t\t\t\t |   | __   __            _                   _  |   | " + RESET);
+            System.out.println(RED + "\t\t\t\t |   | \\ \\ / /__  _   _  | |    ___  ___  ___| | |   | " + RESET);
+            System.out.println(RED + "\t\t\t\t |   |  \\ V / _ \\| | | | | |   / _ \\/ __|/ _ \\ | |   | " + RESET);
+            System.out.println(RED + "\t\t\t\t |   |   | | (_) | |_| | | |__| (_) \\__ \\  __/_| |   | " + RESET);
+            System.out.println(RED + "\t\t\t\t |   |   |_|\\___/ \\__,_| |_____\\___/|___/\\___(_) |   | " + RESET);
+            System.out.println(RED + "\t\t\t\t |___|                                           |___| " + RESET);
+            System.out.println(RED + "\t\t\t\t(_____)-----------------------------------------(_____)" + RESET);
+            System.out.println(BRIGHT_RED + "\t\t\t\tYou lost! " + enemy.name + " wins!" + RESET);
+            System.out.println("\n\t\t\t\tPress ENTER to continue...");
             sc.nextLine();
             clearScreen();
         } else {
-            System.out.println(GREEN + " _____                                          _____ " + RESET);
-            System.out.println(GREEN + "( ___ )----------------------------------------( ___ )" + RESET);
-            System.out.println(GREEN + " |   |                                          |   | " + RESET);
-            System.out.println(GREEN + " |   | __   __           __        ___       _  |   | " + RESET);
-            System.out.println(GREEN + " |   | \\ \\ / /__  _   _  \\ \\      / (_)_ __ | | |   | " + RESET);
-            System.out.println(GREEN + " |   |  \\ V / _ \\| | | |  \\ \\ /\\ / /| | '_ \\| | |   | " + RESET);
-            System.out.println(GREEN + " |   |   | | (_) | |_| |   \\ V  V / | | | | |_| |   | " + RESET);
-            System.out.println(GREEN + " |   |   |_|\\___/ \\__,_|    \\_/\\_/  |_|_| |_(_) |   | " + RESET);
-            System.out.println(GREEN + " |___|                                          |___| " + RESET);
-            System.out.println(GREEN + "(_____)----------------------------------------(_____)" + RESET);
-            System.out.println(BRIGHT_GREEN + "Congratulations! You defeated " + enemy.name + "!" + RESET);
-            System.out.println("\nPress ENTER to continue...");
+            System.out.println(GREEN + "\t\t\t\t _____                                          _____ " + RESET);
+            System.out.println(GREEN + "\t\t\t\t( ___ )----------------------------------------( ___ )" + RESET);
+            System.out.println(GREEN + "\t\t\t\t |   |                                          |   | " + RESET);
+            System.out.println(GREEN + "\t\t\t\t |   | __   __           __        ___       _  |   | " + RESET);
+            System.out.println(GREEN + "\t\t\t\t |   | \\ \\ / /__  _   _  \\ \\      / (_)_ __ | | |   | " + RESET);
+            System.out.println(GREEN + "\t\t\t\t |   |  \\ V / _ \\| | | |  \\ \\ /\\ / /| | '_ \\| | |   | " + RESET);
+            System.out.println(GREEN + "\t\t\t\t |   |   | | (_) | |_| |   \\ V  V / | | | | |_| |   | " + RESET);
+            System.out.println(GREEN + "\t\t\t\t |   |   |_|\\___/ \\__,_|    \\_/\\_/  |_|_| |_(_) |   | " + RESET);
+            System.out.println(GREEN + "\t\t\t\t |___|                                          |___| " + RESET);
+            System.out.println(GREEN + "\t\t\t\t(_____)----------------------------------------(_____)" + RESET);
+            System.out.println(BRIGHT_GREEN + "\t\t\t\tCongratulations! You defeated " + enemy.name + "!" + RESET);
+            System.out.println("\n\t\t\t\tPress ENTER to continue...");
             sc.nextLine();
             clearScreen();
         }
@@ -292,14 +292,14 @@ public class GameMechanics {
 
     private void displayPlayerStats() {
         String playerHPColor = getHPColor(player.hp, player.maxHp);
-        System.out.println(player.getName() + " - " + playerHPColor + "HP: " + player.hp + "/" + player.maxHp + RESET + 
+        System.out.println("\t\t\t\t" + player.getName() + " - " + playerHPColor + "HP: " + player.hp + "/" + player.maxHp + RESET + 
                          " | " + BRIGHT_BLUE + "Mana: " + player.mana + "/" + MAX_MANA + RESET +
                          " | " + RED + "Attack: " + player.attack + RESET);
     }
 
     private void displayEnemyStats() {
         String enemyHPColor = getHPColor(enemy.hp, enemy.maxHp);
-        System.out.println(enemy.getName() + " - " + enemyHPColor + "HP: " + enemy.hp + "/" + enemy.maxHp + RESET + 
+        System.out.println("\t\t\t\t" + enemy.getName() + " - " + enemyHPColor + "HP: " + enemy.hp + "/" + enemy.maxHp + RESET + 
                          " | " + BRIGHT_BLUE + "Mana: " + enemy.mana + "/" + MAX_MANA + RESET +
                          " | " + RED + "Attack: " + enemy.attack + RESET);
     }
