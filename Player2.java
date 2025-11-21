@@ -20,7 +20,7 @@ public class Player2 {
                 System.out.println();
                 System.out.println();
                 System.out.println("\t\t\t\t\t=========================================");
-                System.out.println("\t\t\t\t\t====    Player 1 Choose Hero         ====");
+                System.out.println("\t\t\t\t\t====    Player 2 Choose Hero         ====");
                 System.out.println("\t\t\t\t\t=========================================");
                 System.out.println("\t\t\t\t\t|   Choose your hero:                   |");
                 System.out.println("\t\t\t\t\t|     1. Iron Man                       |");
