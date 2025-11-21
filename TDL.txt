@@ -9,3 +9,4 @@ TO DOS AS OF 21/11/2025:
 3.Game or ingame SFX
 4.Clean Code
 5.Attributes of Heroes and Enemy checking (if ever op, balanced, weak.. check lang jud)
+6.Round System (PvP and Arcade mode nalang, 3 rounds = Win)
