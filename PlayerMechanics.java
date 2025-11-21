@@ -59,9 +59,10 @@ public class PlayerMechanics {
             System.out.println(BRIGHT_YELLOW + "Turn " + this.turnCount + RESET);
             System.out.println(BRIGHT_BLUE + "==============================" + RESET);
             System.out.println(this.player1.getName() + "'s Turn");
-            PrintStream var10000 = System.out;
-            String var10001 = this.p1CD.getFormattedCooldown(1);
-            var10000.println("Player 1 Cooldowns - S1: " + var10001 + " | S2: " + this.p1CD.getFormattedCooldown(2) + " | S3: " + this.p1CD.getFormattedCooldown(3));
+            String p1S1Color = p1CD.canUseSkill(1) ? BRIGHT_YELLOW : BRIGHT_RED;
+            String p1S2Color = p1CD.canUseSkill(2) ? BRIGHT_YELLOW : BRIGHT_RED;
+            String p1S3Color = p1CD.canUseSkill(3) ? BRIGHT_YELLOW : BRIGHT_RED;
+            System.out.println(BRIGHT_YELLOW + "Player 1 - Cooldowns: " + RESET + "S1: " + p1S1Color + p1CD.getFormattedCooldown(1) + RESET + " | S2: " + p1S2Color + p1CD.getFormattedCooldown(2) + RESET + " | S3: " + p1S3Color + p1CD.getFormattedCooldown(3) + RESET);
             System.out.println();
             this.playerAction(this.player1, this.player2, this.p1CD);
             if (this.player2.hp <= 0) {
@@ -72,9 +73,10 @@ public class PlayerMechanics {
             System.out.println(BRIGHT_YELLOW + "Turn " + ++this.turnCount + RESET);
             System.out.println(BRIGHT_BLUE + "==============================" + RESET);
             System.out.println(this.player2.getName() + "'s Turn");
-            var10000 = System.out;
-            var10001 = this.p2CD.getFormattedCooldown(1);
-            var10000.println("Player 2 Cooldowns - S1: " + var10001 + " | S2: " + this.p2CD.getFormattedCooldown(2) + " | S3: " + this.p2CD.getFormattedCooldown(3));
+            String p2S1Color = p2CD.canUseSkill(1) ? BRIGHT_YELLOW : BRIGHT_RED;
+            String p2S2Color = p2CD.canUseSkill(2) ? BRIGHT_YELLOW : BRIGHT_RED;
+            String p2S3Color = p2CD.canUseSkill(3) ? BRIGHT_YELLOW : BRIGHT_RED;
+            System.out.println("Player 2 Cooldowns - S1: " + p2S1Color + p2CD.getFormattedCooldown(1) + RESET + " | S2: " + p2S2Color + p2CD.getFormattedCooldown(2) + RESET + " | S3: " + p2S3Color + p2CD.getFormattedCooldown(3) + RESET);
             System.out.println();
             this.playerAction(this.player2, this.player1, this.p2CD);
             this.p1CD.reduceCooldowns();
@@ -196,16 +198,18 @@ public class PlayerMechanics {
 
         while(!var4 && var1.hp > 0 && var2.hp > 0) {
             System.out.println("Choose your action:");
-            System.out.println("0. Basic Attack");
+            String s1Color = var3.canUseSkill(1) ? BRIGHT_YELLOW : BRIGHT_RED;
+            String s2Color = var3.canUseSkill(2) ? BRIGHT_YELLOW : BRIGHT_RED;
+            String s3Color = var3.canUseSkill(3) ? BRIGHT_YELLOW : BRIGHT_RED;
             PrintStream var10000 = System.out;
             String var10001 = var1.getSkill1();
-            var10000.println("1. " + var10001 + " - " + BRIGHT_BLUE + var1.sk1Cost + " mana" + RESET);
+            var10000.println("1. " + s1Color + var10001 + RESET + " - " + BRIGHT_BLUE + var1.sk1Cost + " mana" + RESET + " " + (s1Color == BRIGHT_RED ? "(" + var3.getFormattedCooldown(1) + ")" : ""));
             var10000 = System.out;
             var10001 = var1.getSkill2();
-            var10000.println("2. " + var10001 + " - " + BRIGHT_BLUE + var1.sk2Cost + " mana" + RESET);
+            var10000.println("2. " + s2Color + var10001 + RESET + " - " + BRIGHT_BLUE + var1.sk2Cost + " mana" + RESET + " " + (s2Color == BRIGHT_RED ? "(" + var3.getFormattedCooldown(2) + ")" : ""));
             var10000 = System.out;
             var10001 = var1.getSkill3();
-            var10000.println("3. " + var10001 + " - " + BRIGHT_BLUE + var1.sk3Cost + " mana" + RESET);
+            var10000.println("3. " + s3Color + var10001 + RESET + " - " + BRIGHT_BLUE + var1.sk3Cost + " mana" + RESET + " " + (s3Color == BRIGHT_RED ? "(" + var3.getFormattedCooldown(3) + ")" : ""));
             System.out.print("> ");
 
             int var5;
@@ -214,7 +218,7 @@ public class PlayerMechanics {
                 var5 = Integer.parseInt(this.sc.nextLine());
             } catch (NumberFormatException var7) {
                 clearScreen();
-                System.out.println(BRIGHT_RED + "Invalid choice!" + RESET);
+                System.out.println(BRIGHT_RED + "Invalid choice!, You missed your turn!" + RESET);
                 continue;
             }
 
