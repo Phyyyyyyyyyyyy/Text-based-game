@@ -1,5 +1,20 @@
 import java.util.Scanner;
 public class MarvelGame {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        MainMenu.start(sc);
+        sc.close();
+    }
+
+
+
+
+
+
+
+
+
+
     public static void typeWriter(String text, int delay) {
         for (char c : text.toCharArray()) {
             System.out.print(c);
@@ -10,11 +25,5 @@ public class MarvelGame {
             }
         }
         System.out.println();
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        MainMenu.start(sc);
-        sc.close();
     }
 }
