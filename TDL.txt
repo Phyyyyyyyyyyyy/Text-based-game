@@ -2,8 +2,7 @@ To take note of:
 Deadline December 2, 2025
 
 
-Remaining to dos:
-
+TO DOS AS OF 21/11/2025:
 1.Arcade Mode (Hierarchy type game mode - 4 enemy ladder and 1 boss)
 2.PlayervsPlayer spacing of texts
 3.Game or ingame SFX
