@@ -12,17 +12,17 @@ public class Enemy extends Character {
 
     @Override
     void displayIntro() {
-        System.out.println("\nEnemy: " + name);
-        System.out.println("Stats - HP: " + hp + " | Attack: " + attack + " | Mana: " + mana);
-        System.out.println("1 " + skill1 + " - " +sk1Cost+" mana");
-        System.out.println("2 " + skill2 + " - " +sk2Cost+" mana");
-        System.out.println("3 " + skill3 + " - " +sk3Cost+" mana");
+        System.out.println("\n\t\t\t\tEnemy: " + name);
+        System.out.println("\t\t\t\tStats - HP: " + hp + " | Attack: " + attack + " | Mana: " + mana);
+        System.out.println("\t\t\t\t1 " + skill1 + " - " +sk1Cost+" mana");
+        System.out.println("\t\t\t\t2 " + skill2 + " - " +sk2Cost+" mana");
+        System.out.println("\t\t\t\t3 " + skill3 + " - " +sk3Cost+" mana");
         System.out.println();
     }
 
     @Override
     void displayStats() {
-        System.out.println(name + " - HP: " + hp + "/" + maxHp + " | Mana: " + mana);
+        System.out.println("\t\t\t\t" + name + " - HP: " + hp + "/" + maxHp + " | Mana: " + mana);
     }
 
     public static Enemy getRandomEnemy() {
