@@ -1,33 +1,43 @@
 import java.util.Scanner;
 
-public class MainMenu{
+public class MainMenu {
+
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
     public static void start(Scanner sc) {
         int choice;
+        String RED = "\u001B[31m";
+        String RESET = "\u001B[0m";
 
-        final String RESET = "\u001B[0m";
-        final String RED = "\u001B[31m";
-      
-        while(true){
-             try{
-
-        System.out.println(RED + " __  __                      _    ____ _           _     _ " + RESET);
-        System.out.println(RED + "|  \\/  | __ _ _ ____   _____| |  / ___| | __ _ ___| |__ | |" + RESET);
-        System.out.println(RED + "| |\\/| |/ _` | '__\\ \\ / / _ \\ | | |   | |/ _` / __| '_ \\| |" + RESET);
-        System.out.println(RED + "| |  | | (_| | |   \\ V /  __/ | | |___| | (_| \\__ \\ | | |_|" + RESET);
-        System.out.println(RED + "|_|  |_|\\__,_|_|    \\_/ \\___|_|  \\____|_|\\__,_|___/_| |_(_)" + RESET);
+        System.out.println(RED + " __    __     ______     ______     __   __   ______     __            ______     __         ______     ______     __  __    " + RESET);
+        System.out.println(RED + "/\\ \"-./  \\   /\\  __ \\   /\\  == \\   /\\ \\ / /  /\\  ___\\   /\\ \\          /\\  ___\\   /\\ \\       /\\  __ \\   /\\  ___\\   /\\ \\_\\ \\   " + RESET);
+        System.out.println(RED + "\\ \\ \\-/\\  \\  \\ \\  __ \\  \\ \\  __<   \\ \\ \\'/   \\ \\  __\\   \\ \\ \\____     \\ \\ \\____  \\ \\ \\____  \\ \\  __ \\  \\ \\___  \\  \\ \\  __ \\  " + RESET);
+        System.out.println(RED + " \\ \\_\\ \\ \\_\\  \\ \\_\\ \\_\\  \\ \\_\\ \\_\\  \\ \\__|    \\ \\_____\\  \\ \\_____\\     \\ \\_____\\  \\ \\_____\\  \\ \\_\\ \\_\\  \\/\\_____\\  \\ \\_\\ \\_\\ " + RESET);
+        System.out.println(RED + "  \\/_/  \\/_/   \\/_/\\/_/   \\/_/ /_/   \\/_/      \\/_____/   \\/_____/      \\/_____/   \\/_____/   \\/_/\\/_/   \\/_____/   \\/_/\\/_/ " + RESET);                                                                                                                 
+        System.out.println();
+        System.out.println(); 
         System.out.println();
         System.out.println();
-            System.out.println("\t=========================================");
-            System.out.println("\t====       MARVEL CLASH! MENU        ====");
-            System.out.println("\t=========================================");
-            System.out.println("\t|   Select Game Mode:                   |");
-            System.out.println("\t|     1. Player vs Player               |");
-            System.out.println("\t|     2. Player vs AI                   |");
-            System.out.println("\t|     3. Exit                           |");
-            System.out.print("\t > ");
-          
+        System.out.println();
+        
+
+        do {
+        
+            System.out.println(                 "\t\t\t\t=========================================");
+            System.out.println(                 "\t\t\t\t|   Select Game Mode:                   |");
+            System.out.println(                 "\t\t\t\t|     1. Player vs Player               |");
+            System.out.println(                 "\t\t\t\t|     2. Player vs AI                   |");
+            System.out.println(                 "\t\t\t\t|     3. Exit                           |");
+            System.out.print(                   "\t\t\t\t > ");
+            while (!sc.hasNextInt()) {
+                System.out.print("     \n\t\t\t\t>>> Invalid input, enter a number: ");
+                sc.next();
+            }
             choice = sc.nextInt();
-            
+         
             switch (choice) {
                 case 1:
                     playerVsPlayerMenu(sc);
@@ -36,21 +46,13 @@ public class MainMenu{
                     playerVsAiMenu(sc);
                     break;
                 case 3:
-                    System.out.println("\n\t>>> Exiting... Goodbye!\n");
-                    System.exit(0);
+                    System.out.println("                            \n\t\t\t\t>>> Exiting... Goodbye!\n");
+                    System.exit(1);
                 default:
-                    MarvelGame.clearScreen();
-                    System.out.println("\n\t>>> Invalid choice, please try again!\n");
-                    break; 
+                    System.out.println("                            \n\t\t\t\t>>> Invalid choice, please try again!\n");
             }
-        }catch(Exception e){
-           MarvelGame.clearScreen();
-            System.out.println("\t"+e);
-            sc.next(); 
-            choice = 0;
-       }
-   }
-}
+        } while (choice != 3);
+    }
 
     public static void playerVsPlayerMenu(Scanner sc) {
         System.out.println("\n\t>>> PvP Match Starting...\n");
@@ -58,23 +60,23 @@ public class MainMenu{
         Character player1 = Player1.select();
         if (player1 == null) return; 
 
-        System.out.println("\nPress ENTER for Player 2 to choose...");
+        System.out.println("\n\t\t\t\tPress ENTER for Player 2 to choose...");
         sc.nextLine();
         sc.nextLine();
 
         Character player2 = Player2.select();
         if (player2 == null) return; 
 
-        System.out.println("\nPress ENTER to begin the battle...");
+        System.out.println("\n\t\t\t\tPress ENTER to begin the battle...");
         sc.nextLine();
 
-        MarvelGame.clearScreen();
+        clearScreen();
         PlayerMechanics game = new PlayerMechanics(player1, player2);
         game.game();
     }
 
     public static void playerVsAiMenu(Scanner sc) {
-        System.out.println("\n\t>>> PvAI Match Starting...\n");
+        System.out.println("\n\t\t\t\t>>> PlayerVsAI Match Starting...\n");
 
         Character player = SelectScreen.select();
         if (player == null) return; 
@@ -83,13 +85,12 @@ public class MainMenu{
         Enemy enemy = Enemy.getRandomEnemy();   
         enemy.displayIntro();
 
-        System.out.println("Press ENTER to begin the battle...");
+        System.out.println("\t\t\t\tPress ENTER to begin the battle...");
         sc.nextLine();
         sc.nextLine();
 
-        MarvelGame.clearScreen();
+        clearScreen();
         GameMechanics game = new GameMechanics(player, enemy);
         game.game();
-         }
     }
-
+}
