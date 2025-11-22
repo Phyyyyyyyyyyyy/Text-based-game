@@ -97,10 +97,13 @@ public class PlayerMechanics extends SelectScreen {
         System.out.println("\n\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
         clearScreen();
         if (this.player1.hp <= 0 && this.player2.hp <= 0) {
+            stopBackgroundMusic();
             System.out.println(BRIGHT_YELLOW + "It's a draw!" + RESET);
         } else if (this.player1.hp <= 0) {
             stopBackgroundMusic();
+
             playSound("WinSFX.wav");
+            System.out.println("\t\t\t" + GREEN + " _____                                                                    _____ " + RESET);
             System.out.println("\t\t\t" + GREEN + "( ___ )------------------------------------------------------------------( ___ )" + RESET);
             System.out.println("\t\t\t" + GREEN + " |   |                                                                    |   | " + RESET);
             System.out.println("\t\t\t" + GREEN + " |   |  ____  _                         ____   __        ___           _  |   | " + RESET);
@@ -119,7 +122,7 @@ public class PlayerMechanics extends SelectScreen {
         } else {
             stopBackgroundMusic();
             playSound("WinSFX.wav");
-            System.out.println("\t\t\t" + GREEN + "_____                                                                _____ " + RESET);
+            System.out.println("\t\t\t" + GREEN + " _____                                                                _____ " + RESET);
             System.out.println("\t\t\t" + GREEN + "( ___ )--------------------------------------------------------------( ___ )" + RESET);
             System.out.println("\t\t\t" + GREEN + " |   |                                                                |   | " + RESET);
             System.out.println("\t\t\t" + GREEN + " |   |  ____  _                         _  __        ___           _  |   | " + RESET);
