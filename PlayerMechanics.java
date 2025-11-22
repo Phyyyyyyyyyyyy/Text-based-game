@@ -116,7 +116,7 @@ public class PlayerMechanics extends SelectScreen {
             System.out.println("\t\t\t" + GREEN + "(_____)------------------------------------------------------------------(_____)" + RESET);
             System.out.println("\t\t\t" + BRIGHT_GREEN + this.player2.getName() + " wins!" + RESET);
 
-            System.out.println("\nPress ENTER to continue...");
+            System.out.println("\t\t\t\nPress ENTER to continue...");
             sc.nextLine();
             clearScreen();
         } else {
