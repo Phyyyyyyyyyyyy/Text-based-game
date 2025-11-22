@@ -3,10 +3,8 @@ Deadline December 2, 2025
 Study and familiarize code.
 
 
-TO DOS AS OF 21/11/2025:
+TO DOS AS OF 23/11/2025:
+
 1.Arcade Mode (Hierarchy type game mode - 4 enemy ladder and 1 boss)
-2.PlayervsPlayer spacing of texts
-3.Game or ingame SFX
-4.Clean Code
-5.Attributes of Heroes and Enemy checking (if ever op, balanced, weak.. check lang jud)
-6.Round System (PvP and Arcade mode nalang, 3 rounds = Win)
+2.Polish attack settings (Include input 0 for basic attack)
+3.Clean Code
