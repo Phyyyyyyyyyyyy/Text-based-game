@@ -28,6 +28,7 @@ public class GameMechanics {
     private CooldownManager playerCD = new CooldownManager();
     private CooldownManager enemyCD = new CooldownManager();
     Scanner sc = new Scanner(System.in);
+    private Clip backgroundMusicClip;
 
     public GameMechanics(Character player, Enemy enemy) {
         this.player = player;
@@ -57,7 +58,6 @@ public class GameMechanics {
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
 
-            // Add a listener to close the clip when it finishes playing
             clip.addLineListener(event -> {
                 if (event.getType() == LineEvent.Type.STOP) {
                     clip.close();
@@ -65,6 +65,10 @@ public class GameMechanics {
             });
 
             clip.start();
+
+            if (filename.equals("GameTheme.wav")) {
+                this.backgroundMusicClip = clip;
+            }
 
         } catch (Exception e) {
             System.out.println("\t\t\t\t" + BRIGHT_YELLOW + "Could not play sound: " + e.getMessage() + RESET);
@@ -117,6 +121,8 @@ public class GameMechanics {
     }
 
     public void game() {
+        playSound("GameTheme.wav");
+
         int currentMana = enemy.mana;
         enemy.regenerateMana(10);
         int enemyManaGained = enemy.mana - currentMana;
@@ -278,7 +284,7 @@ public class GameMechanics {
             System.out.println("\t\t\t\t" + BRIGHT_YELLOW + "It's a draw!" + RESET);
         } else if (player.hp <= 0) {
             ////write file for lose sfx here
-
+            stopBackgroundMusic();
             playSound("LoseSFX.wav");
 
             System.out.println(RED + "\t\t\t\t_____                                           _____ " + RESET);
@@ -297,7 +303,7 @@ public class GameMechanics {
             clearScreen();
         } else {
             ///write file for win sfx here
-
+            stopBackgroundMusic();
             playSound("WinSFX.wav");
 
             System.out.println(GREEN + "\t\t\t\t _____                                          _____ " + RESET);
@@ -344,5 +350,13 @@ public class GameMechanics {
         System.out.println("\t\t\t\t" + enemy.getName() + " - " + enemyHPColor + "HP: " + enemy.hp + "/" + enemy.maxHp + RESET
                 + " | " + BRIGHT_BLUE + "Mana: " + enemy.mana + "/" + MAX_MANA + RESET
                 + " | " + RED + "Attack: " + enemy.attack + RESET);
+    }
+
+    public void stopBackgroundMusic() {
+        if (backgroundMusicClip != null && backgroundMusicClip.isRunning()) {
+            backgroundMusicClip.stop();
+            backgroundMusicClip.close();
+            backgroundMusicClip = null;
+        }
     }
 }
