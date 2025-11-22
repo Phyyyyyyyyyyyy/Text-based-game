@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
 
-public class Player1 {
+public class Player1 extends SelectScreen {
 
     static Scanner sc = new Scanner(System.in);
 
@@ -201,7 +201,7 @@ public class Player1 {
 
                 if (input.isEmpty()) {
                     for (String line : storyLines) {
-                        MarvelGame.typeWriter(line, delay);
+                        typeWriter(line, delay);
                     }
                     validInput = true;
                 } else if (input.equalsIgnoreCase("0")) {
