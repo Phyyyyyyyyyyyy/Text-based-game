@@ -1,8 +1,13 @@
 
 import java.io.PrintStream;
 import java.util.Scanner;
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineEvent;
 
-public class PlayerMechanics {
+public class PlayerMechanics extends SelectScreen {
 
     // Color constants
     final String BLACK = "\u001B[30m";
@@ -18,7 +23,7 @@ public class PlayerMechanics {
     final String BRIGHT_RED = "\u001B[91m";
     final String BRIGHT_BLUE = "\u001B[94m";
     final String RESET = "\u001B[0m";
-
+    private Clip backgroundMusicClip;
     Character player1;
     Character player2;
     public int turnCount = 1;
@@ -33,6 +38,7 @@ public class PlayerMechanics {
         this.p2CD = new CooldownManager();
         this.player1 = var1;
         this.player2 = var2;
+        this.backgroundMusicClip = null;
     }
 
     // Helper method to get HP color based on percentage
@@ -48,8 +54,8 @@ public class PlayerMechanics {
     }
 
     public void game() {
+        playSound("GameTheme.wav");
 
-        
         System.out.println("\n\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
         System.out.println("\t\t\tPlayer 1: ");
         displayPlayer1Stats();
@@ -93,6 +99,8 @@ public class PlayerMechanics {
         if (this.player1.hp <= 0 && this.player2.hp <= 0) {
             System.out.println(BRIGHT_YELLOW + "It's a draw!" + RESET);
         } else if (this.player1.hp <= 0) {
+            stopBackgroundMusic();
+            playSound("WinSFX.wav");
             System.out.println("\t\t\t" + GREEN + "( ___ )------------------------------------------------------------------( ___ )" + RESET);
             System.out.println("\t\t\t" + GREEN + " |   |                                                                    |   | " + RESET);
             System.out.println("\t\t\t" + GREEN + " |   |  ____  _                         ____   __        ___           _  |   | " + RESET);
@@ -109,6 +117,8 @@ public class PlayerMechanics {
             sc.nextLine();
             clearScreen();
         } else {
+            stopBackgroundMusic();
+            playSound("WinSFX.wav");
             System.out.println("\t\t\t" + GREEN + "_____                                                                _____ " + RESET);
             System.out.println("\t\t\t" + GREEN + "( ___ )--------------------------------------------------------------( ___ )" + RESET);
             System.out.println("\t\t\t" + GREEN + " |   |                                                                |   | " + RESET);
@@ -142,7 +152,7 @@ public class PlayerMechanics {
         if (!var4.canUseSkill(var1)) {
             var10000 = System.out;
             var10001 = var4.getFormattedCooldown(var1);
-            var10000.println("\t\t\t" + BRIGHT_YELLOW + "Skill is on cooldown! (" + var10001 + ")" + RESET);
+            var10000.println("\t\t\t" + BRIGHT_YELLOW + "Skill is on cooldown! (" + var10001 + ") You missed your turn!" + RESET);
         } else {
             String var7 = "";
             int var8;
@@ -303,8 +313,40 @@ public class PlayerMechanics {
         }
     }
 
-    public void clearScreen() {
-        System.out.print("\u001b[H\u001b[2J");
-        System.out.flush();
+    public void playSound(String filename) {
+        try {
+            File file = new File(filename);
+            if (!file.exists()) {
+                System.out.println("\t\t\t\t" + BRIGHT_YELLOW + "Sound file not found: " + filename + RESET);
+                return;
+            }
+
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+
+            clip.addLineListener(event -> {
+                if (event.getType() == LineEvent.Type.STOP) {
+                    clip.close();
+                }
+            });
+
+            clip.start();
+
+            if (filename.equals("GameTheme.wav")) {
+                this.backgroundMusicClip = clip;
+            }
+
+        } catch (Exception e) {
+            System.out.println("\t\t\t\t" + BRIGHT_YELLOW + "Could not play sound: " + e.getMessage() + RESET);
+        }
+    }
+
+    public void stopBackgroundMusic() {
+        if (backgroundMusicClip != null && backgroundMusicClip.isRunning()) {
+            backgroundMusicClip.stop();
+            backgroundMusicClip.close();
+            backgroundMusicClip = null;
+        }
     }
 }
