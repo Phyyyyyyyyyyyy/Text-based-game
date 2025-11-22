@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class SelectScreen {
@@ -40,7 +39,12 @@ public class SelectScreen {
                 clearScreen();
                 switch (choice) {
                     case 1:
-                        player = new Character("Iron Man", 110, 110, 20, "Repulsor blast - deals 30 damage ", "Unibeam- deals 20 damage ", "Rocket Barrage - deals 50 damage", 30, 20, 50, 30, 20, 50, 100);
+                        // Iron Man - Same as Player1
+                        player = new Character("Iron Man", 110, 110, 15,
+                                "Repulsor Blast - Deals 13 damage",
+                                "Unibeam Strike - Deals 15 damage", 
+                                "Rocket Barrage - Deals 22 damage",
+                                13, 15, 22, 13, 15, 22, 100);
                         showStoryWithSkip("Iron Man", new String[]{
                             "\n\t\t\t\tIron Man: Genius billionaire Tony Stark built his armored suit after a near-death experience.",
                             "\t\t\t\tHe uses advanced technology to protect the world as Iron Man.",
@@ -48,15 +52,25 @@ public class SelectScreen {
                         }, 40, player);
                         break;
                     case 2:
-                        player = new Character("Captain America", 120, 120, 12, "Shield throw! - Deals 25 damage", "Shield Bash! - Deals 12 damage", "Inspire - Deals 20 HP ", 25, 12, 15, 25, 12, 15, 100);
+                        // Captain America - Same as Player1
+                        player = new Character("Captain America", 110, 110, 15,
+                                "Shield Throw - Deals 12 damage",
+                                "Shield Bash - Deals 14 damage",
+                                "Shield Combo - Deals 24 damage",
+                                12, 14, 24, 12, 14, 24, 100);
                         showStoryWithSkip("Captain America", new String[]{
-                            "\n\t\t\t\tCaptain America: Steve Rogers was enhanced to peak strength during WWII.",
+                            "\n\t\t\t\tCaptain America: Steve Rogers - the super soldier from WWII.",
                             "\t\t\t\tArmed with his vibranium shield, he defends freedom and justice.",
                             "\t\t\t\tHe is the living symbol of courage and hope.\n"
                         }, 40, player);
                         break;
                     case 3:
-                        player = new Character("Thor", 130, 130, 18, "Lightning Blast! - Deals 30 damage", "Mjolnir throw! - Deals 20 damage", "God of Thunder - Deals 20 damage", 30, 20, 20, 30, 20, 20, 100);
+                        // Thor - Same as Player1
+                        player = new Character("Thor", 110, 110, 15,
+                                "Lightning Strike - Deals 11 damage",
+                                "Mjolnir Impact - Deals 13 damage",
+                                "Thunder Crash - Deals 26 damage",
+                                11, 13, 26, 11, 13, 26, 100);
                         showStoryWithSkip("Thor", new String[]{
                             "\n\t\t\t\tThor: The God of Thunder wields Mjolnir to protect the Nine Realms.",
                             "\t\t\t\tHe commands storms and possesses incredible strength.",
@@ -64,7 +78,12 @@ public class SelectScreen {
                         }, 40, player);
                         break;
                     case 4:
-                        player = new Character("Spider-Man", 90, 90, 14, "Spidey Swing! - Deals 20 damage", "Web Shot! - Deals 15 damage", "Spidey-sense - Deals 20 damage", 20, 15, 20, 0, 15, 0, 100);
+                        // Spider-Man - Same as Player1
+                        player = new Character("Spider-Man", 110, 110, 15,
+                                "Web Strike - Deals 12 damage",
+                                "Venom Blast - Deals 18 damage",
+                                "Spider Fury - Deals 20 damage",
+                                12, 18, 20, 12, 18, 20, 100);
                         showStoryWithSkip("Spider-Man", new String[]{
                             "\n\t\t\t\tSpider-Man: Bitten by a radioactive spider, Peter Parker gained amazing powers.",
                             "\t\t\t\tHaunted by Uncle Ben's words, he lives by 'with great power comes great responsibility.'",
@@ -72,7 +91,12 @@ public class SelectScreen {
                         }, 40, player);
                         break;
                     case 5:
-                        player = new Character("Hulk", 150, 150, 20, "Hulk Smash! - Deals 30 damage", "Thunderclap - Deals 25 damage", "Hulk Rage - Deals 25 damage", 30, 25, 20, 30, 25, 0, 100);
+                        // Hulk - Same as Player1
+                        player = new Character("Hulk", 110, 110, 15,
+                                "Hulk Smash - Deals 14 damage",
+                                "Thunder Clap - Deals 15 damage",
+                                "Gamma Crush - Deals 21 damage",
+                                14, 15, 21, 14, 15, 21, 100);
                         showStoryWithSkip("Hulk", new String[]{
                             "\n\t\t\t\tHulk: Dr. Bruce Banner transforms into the Hulk when angered.",
                             "\t\t\t\tHis unstoppable strength makes him both feared and admired.",
@@ -80,7 +104,12 @@ public class SelectScreen {
                         }, 40, player);
                         break;
                     case 6:
-                        player = new Character("Black Widow", 100, 100, 10, "Stealth - Deals 30 damage", "Widow's Kick! - 20 damage", "Espionage - 50 damage", 30, 20, 50, 0, 20, 50, 100);
+                        // Black Widow - Same as Player1
+                        player = new Character("Black Widow", 100, 100, 15,
+                                "Widow's Bite - Deals 16 damage",
+                                "Combat Kick - Deals 18 damage",
+                                "Assassin Strike - Deals 26 damage",
+                                16, 18, 26, 16, 18, 26, 100);
                         showStoryWithSkip("Black Widow", new String[]{
                             "\n\t\t\t\tBlack Widow: Natasha Romanoff was trained as a deadly assassin.",
                             "\t\t\t\tNow an Avenger, she seeks redemption for her past.",
@@ -88,8 +117,12 @@ public class SelectScreen {
                         }, 40, player);
                         break;
                     case 7:
-                        //////////mga skills aria kay wapa na tarong i-double check lang ko pleaelpaelpaelpeaplaelpslpaeslpaseplaselpasepllpsealpaeslpase
-                        player = new Character("Ant-Man", 100, 100, 20, "Pym Particle punch! - Deals 20 damage", "Shrink Punch - Deals 20 damage", "Giant-Man - deals double damage in the next 2 turns.", 20, 30, 25, 20, 0, 20, 100);
+                        // Ant-Man - Same as Player1
+                        player = new Character("Ant-Man", 100, 100, 15,
+                                "Pym Particle Blast - Deals 18 damage",
+                                "Quantum Strike - Deals 20 damage",
+                                "Giant Slam - Deals 22 damage",
+                                18, 20, 22, 18, 20, 22, 100);
                         showStoryWithSkip("Ant-Man", new String[]{
                             "\n\t\t\t\tAnt-Man: Scott Lang uses Hank Pym's shrinking technology.",
                             "\t\t\t\tHe can shrink to the size of an ant or grow to a giant.",
@@ -97,9 +130,13 @@ public class SelectScreen {
                         }, 40, player);
                         break;
                     case 8:
-                        ////naa gihapoy mga heals heals samok kaayo.
-                        player = new Character("The Falcon", 150, 150, 10, "Flight - avoids damage", "Redwing Strike! - deals 20 damage", "Tactical Barrage - deals 30 damage", 20, 20, 30, 0, 20, 30, 100);
-                        showStoryWithSkip("\t\t\t\tThe Falcon", new String[]{
+                        // The Falcon - Same as Player1
+                        player = new Character("The Falcon", 100, 100, 15,
+                                "Aerial Strike - Deals 14 damage",
+                                "Redwing Assault - Deals 22 damage",
+                                "Tactical Barrage - Deals 24 damage",
+                                14, 22, 24, 14, 22, 24, 100);
+                        showStoryWithSkip("The Falcon", new String[]{
                             "\n\t\t\t\tThe Falcon: Sam Wilson uses advanced wing technology to soar the skies.",
                             "\t\t\t\tA loyal soldier and hero, he fights with unmatched speed.",
                             "\t\t\t\tHis bravery makes him one of the Avengers' most trusted allies.\n"
@@ -107,48 +144,69 @@ public class SelectScreen {
                         break;
                     case 9:
                         return null;
-
                     case 69:
-                        player = new Character("Jan Clark", 150, 150, 20, "Lisora aning OOP uy! - deals 20 damage", "Eternal Drip! - deals 30 damage", "Lisora aning DSA uy! - deals 40 damage", 20, 30, 40, 20, 30, 40, 100);
+                        // Jan Clark - Same as Player1
+                        player = new Character("Jan Clark", 120, 120, 15,
+                                "Code Crash - Deals 10 damage",
+                                "Debug Strike - Deals 12 damage",
+                                "System Overload - Deals 18 damage",
+                                10, 12, 18, 10, 12, 18, 100);
                         typeWriter("\n\t\t\t\tJan Clark: Known for his unstoppable drip and endless energy in class.", 40);
                         typeWriter("\t\t\t\tHe turns even the toughest coding battles into a stage for style.", 40);
                         typeWriter("\t\t\t\tWith wit and humor, he inspires allies to keep fighting strong.\n", 40);
                         break;
                     case 70:
-                        player = new Character("\t\t\t\tJohn Micoh", 150, 150, 20, "CIT lang ya! - deals 20 damage", "Lahus ni ug Cambuntan ya? -  deals 40 damage", "Kapoyag tuon oy! - deals 50 damage", 20, 30, 35, 20, 40, 50, 100);
+                        // John Micoh - Same as Player1
+                        player = new Character("John Micoh", 120, 120, 15,
+                                "CIT Crash - Deals 8 damage",
+                                "Bug Blast - Deals 12 damage",
+                                "Code Fury - Deals 20 damage",
+                                8, 12, 20, 8, 12, 20, 100);
                         typeWriter("\n\t\t\t\tJohn Micoh: A laid-back warrior who balances jokes with determination.", 40);
                         typeWriter("\t\t\t\tHe may complain about studying, but when the battle starts, he gives his all.", 40);
                         typeWriter("\t\t\t\tWith raw persistence and sharp comebacks, he pushes through any challenge.\n", 40);
                         break;
                     case 71:
-                        ///feel nako okay nani, please check ko lang slaamat.
-                         player = new Character("\t\t\t\tEthan Manto", 150, 150, 20, "Hollaback Girl!", "Soulja Boy Superman!", "Bye Bye Bye!", 20, 30, 35, 20, 30, 35, 100);
+                        // Ethan Manto - Same as Player1
+                        player = new Character("Ethan Manto", 120, 120, 15,
+                                "Rhythm Strike - Deals 12 damage",
+                                "Dance Blast - Deals 13 damage",
+                                "Beat Drop - Deals 15 damage",
+                                12, 13, 15, 12, 13, 15, 100);
                         typeWriter("\n\t\t\t\tEthan Manto: A warrior fueled by rhythm and style.", 40);
                         typeWriter("\t\t\t\tHe turns every battle into a stage with iconic moves.", 40);
                         typeWriter("\t\t\t\tBehind the flair, he fights with loyalty and heart.\n", 40);
                         break;
                     case 72:
-                        player = new Character("\t\t\t\tReuben Navarrete", 150, 150, 20, "HE Grenade!", "Binary Tree Confusion!", "Tik-Tok of Doom(scroll)", 20, 30, 35, 20, 30, 35, 100);
+                        // Reuben Navarrete - Added with specified stats
+                        player = new Character("Reuben Navarrete", 120, 120, 15, 
+                                "HE Grenade! - Deals 10 damage", 
+                                "Binary Tree Confusion! - Deals 10 damage", 
+                                "Tik-Tok of Doom(scroll) - Deals 20 damage", 
+                                10, 10, 20, 10, 10, 20, 100);
                         typeWriter("\n\t\t\t\tReuben Navarrete: A modern warrior who codes by day and scrolls by night.", 40);
                         typeWriter("\t\t\t\tHe analyzes enemies like binary trees - searching for their weakest nodes with precision.", 40);
                         typeWriter("\t\t\t\tHis TikTok-scrolling fingers move at lightning speed, predicting patterns before they form.", 40);
                         typeWriter("\t\t\t\tWhen he's not optimizing algorithms, he's optimizing combat strategies with viral efficiency.\n", 40);
                         break;
                     case 7355608:
-                        player = new Character("\t\t\t\tThanos", 500, 500, 200, "Power Stone Blast - deals 200 damage ", "Snap - Eliminates enemy in an instant", "Power Stone Punch! - deals 100 damage", 30, 50, 30, 200, 999, 100, 100);
+                        // Thanos - Same as Player1
+                        player = new Character("Thanos", 500, 500, 200,
+                                "Power Stone Blast - Deals 200 damage",
+                                "Infinity Snap - Deals 999 damage",
+                                "Titan Punch - Deals 100 damage",
+                                30, 50, 30, 200, 999, 100, 100);
                         typeWriter("\n\t\t\t\tThanos: The Mad Titan who believes balance is the key to the universe.", 40);
                         typeWriter("\t\t\t\tArmed with the Infinity Stones, he bends reality with a flick of his hand.", 40);
                         typeWriter("\t\t\t\tThough feared by many, deep down he just wants some peace and maybe a farm life.\n", 40);
                         break;
                     default:
-
                         System.out.println("\t\t\t\tInvalid choice! Please select a valid hero number.\n");
                         break;
                 }
             } else {
                 System.out.println("\t\t\t\tInvalid input! Please enter a number.\n");
                 sc.next();
-
             }
         }
         return player;
@@ -170,11 +228,11 @@ public class SelectScreen {
         try {
             sc.nextLine();
 
-            String input;
+            String input = "";
             boolean validInput = false;
 
             while (!validInput) {
-                System.out.print("Press ENTER to view " + heroName + "'s story, or type 'skip' to skip: ");
+                System.out.print("\t\t\tPress ENTER to view " + heroName + "'s story, or type '0' to skip: ");
                 input = sc.nextLine().trim();
 
                 if (input.isEmpty()) {
@@ -182,20 +240,22 @@ public class SelectScreen {
                         typeWriter(line, delay);
                     }
                     validInput = true;
-                } else if (input.equalsIgnoreCase("skip")) {
-
-                    System.out.println("\n\t\t\t\tYou chose to skip " + heroName + "'s story.\n");
+                } else if (input.equalsIgnoreCase("0")) {
+                    System.out.println("\n\t\t\tYou chose to skip " + heroName + "'s story.\n");
                     validInput = true;
                 } else {
-                    System.out.println("\t\t\t\tInvalid input. Please try again.");
+                    System.out.println("\t\t\tInvalid input. Please try again.");
                 }
             }
-            System.out.println("\t\t\t\t--- " + heroName + "s Stats ---");
+            System.out.println("\t\t\t--- " + heroName + "s Stats ---");
+            hero.displayIntro();
 
         } catch (Exception e) {
-            System.out.println("\t\t\t\tUnexpected exception caught: " + e);
+            System.out.println("\t\t\tUnexpected exception caught: " + e);
             sc.next();
-        }
 
+            System.out.println("\t\t\t--- " + heroName + "s Stats ---");
+            hero.displayIntro();
+        }
     }
 }
