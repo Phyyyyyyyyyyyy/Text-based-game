@@ -31,6 +31,12 @@ public class CooldownManager {
         }
     }
 
+    public void resetCooldowns() {
+        for (int skill : cooldowns.keySet()) {
+            cooldowns.put(skill, 0);
+        }
+    }
+
     public int getCooldown(int skillNumber) {
         return cooldowns.get(skillNumber);
     }
