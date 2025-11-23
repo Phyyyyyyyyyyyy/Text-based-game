@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class Player1 extends SelectScreen {
@@ -160,10 +161,10 @@ public class Player1 extends SelectScreen {
                         break;
                     case 71:
                         // Reuben Navarrete - Added with specified stats
-                        player = new Character("Reuben Navarrete", 120, 120, 15, 
-                                "HE Grenade! - Deals 10 damage", 
-                                "Binary Tree Confusion! - Deals 10 damage", 
-                                "Tik-Tok of Doom(scroll) - Deals 20 damage", 
+                        player = new Character("Reuben Navarrete", 120, 120, 15,
+                                "HE Grenade! - Deals 10 damage",
+                                "Binary Tree Confusion! - Deals 10 damage",
+                                "Tik-Tok of Doom(scroll) - Deals 20 damage",
                                 10, 10, 20, 10, 10, 20, 100);
                         showStoryWithSkip("Reuben Navarrete", new String[]{
                             "\n\t\t\tReuben Navarrete: A modern warrior who codes by day and scrolls by night.",
@@ -231,8 +232,6 @@ public class Player1 extends SelectScreen {
                     System.out.println("\t\t\tInvalid input. Please try again.");
                 }
             }
-            System.out.println("\t\t\t--- " + heroName + "s Stats ---");
-            hero.displayIntro();
 
         } catch (Exception e) {
             System.out.println("\t\t\tUnexpected exception caught: " + e);
