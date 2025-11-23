@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class SelectScreen {
@@ -42,7 +43,7 @@ public class SelectScreen {
                         // Iron Man - Same as Player1
                         player = new Character("Iron Man", 110, 110, 15,
                                 "Repulsor Blast - Deals 13 damage",
-                                "Unibeam Strike - Deals 15 damage", 
+                                "Unibeam Strike - Deals 15 damage",
                                 "Rocket Barrage - Deals 22 damage",
                                 13, 15, 22, 13, 15, 22, 100);
                         showStoryWithSkip("Iron Man", new String[]{
@@ -179,10 +180,10 @@ public class SelectScreen {
                         break;
                     case 72:
                         // Reuben Navarrete - Added with specified stats
-                        player = new Character("Reuben Navarrete", 120, 120, 15, 
-                                "HE Grenade! - Deals 10 damage", 
-                                "Binary Tree Confusion! - Deals 10 damage", 
-                                "Tik-Tok of Doom(scroll) - Deals 20 damage", 
+                        player = new Character("Reuben Navarrete", 120, 120, 15,
+                                "HE Grenade! - Deals 10 damage",
+                                "Binary Tree Confusion! - Deals 10 damage",
+                                "Tik-Tok of Doom(scroll) - Deals 20 damage",
                                 10, 10, 20, 10, 10, 20, 100);
                         typeWriter("\n\t\t\t\tReuben Navarrete: A modern warrior who codes by day and scrolls by night.", 40);
                         typeWriter("\t\t\t\tHe analyzes enemies like binary trees - searching for their weakest nodes with precision.", 40);
@@ -247,8 +248,6 @@ public class SelectScreen {
                     System.out.println("\t\t\tInvalid input. Please try again.");
                 }
             }
-            System.out.println("\t\t\t--- " + heroName + "s Stats ---");
-            hero.displayIntro();
 
         } catch (Exception e) {
             System.out.println("\t\t\tUnexpected exception caught: " + e);
