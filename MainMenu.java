@@ -30,7 +30,8 @@ public class MainMenu {
             System.out.println(                 "\t\t\t\t|   Select Game Mode:                   |");
             System.out.println(                 "\t\t\t\t|     1. Player vs Player               |");
             System.out.println(                 "\t\t\t\t|     2. Player vs AI                   |");
-            System.out.println(                 "\t\t\t\t|     3. Exit                           |");
+            System.out.println(                 "\t\t\t\t|     3. Arcade Mode                    |");
+            System.out.println(                 "\t\t\t\t|     0. Exit                           |");
             System.out.print(                   "\t\t\t\t > ");
             while (!sc.hasNextInt()) {
                 System.out.print("     \n\t\t\t\t>>> Invalid input, enter a number: ");
@@ -46,12 +47,15 @@ public class MainMenu {
                     playerVsAiMenu(sc);
                     break;
                 case 3:
+                    arcadeModeMenu(sc);
+                    break;
+                case 0:
                     System.out.println("                            \n\t\t\t\t>>> Exiting... Goodbye!\n");
                     System.exit(1);
                 default:
                     System.out.println("                            \n\t\t\t\t>>> Invalid choice, please try again!\n");
             }
-        } while (choice != 3);
+        } while (choice != 0);
     }
 
     public static void playerVsPlayerMenu(Scanner sc) {
@@ -59,6 +63,7 @@ public class MainMenu {
 
         Character player1 = Player1.select();
         if (player1 == null) return; 
+        player1.displayIntro();
 
         System.out.println("\n\t\t\t\tPress ENTER for Player 2 to choose...");
         sc.nextLine();
@@ -66,6 +71,7 @@ public class MainMenu {
 
         Character player2 = Player2.select();
         if (player2 == null) return; 
+        player2.displayIntro();
 
         System.out.println("\n\t\t\t\tPress ENTER to begin the battle...");
         sc.nextLine();
@@ -92,5 +98,21 @@ public class MainMenu {
         clearScreen();
         GameMechanics game = new GameMechanics(player, enemy);
         game.game();
+    }
+
+    public static void arcadeModeMenu(Scanner sc) {
+        System.out.println("\n\t\t\t\t>>> Arcade Mode Starting...\n");
+
+        Character player = ArcadeSelect.select();
+        if (player == null) return;
+        player.displayIntro();
+
+        System.out.println("\t\t\t\tPress ENTER to begin your arcade run...");
+        sc.nextLine();
+        sc.nextLine();
+
+        clearScreen();
+        ArcadeMode arcade = new ArcadeMode(player);
+        arcade.startArcadeRun();
     }
 }
