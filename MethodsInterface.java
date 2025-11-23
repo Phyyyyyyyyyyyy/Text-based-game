@@ -22,7 +22,15 @@ public interface MethodsInterface {
 
     void playerVsAiMenu(java.util.Scanner sc);
 
-    default void playSound(String filename){
+    void startArcadeRun();
+
+    boolean isArcadeModeBeat();
+
+    int getMatchWins();
+
+    int getTotalArcadeWins();
+
+    default void playSound(String filename) {
         try {
             File file = new File(filename);
             if (!file.exists()) {
@@ -34,7 +42,6 @@ public interface MethodsInterface {
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
 
-           
             clip.addLineListener(event -> {
                 if (event.getType() == LineEvent.Type.STOP) {
                     clip.close();
