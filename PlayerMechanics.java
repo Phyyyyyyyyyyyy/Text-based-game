@@ -343,7 +343,7 @@ public class PlayerMechanics extends SelectScreen {
         } catch (Exception e) {
             System.out.println("\t\t\t\t" + BRIGHT_YELLOW + "Could not play sound: " + e.getMessage() + RESET);
         }
-    } ///he
+    }
 
     public void stopBackgroundMusic() {
         if (backgroundMusicClip != null && backgroundMusicClip.isRunning()) {
