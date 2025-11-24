@@ -1,4 +1,3 @@
-
 import java.io.PrintStream;
 import java.util.Scanner;
 import java.io.File;
@@ -31,6 +30,12 @@ public class PlayerMechanics extends SelectScreen {
     private CooldownManager p1CD;
     private CooldownManager p2CD;
     private static final int MAX_MANA = 100;
+    
+    private int player1RoundWins = 0;
+    private int player2RoundWins = 0;
+    private int currentRound = 1;
+    private final int MAX_ROUNDS = 5;
+    private final int ROUNDS_TO_WIN = 2;
 
     public PlayerMechanics(Character var1, Character var2) {
         this.sc = new Scanner(System.in);
@@ -54,17 +59,63 @@ public class PlayerMechanics extends SelectScreen {
     }
 
     public void game() {
-        playSound("GameTheme.wav");
-
         System.out.println("\n\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
+        System.out.println("\t\t\t" + BRIGHT_YELLOW + "MATCH START - Best of 3 Rounds" + RESET);
+        System.out.println("\t\t\t" + BRIGHT_YELLOW + "First to " + ROUNDS_TO_WIN + " wins the match!" + RESET);
+        System.out.println("\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
+        
         System.out.println("\t\t\tPlayer 1: ");
         displayPlayer1Stats();
         System.out.println("\n\t\t\tPlayer 2: ");
         displayPlayer2Stats();
         System.out.println(BRIGHT_BLUE + "\t\t\t==============================" + RESET);
 
-        while (this.player1.hp > 0 && this.player2.hp > 0) {
+        while (player1RoundWins < ROUNDS_TO_WIN && player2RoundWins < ROUNDS_TO_WIN && currentRound <= MAX_ROUNDS) {
+            boolean roundWonByPlayer1 = playRound();
+            
+            if (roundWonByPlayer1) {
+                player1RoundWins++;
+                System.out.println("\n\t\t\t" + BRIGHT_GREEN + "ROUND " + currentRound + " WON BY " + player1.getName() + "!" + RESET);
+            } else {
+                player2RoundWins++;
+                System.out.println("\n\t\t\t" + BRIGHT_GREEN + "ROUND " + currentRound + " WON BY " + player2.getName() + "!" + RESET);
+            }
 
+            displayRoundScore();
+
+            stopBackgroundMusic();
+
+            if (player1RoundWins < ROUNDS_TO_WIN && player2RoundWins < ROUNDS_TO_WIN && currentRound < MAX_ROUNDS) {
+                System.out.println("\n\t\t\t" + BRIGHT_YELLOW + "Press ENTER to continue to the next round..." + RESET);
+                System.out.print("\t\t\t");
+                sc.nextLine();
+            }
+
+            currentRound++;
+        }
+
+        displayMatchResult();
+    }
+
+    private boolean playRound() {
+        System.out.println("\n\t\t\t\t" + BRIGHT_BLUE + "--- ROUND " + currentRound + " ---" + RESET);
+        System.out.println("\n\t\t\t" + BRIGHT_YELLOW + "Press ENTER to start the round..." + RESET);
+        System.out.print("\t\t\t");
+        sc.nextLine();
+
+        playSound("GameTheme.wav");
+
+        resetRound();
+
+        boolean roundWonByPlayer1 = playSingleRound();
+        
+        return roundWonByPlayer1;
+    }
+
+    private boolean playSingleRound() {
+        turnCount = 1;
+        
+        while (this.player1.hp > 0 && this.player2.hp > 0) {
             System.out.println("\n\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
             System.out.println("\t\t\t" + BRIGHT_YELLOW + "Turn " + this.turnCount + RESET);
             System.out.println("\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
@@ -93,53 +144,76 @@ public class PlayerMechanics extends SelectScreen {
             this.p2CD.reduceCooldowns();
             ++this.turnCount;
         }
+        
+        return player1.hp > 0 && player2.hp <= 0;
+    }
 
-        System.out.println("\n\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
-        clearScreen();
-        if (this.player1.hp <= 0 && this.player2.hp <= 0) {
-            stopBackgroundMusic();
-            System.out.println(BRIGHT_YELLOW + "It's a draw!" + RESET);
-        } else if (this.player1.hp <= 0) {
-            stopBackgroundMusic();
+    private void resetRound() {
+        player1.hp = player1.maxHp;
+        player1.mana = 100;
+        player2.hp = player2.maxHp;
+        player2.mana = 100;
+        
+        p1CD = new CooldownManager();
+        p2CD = new CooldownManager();
+        turnCount = 1;
+    }
 
-            playSound("WinSFX.wav");
-            System.out.println("\t\t\t" + GREEN + " _____                                                                    _____ " + RESET);
-            System.out.println("\t\t\t" + GREEN + "( ___ )------------------------------------------------------------------( ___ )" + RESET);
-            System.out.println("\t\t\t" + GREEN + " |   |                                                                    |   | " + RESET);
-            System.out.println("\t\t\t" + GREEN + " |   |  ____  _                         ____   __        ___           _  |   | " + RESET);
-            System.out.println("\t\t\t" + GREEN + " |   | |  _ \\| | __ _ _   _  ___ _ __  |___ \\  \\ \\      / (_)_ __  ___| | |   | " + RESET);
-            System.out.println("\t\t\t" + GREEN + " |   | | |_) | |/ _` | | | |/ _ \\ '__|   __) |  \\ \\ /\\ / /| | '_ \\/ __| | |   | " + RESET);
-            System.out.println("\t\t\t" + GREEN + " |   | |  __/| | (_| | |_| |  __/ |     / __/    \\ V  V / | | | | \\__ \\_| |   | " + RESET);
-            System.out.println("\t\t\t" + GREEN + " |   | |_|   |_|\\__,_|\\__, |\\___|_|    |_____|    \\_/\\_/  |_|_| |_|___(_) |   | " + RESET);
-            System.out.println("\t\t\t" + GREEN + " |   |                |___/                                               |   | " + RESET);
-            System.out.println("\t\t\t" + GREEN + " |___|                                                                    |___| " + RESET);
-            System.out.println("\t\t\t" + GREEN + "(_____)------------------------------------------------------------------(_____)" + RESET);
-            System.out.println("\t\t\t" + BRIGHT_GREEN + this.player2.getName() + " wins!" + RESET);
-
-            System.out.println("\t\t\t\nPress ENTER to continue...");
-            sc.nextLine();
-            clearScreen();
-        } else {
-            stopBackgroundMusic();
-            playSound("WinSFX.wav");
-            System.out.println("\t\t\t" + GREEN + " _____                                                                _____ " + RESET);
-            System.out.println("\t\t\t" + GREEN + "( ___ )--------------------------------------------------------------( ___ )" + RESET);
-            System.out.println("\t\t\t" + GREEN + " |   |                                                                |   | " + RESET);
-            System.out.println("\t\t\t" + GREEN + " |   |  ____  _                         _  __        ___           _  |   | " + RESET);
-            System.out.println("\t\t\t" + GREEN + " |   | |  _ \\| | __ _ _   _  ___ _ __  / | \\ \\      / (_)_ __  ___| | |   | " + RESET);
-            System.out.println("\t\t\t" + GREEN + " |   | | |_) | |/ _` | | | |/ _ \\ '__| | |  \\ \\ /\\ / /| | '_ \\/ __| | |   | " + RESET);
-            System.out.println("\t\t\t" + GREEN + " |   | |  __/| | (_| | |_| |  __/ |    | |   \\ V  V / | | | | \\__ \\_| |   | " + RESET);
-            System.out.println("\t\t\t" + GREEN + " |   | |_|   |_|\\__,_|\\__, |\\___|_|    |_|    \\_/\\_/  |_|_| |_|___(_) |   | " + RESET);
-            System.out.println("\t\t\t" + GREEN + " |   |                |___/                                           |   | " + RESET);
-            System.out.println("\t\t\t" + GREEN + " |___|                                                                |___| " + RESET);
-            System.out.println("\t\t\t" + GREEN + "(_____)--------------------------------------------------------------(_____)" + RESET);
-            System.out.println("\t\t\t" + BRIGHT_GREEN + this.player1.getName() + " wins!" + RESET);
-
-            System.out.println("\n\t\t\tPress ENTER to continue...");
-            sc.nextLine();
-            sc.nextLine();
-            clearScreen();
+    private void displayRoundScore() {
+        playSound("WinSFX.wav");
+        System.out.println("\n\t\t\t" + BRIGHT_BLUE + "Round Score: " + BRIGHT_GREEN + player1.getName() + ": " + player1RoundWins + RESET
+                + " - " + BRIGHT_RED + player2.getName() + ": " + player2RoundWins + RESET);
+        if (currentRound < MAX_ROUNDS) {
+            System.out.println("\t\t\t(First to " + ROUNDS_TO_WIN + " wins the match)");
         }
+    }
+
+    private void displayMatchResult() {
+        System.out.println("\n\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
+        
+        if (player1RoundWins >= ROUNDS_TO_WIN) {
+            displayWinScreen(player1);
+        } else if (player2RoundWins >= ROUNDS_TO_WIN) {
+            displayWinScreen(player2);
+        } else {
+            displayDrawScreen();
+        }
+    }
+
+    private void displayWinScreen(Character winner) {
+        stopBackgroundMusic();
+        playSound("WinSFX.wav");
+        
+        clearScreen();
+        
+        System.out.println("\t\t\t" + GREEN + " _____                                                                    _____ " + RESET);
+        System.out.println("\t\t\t" + GREEN + "( ___ )------------------------------------------------------------------( ___ )" + RESET);
+        System.out.println("\t\t\t" + GREEN + " |   |                                                                    |   | " + RESET);
+        System.out.println("\t\t\t" + GREEN + " |   |  ____  _                         ____   __        ___           _  |   | " + RESET);
+        System.out.println("\t\t\t" + GREEN + " |   | |  _ \\| | __ _ _   _  ___ _ __  |___ \\  \\ \\      / (_)_ __  ___| | |   | " + RESET);
+        System.out.println("\t\t\t" + GREEN + " |   | | |_) | |/ _` | | | |/ _ \\ '__|   __) |  \\ \\ /\\ / /| | '_ \\/ __| | |   | " + RESET);
+        System.out.println("\t\t\t" + GREEN + " |   | |  __/| | (_| | |_| |  __/ |     / __/    \\ V  V / | | | | \\__ \\_| |   | " + RESET);
+        System.out.println("\t\t\t" + GREEN + " |   | |_|   |_|\\__,_|\\__, |\\___|_|    |_____|    \\_/\\_/  |_|_| |_|___(_) |   | " + RESET);
+        System.out.println("\t\t\t" + GREEN + " |   |                |___/                                               |   | " + RESET);
+        System.out.println("\t\t\t" + GREEN + " |___|                                                                    |___| " + RESET);
+        System.out.println("\t\t\t" + GREEN + "(_____)------------------------------------------------------------------(_____)" + RESET);
+        System.out.println("\t\t\t\t\t" + BRIGHT_GREEN + winner.getName() + " WINS THE FINAL ROUND!" + RESET);
+        
+        System.out.println("\n\t\t\t" + BRIGHT_YELLOW + "Final Score: " + player1.getName() + " " + player1RoundWins + " - " + player2RoundWins + " " + player2.getName() + RESET);
+
+        System.out.println("\n\t\t\tPress ENTER to continue...");
+        sc.nextLine();
+        clearScreen();
+    }
+
+    private void displayDrawScreen() {
+        stopBackgroundMusic();
+        clearScreen();
+        System.out.println(BRIGHT_YELLOW + "\t\t\tIt's a draw!" + RESET);
+        System.out.println("\n\t\t\t" + BRIGHT_YELLOW + "Final Score: " + player1.getName() + " " + player1RoundWins + " - " + player2RoundWins + " " + player2.getName() + RESET);
+        System.out.println("\n\t\t\tPress ENTER to continue...");
+        sc.nextLine();
+        clearScreen();
     }
 
     private int calculateBasicAttackDamage(int var1) {
