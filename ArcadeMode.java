@@ -88,13 +88,31 @@ public class ArcadeMode {
             // Check who won the round (based on HP)
             if (player.hp > 0 && enemy.hp <= 0) {
                 playerRoundWins++;
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
                 System.out.println("\n\t\t\t\t\t\t" + BRIGHT_GREEN + "ROUND " + roundNumber + " WON!" + RESET);
                 totalArcadeWins++;
             } else if (enemy.hp > 0 && player.hp <= 0) {
                 enemyRoundWins++;
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
                 System.out.println("\n\t\t\t\t\t\t" + BRIGHT_RED + "ROUND " + roundNumber + " LOST!" + RESET);
             } else {
                 // Draw - doesn't count
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
                 System.out.println("\n\t\t\t\t\t\t" + BRIGHT_YELLOW + "ROUND " + roundNumber + " DRAW!" + RESET);
             }
 
@@ -111,10 +129,22 @@ public class ArcadeMode {
 
         if (playerRoundWins >= 2) {
             matchWins++;
+            System.out.println();
+            System.out.println();   
+            System.out.println();   
+            System.out.println();   
+            System.out.println();   
+            System.out.println();   
             System.out.println("\n\t\t\t\t\t\t" + BRIGHT_GREEN + "MATCH WON! Consecutive Wins: " + matchWins + "/5" + RESET);
             return true;
         } else {
             matchWins = 0;
+            System.out.println();
+            System.out.println();   
+            System.out.println();   
+            System.out.println();   
+            System.out.println();   
+            System.out.println();   
             System.out.println("\n\t\t\t\t\t\t" + BRIGHT_RED + "MATCH LOST! Arcade Streak Reset to 0" + RESET);
             return false;
         }
