@@ -191,7 +191,7 @@ public class SelectScreen {
                         typeWriter("\t\t\t\tWhen he's not optimizing algorithms, he's optimizing combat strategies with viral efficiency.\n", 40);
                         break;
                     case 7355608:
-                        // Thanos - Same as Player1
+                        // Thanos - Same as Player1 //test character thanos for damage scaling not fixed stats just to test instances
                         player = new Character("Thanos", 500, 500, 200,
                                 "Power Stone Blast - Deals 200 damage",
                                 "Infinity Snap - Deals 999 damage",
