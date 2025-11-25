@@ -14,21 +14,21 @@ public class ArcadeSelect extends SelectScreen {
             System.out.println();
             System.out.println();
             System.out.println();
-            System.out.println("\t\t\t\t=========================================");
-            System.out.println("\t\t\t\t====           ARCADE MODE           ====");
-            System.out.println("\t\t\t\t=========================================");
-            System.out.println("\t\t\t\t|   Choose your hero:                   |");
-            System.out.println("\t\t\t\t|     1. Iron Man                       |");
-            System.out.println("\t\t\t\t|     2. Captain America                |");
-            System.out.println("\t\t\t\t|     3. Thor                           |");
-            System.out.println("\t\t\t\t|     4. Spider-Man                     |");
-            System.out.println("\t\t\t\t|     5. Hulk                           |");
-            System.out.println("\t\t\t\t|     6. Black Widow                    |");
-            System.out.println("\t\t\t\t|     7. Ant-Man                        |");
-            System.out.println("\t\t\t\t|     8. The Falcon                     |");
-            System.out.println("\t\t\t\t|     9. Back                           |");
-            System.out.println("\t\t\t\t|     Enter choice:                     |");
-            System.out.print("\t\t\t\t > ");
+            System.out.println("\t\t\t\t\t\t=========================================");
+            System.out.println("\t\t\t\t\t\t====           ARCADE MODE           ====");
+            System.out.println("\t\t\t\t\t\t=========================================");
+            System.out.println("\t\t\t\t\t\t|   Choose your hero:                   |");
+            System.out.println("\t\t\t\t\t\t|     1. Iron Man                       |");
+            System.out.println("\t\t\t\t\t\t|     2. Captain America                |");
+            System.out.println("\t\t\t\t\t\t|     3. Thor                           |");
+            System.out.println("\t\t\t\t\t\t|     4. Spider-Man                     |");
+            System.out.println("\t\t\t\t\t\t|     5. Hulk                           |");
+            System.out.println("\t\t\t\t\t\t|     6. Black Widow                    |");
+            System.out.println("\t\t\t\t\t\t|     7. Ant-Man                        |");
+            System.out.println("\t\t\t\t\t\t|     8. The Falcon                     |");
+            System.out.println("\t\t\t\t\t\t|     9. Back                           |");
+            System.out.println("\t\t\t\t\t\t|     Enter choice:                     |");
+            System.out.print("\t\t\t\t\t\t> ");
 
             if (sc.hasNextInt()) {
                 choice = sc.nextInt();
@@ -169,6 +169,11 @@ public class ArcadeSelect extends SelectScreen {
             boolean validInput = false;
 
             while (!validInput) {
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
                 System.out.print("\t\t\t\t\tPress ENTER to view " + heroName + "'s story, or type '0' to skip: ");
                 System.out.print("> ");
                 input = sc.nextLine().trim();
@@ -180,13 +185,13 @@ public class ArcadeSelect extends SelectScreen {
                     validInput = true;
                 } else if (input.equalsIgnoreCase("0")) {
 
-                    System.out.println("\n\t\t\t\tYou chose to skip " + heroName + "'s story.\n");
+                    System.out.println("\n\t\t\t\t\tYou chose to skip " + heroName + "'s story.\n");
                     validInput = true;
                 } else {
                     System.out.println("\t\t\t\tInvalid input. Please try again.");
                 }
             }
-            System.out.println("\t\t\t\t--- " + heroName + "s Stats ---");
+            System.out.println("\t\t\t\t\t\t--- " + heroName + "s Stats ---");
 
         } catch (Exception e) {
             System.out.println("\t\t\t\tUnexpected exception caught: " + e);
