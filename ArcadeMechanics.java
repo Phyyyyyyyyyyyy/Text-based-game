@@ -99,15 +99,17 @@ public class ArcadeMechanics {
         }
 
         if (user.mana < cost) {
-            System.out.println("\t\t\t\t" + BRIGHT_RED + "Not enough mana!" + RESET);
-            System.out.println("\t\t\t\tPress ENTER to continue...");
+            System.out.println();
+            System.out.println("\t\t\t\t\t" + BRIGHT_RED + "Not enough mana!" + RESET);
+            System.out.println("\t\t\t\t\tPress ENTER to continue...");
             sc.nextLine();
             return;
         }
 
         target.hp -= damage;
         //System.out.println(user.getName() + " uses " + skillName + "!"); 
-        System.out.println("\t\t\t\t" + BRIGHT_RED + target.getName() + " takes " + damage + " damage!" + RESET);
+        System.out.println();
+        System.out.println("\t\t\t\t\t" + BRIGHT_RED + target.getName() + " takes " + damage + " damage!" + RESET);
 
         user.mana -= cost;
         cd.applyCooldown(skillNumber);
@@ -148,6 +150,11 @@ public class ArcadeMechanics {
         while (player.hp > 0 && enemy.hp > 0) {
             if (playerTurn) {
                 clearScreen();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
                 System.out.println("\n\t\t\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
                 System.out.println("\t\t\t\t\t\t" + BRIGHT_YELLOW + "Turn " + turnCount + RESET);
                 displayPlayerStats();
@@ -173,7 +180,7 @@ public class ArcadeMechanics {
                             int damage = calculateBasicAttackDamage(player.attack);
                             System.out.println("\t\t\t\tYou perform a basic attack!");
                             enemy.hp -= damage;
-                            
+
                             System.out.println("\t\t\t\tYou deal " + BRIGHT_RED + damage + " damage!" + RESET);
                             break;
                         case 1:
@@ -197,9 +204,13 @@ public class ArcadeMechanics {
 
             } else {
                 clearScreen();
-                System.out.println("\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
-                System.out.println("\n\t\t\t\t" + BRIGHT_RED + "Enemy's Turn!" + RESET);
-                System.out.println("\t\t\t\tCooldowns - S1: " + enemyCD.getFormattedCooldown(1)
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println("\t\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
+                System.out.println("\n\t\t\t\t\t" + BRIGHT_RED + "Enemy's Turn!" + RESET);
+                System.out.println("\t\t\t\t\tCooldowns - S1: " + enemyCD.getFormattedCooldown(1)
                         + " | S2: " + enemyCD.getFormattedCooldown(2)
                         + " | S3: " + enemyCD.getFormattedCooldown(3));
 
