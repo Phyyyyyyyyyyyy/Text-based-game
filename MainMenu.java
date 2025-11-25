@@ -11,14 +11,15 @@ public class MainMenu {
         int choice;
         String RED = "\u001B[31m";
         String RESET = "\u001B[0m";
-
-        System.out.println(RED + " __    __     ______     ______     __   __   ______     __            ______     __         ______     ______     __  __    " + RESET);
-        System.out.println(RED + "/\\ \"-./  \\   /\\  __ \\   /\\  == \\   /\\ \\ / /  /\\  ___\\   /\\ \\          /\\  ___\\   /\\ \\       /\\  __ \\   /\\  ___\\   /\\ \\_\\ \\   " + RESET);
-        System.out.println(RED + "\\ \\ \\-/\\  \\  \\ \\  __ \\  \\ \\  __<   \\ \\ \\'/   \\ \\  __\\   \\ \\ \\____     \\ \\ \\____  \\ \\ \\____  \\ \\  __ \\  \\ \\___  \\  \\ \\  __ \\  " + RESET);
-        System.out.println(RED + " \\ \\_\\ \\ \\_\\  \\ \\_\\ \\_\\  \\ \\_\\ \\_\\  \\ \\__|    \\ \\_____\\  \\ \\_____\\     \\ \\_____\\  \\ \\_____\\  \\ \\_\\ \\_\\  \\/\\_____\\  \\ \\_\\ \\_\\ " + RESET);
-        System.out.println(RED + "  \\/_/  \\/_/   \\/_/\\/_/   \\/_/ /_/   \\/_/      \\/_____/   \\/_____/      \\/_____/   \\/_____/   \\/_/\\/_/   \\/_____/   \\/_/\\/_/ " + RESET);                                                                                                                 
         System.out.println();
-        System.out.println(" \t\t\t\t\t >> A Turn-Queued Project <<"); 
+        System.out.println();
+        System.out.println(RED + "\t\t\t __    __     ______     ______     __   __   ______     __            ______     __         ______     ______     __  __    " + RESET);
+        System.out.println(RED + "\t\t\t/\\ \"-./  \\   /\\  __ \\   /\\  == \\   /\\ \\ / /  /\\  ___\\   /\\ \\          /\\  ___\\   /\\ \\       /\\  __ \\   /\\  ___\\   /\\ \\_\\ \\   " + RESET);
+        System.out.println(RED + "\t\t\t\\ \\ \\-/\\  \\  \\ \\  __ \\  \\ \\  __<   \\ \\ \\'/   \\ \\  __\\   \\ \\ \\____     \\ \\ \\____  \\ \\ \\____  \\ \\  __ \\  \\ \\___  \\  \\ \\  __ \\  " + RESET);
+        System.out.println(RED + "\t\t\t \\ \\_\\ \\ \\_\\  \\ \\_\\ \\_\\  \\ \\_\\ \\_\\  \\ \\__|    \\ \\_____\\  \\ \\_____\\     \\ \\_____\\  \\ \\_____\\  \\ \\_\\ \\_\\  \\/\\_____\\  \\ \\_\\ \\_\\ " + RESET);
+        System.out.println(RED + "\t\t\t  \\/_/  \\/_/   \\/_/\\/_/   \\/_/ /_/   \\/_/      \\/_____/   \\/_____/      \\/_____/   \\/_____/   \\/_/\\/_/   \\/_____/   \\/_/\\/_/ " + RESET);                                                                                                                 
+        System.out.println();
+        System.out.println(" \t\t\t\t\t\t\t\t\t>> A Turn-Queued Project <<"); 
         System.out.println();
         System.out.println();
         System.out.println();
@@ -26,13 +27,13 @@ public class MainMenu {
 
         do {
         
-            System.out.println(                 "\t\t\t\t=========================================");
-            System.out.println(                 "\t\t\t\t|   Select Game Mode:                   |");
-            System.out.println(                 "\t\t\t\t|     1. Player vs Player               |");
-            System.out.println(                 "\t\t\t\t|     2. Player vs AI                   |");
-            System.out.println(                 "\t\t\t\t|     3. Arcade Mode                    |");
-            System.out.println(                 "\t\t\t\t|     0. Exit                           |");
-            System.out.print(                   "\t\t\t\t > ");
+            System.out.println(                 "\t\t\t\t\t\t\t=========================================");
+            System.out.println(                 "\t\t\t\t\t\t\t|   Select Game Mode:                   |");
+            System.out.println(                 "\t\t\t\t\t\t\t|     1. Player vs Player               |");
+            System.out.println(                 "\t\t\t\t\t\t\t|     2. Player vs AI                   |");
+            System.out.println(                 "\t\t\t\t\t\t\t|     3. Arcade Mode                    |");
+            System.out.println(                 "\t\t\t\t\t\t\t|     0. Exit                           |");
+            System.out.print(                   "\t\t\t\t\t\t\t> ");
             while (!sc.hasNextInt()) {
                 System.out.print("     \n\t\t\t\t>>> Invalid input, enter a number: ");
                 sc.next();
