@@ -1,14 +1,9 @@
 
 import java.util.Scanner;
 
-public class ArcadeSelect {
+public class ArcadeSelect extends SelectScreen {
 
     static Scanner sc = new Scanner(System.in);
-
-    public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
 
     public static Character select() {
         Character player = null;
@@ -174,10 +169,9 @@ public class ArcadeSelect {
             boolean validInput = false;
 
             while (!validInput) {
-                System.out.print("\t\t\tPress ENTER to view " + heroName + "'s story, or type '0' to skip: ");
+                System.out.print("\t\t\t\t\tPress ENTER to view " + heroName + "'s story, or type '0' to skip: ");
                 System.out.print("> ");
                 input = sc.nextLine().trim();
-
 
                 if (input.isEmpty()) {
                     for (String line : storyLines) {
