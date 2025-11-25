@@ -169,14 +169,17 @@ public class ArcadeMechanics {
 
                     switch (action) {
                         case 0:
+                            playSound("Hit.wav");
                             int damage = calculateBasicAttackDamage(player.attack);
                             System.out.println("\t\t\t\tYou perform a basic attack!");
                             enemy.hp -= damage;
+                            
                             System.out.println("\t\t\t\tYou deal " + BRIGHT_RED + damage + " damage!" + RESET);
                             break;
                         case 1:
                         case 2:
                         case 3:
+                            playSound("Hit.wav");
                             useSkill(action, player, enemy, playerCD);
                             break;
                         default:
@@ -215,6 +218,7 @@ public class ArcadeMechanics {
                     case 1:
                         int damage = calculateBasicAttackDamage(enemy.attack);
                         System.out.println("\t\t\t\t" + enemy.name + " attacks!");
+                        playSound("Hit.wav");
                         player.hp -= damage;
                         System.out.println("\t\t\t\t" + enemy.name + " deals " + BRIGHT_RED + damage + " damage!" + RESET);
                         break;
@@ -223,6 +227,7 @@ public class ArcadeMechanics {
                             System.out.println("\t\t\t\t" + enemy.name + " tried to use " + enemy.skill1 + " but it's on cooldown!");
                         } else if (enemy.mana >= enemy.sk1Cost) {
                             System.out.println("\t\t\t\t" + enemy.name + " uses " + enemy.skill1 + "!");
+                            playSound("Hit.wav");
                             useSkill(1, enemy, player, enemyCD);
                         } else {
                             System.out.println("\t\t\t\t" + enemy.name + " tried to use " + enemy.skill1 + " but has no mana!");
@@ -233,6 +238,7 @@ public class ArcadeMechanics {
                             System.out.println("\t\t\t\t" + enemy.name + " tried to use " + enemy.skill2 + " but it's on cooldown!");
                         } else if (enemy.mana >= enemy.sk2Cost) {
                             System.out.println("\t\t\t\t" + enemy.name + " uses " + enemy.skill2 + "!");
+                            playSound("Hit.wav");
                             useSkill(2, enemy, player, enemyCD);
                         } else {
                             System.out.println("\t\t\t\t" + enemy.name + " tried to use " + enemy.skill2 + " but has no mana!");
@@ -243,6 +249,7 @@ public class ArcadeMechanics {
                             System.out.println("\t\t\t\t" + enemy.name + " tried to use " + enemy.skill3 + " but it's on cooldown!");
                         } else if (enemy.mana >= enemy.sk3Cost) {
                             System.out.println("\t\t\t\t" + enemy.name + " uses " + enemy.skill3 + "!");
+                            playSound("Hit.wav");
                             useSkill(3, enemy, player, enemyCD);
                         } else {
                             System.out.println("\t\t\t\t" + enemy.name + " tried to use " + enemy.skill3 + " but has no mana!");
