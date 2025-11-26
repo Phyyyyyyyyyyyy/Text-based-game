@@ -31,6 +31,7 @@ public class GameMechanics {
         enableColors();
     }
 
+    // Enable ANSI colors on Windows
     private void enableColors() {
         if (System.getProperty("os.name").toLowerCase().contains("windows")) {
             try {
@@ -40,50 +41,46 @@ public class GameMechanics {
     }
 
     public void startMatch() {
-        playSound("GameTheme.wav");
+       
 
-        System.out.println("\n\t\t\t\t" + BRIGHT_YELLOW + "========== PLAYER vs AI ==========" + RESET);
-        System.out.println("\t\t\t\t" + BRIGHT_YELLOW + "Best of 3 Rounds  - First to 2 Wins!" + RESET);
-        System.out.println("\t\t\t\t" + BRIGHT_BLUE + "==================================" + RESET);
+        System.out.println("\n" + BRIGHT_YELLOW + "\t\t\t\t==================================================" + RESET);
+        System.out.println(BRIGHT_YELLOW + "\t\t\t\tMATCH START - Best of 3 Rounds" + RESET);
+        System.out.println(BRIGHT_YELLOW + "\t\t\t\tFirst to 2 wins the match!" + RESET);
+        System.out.println(BRIGHT_YELLOW + "\t\t\t\t==================================================" + RESET);
 
+  
+        System.out.println("\n\t\t\t\tPlayer 1: ");
+        System.out.println("\t\t\t\t" + player.getName() + " - " + BRIGHT_GREEN + "HP: " + player.hp + "/" + player.maxHp + RESET + " | " + BRIGHT_BLUE + "Mana: " + player.mana + "/100" + RESET);
+        System.out.println("\n\t\t\t\tEnemy: ");
+        System.out.println("\t\t\t\t" + enemy.getName() + " - " + BRIGHT_GREEN + "HP: " + enemy.hp + "/" + enemy.maxHp + RESET + " | " + BRIGHT_BLUE + "Mana: " + enemy.mana + "/100" + RESET);
+        System.out.println(BRIGHT_YELLOW + "\t\t\t\t==================================================" + RESET);
         int playerWins = 0;
         int enemyWins = 0;
         int round = 1;
 
         while (playerWins < 2 && enemyWins < 2) {
-            System.out.println("\n\t\t\t\t" + BRIGHT_GREEN + "ROUND " + round + " - FIGHT!" + RESET);
-            System.out.println("\t\t\t\tPress ENTER to begin...");
-            System.out.print("\t\t\t\t");
+              playSound("GameTheme.wav");
+            System.out.println("\n" + BRIGHT_BLUE + "\t\t\t\t--- ROUND " + round + " ---" + RESET);
+            System.out.println(BRIGHT_YELLOW + "\t\t\t\tPress ENTER to start the round..." + RESET);
+            System.out.print("\t\t\t\t> ");
             sc.nextLine();
 
             resetForRound();
 
+
+
             if (playRound()) {
                 playerWins++;
-                stopBackgroundMusic();
-                winSFXClip = playAndStoreSound("WinSFX.wav");
+                playSound("WinSFX.wav");
+                 
 
-                System.out.println(GREEN + "\t\t\t\t _____                                          _____ " + RESET);
-                System.out.println(GREEN + "\t\t\t\t( ___ )----------------------------------------( ___ )" + RESET);
-                System.out.println(GREEN + "\t\t\t\t |   |                                          |   | " + RESET);
-                System.out.println(GREEN + "\t\t\t\t |   | __   __           __        ___       _  |   | " + RESET);
-                System.out.println(GREEN + "\t\t\t\t |   | \\ \\ / /__  _   _  \\ \\      / (_)_ __ | | |   | " + RESET);
-                System.out.println(GREEN + "\t\t\t\t |   |  \\ V / _ \\| | | |  \\ \\ /\\ / /| | '_ \\| | |   | " + RESET);
-                System.out.println(GREEN + "\t\t\t\t |   |   | | (_) | |_| |   \\ V  V / | | | | |_| |   | " + RESET);
-                System.out.println(GREEN + "\t\t\t\t |   |   |_|\\___/ \\__,_|    \\_/\\_/  |_|_| |_(_) |   | " + RESET);
-                System.out.println(GREEN + "\t\t\t\t |___|                                          |___| " + RESET);
-                System.out.println(GREEN + "\t\t\t\t(_____)----------------------------------------(_____)" + RESET);
+                System.out.println("\n" + BRIGHT_GREEN + "\t\t\t\t===================================" + RESET);
                 System.out.println(BRIGHT_GREEN + "\t\t\t\tCongratulations! You defeated " + enemy.name + "!" + RESET);
-
+                System.out.println(BRIGHT_GREEN + "\t\t\t\t===================================" + RESET);
+                
                 System.out.println("\n\t\t\t\tPress ENTER to continue...");
                 sc.nextLine();
-
-                // Stop win sound immediately
-                if (winSFXClip != null && winSFXClip.isRunning()) {
-                    winSFXClip.stop();
-                    winSFXClip.close();
-                }
-                winSFXClip = null;
+                stopBackgroundMusic();
 
                 clearScreen();
             } else {
@@ -91,22 +88,14 @@ public class GameMechanics {
                 stopBackgroundMusic();
                 loseSFXClip = playAndStoreSound("LoseSFX.wav");
 
-                System.out.println(RED + "\t\t\t\t_____                                           _____ " + RESET);
-                System.out.println(RED + "\t\t\t\t( ___ )-----------------------------------------( ___ )" + RESET);
-                System.out.println(RED + "\t\t\t\t |   |                                           |   | " + RESET);
-                System.out.println(RED + "\t\t\t\t |   | __   __            _                   _  |   | " + RESET);
-                System.out.println(RED + "\t\t\t\t |   | \\ \\ / /__  _   _  | |    ___  ___  ___| | |   | " + RESET);
-                System.out.println(RED + "\t\t\t\t |   |  \\ V / _ \\| | | | | |   / _ \\/ __|/ _ \\ | |   | " + RESET);
-                System.out.println(RED + "\t\t\t\t |   |   | | (_) | |_| | | |__| (_) \\__ \\  __/_| |   | " + RESET);
-                System.out.println(RED + "\t\t\t\t |   |   |_|\\___/ \\__,_| |_____\\___/|___/\\___(_) |   | " + RESET);
-                System.out.println(RED + "\t\t\t\t |___|                                           |___| " + RESET);
-                System.out.println(RED + "\t\t\t\t(_____)-----------------------------------------(_____)" + RESET);
+                System.out.println("\n" + BRIGHT_RED + "\t\t\t\t===================================" + RESET);
                 System.out.println(BRIGHT_RED + "\t\t\t\tYou lost! " + enemy.name + " wins!" + RESET);
+                System.out.println(BRIGHT_RED + "\t\t\t\t===================================" + RESET);
 
                 System.out.println("\n\t\t\t\tPress ENTER to continue...");
                 sc.nextLine();
+               
 
-                // Stop lose sound immediately
                 if (loseSFXClip != null && loseSFXClip.isRunning()) {
                     loseSFXClip.stop();
                     loseSFXClip.close();
@@ -116,50 +105,61 @@ public class GameMechanics {
                 clearScreen();
             }
 
-            System.out.println("\t\t\t\tScore: " + BRIGHT_GREEN + playerWins + RESET + " - " + BRIGHT_RED + enemyWins + RESET);
+            System.out.println("\n\t\t\t\tScore: " + BRIGHT_GREEN + playerWins + RESET + " - " + BRIGHT_RED + enemyWins + RESET);
 
             if (playerWins < 2 && enemyWins < 2) {
-                System.out.println("\t\t\t\tPress ENTER to continue...");
-                System.out.print("\t\t\t\t");
+                playSound("GameTheme.wav");
+                System.out.println("\n\t\t\t\tPress ENTER to continue to next round...");
+                System.out.print("\t\t\t\t> ");
                 sc.nextLine();
+                
             }
 
             stopBackgroundMusic();
             round++;
         }
-
+        
         clearScreen();
         stopBackgroundMusic();
 
         if (playerWins >= 2) {
-            winSFXClip = playAndStoreSound("WinSFX.wav");
-            System.out.println("\n\t\t\t\t" + BRIGHT_GREEN + " VICTORY! " + RESET);
-            System.out.println("\t\t\t\tYou defeated " + enemy.getName() + "!");
+            playSound("WinSFX.wav");
+             System.out.println(GREEN + "\t\t\t\t _____                                          _____ " + RESET);
+            System.out.println(GREEN + "\t\t\t\t( ___ )----------------------------------------( ___ )" + RESET);
+            System.out.println(GREEN + "\t\t\t\t |   |                                          |   | " + RESET);
+            System.out.println(GREEN + "\t\t\t\t |   | __   __           __        ___       _  |   | " + RESET);
+            System.out.println(GREEN + "\t\t\t\t |   | \\ \\ / /__  _   _  \\ \\      / (_)_ __ | | |   | " + RESET);
+            System.out.println(GREEN + "\t\t\t\t |   |  \\ V / _ \\| | | |  \\ \\ /\\ / /| | '_ \\| | |   | " + RESET);
+            System.out.println(GREEN + "\t\t\t\t |   |   | | (_) | |_| |   \\ V  V / | | | | |_| |   | " + RESET);
+            System.out.println(GREEN + "\t\t\t\t |   |   |_|\\___/ \\__,_|    \\_/\\_/  |_|_| |_(_) |   | " + RESET);
+            System.out.println(GREEN + "\t\t\t\t |___|                                          |___| " + RESET);
+            System.out.println(GREEN + "\t\t\t\t(_____)----------------------------------------(_____)" + RESET);
+            System.out.println(BRIGHT_GREEN + "\t\t\t\tYou defeated " + enemy.getName() + "!" + RESET);
+            System.out.println(BRIGHT_GREEN + "\t\t\t\t===================================" + RESET);
         } else {
-            loseSFXClip = playAndStoreSound("LoseSFX.wav");
-            System.out.println("\n\t\t\t\t" + BRIGHT_RED + " DEFEAT! " + RESET);
-            System.out.println("\t\t\t\t" + enemy.getName() + " defeated you.");
+            playSound("LoseSFX.wav");
+             System.out.println(RED + "\t\t\t\t_____                                           _____ " + RESET);
+            System.out.println(RED + "\t\t\t\t( ___ )-----------------------------------------( ___ )" + RESET);
+            System.out.println(RED + "\t\t\t\t |   |                                           |   | " + RESET);
+            System.out.println(RED + "\t\t\t\t |   | __   __            _                   _  |   | " + RESET);
+            System.out.println(RED + "\t\t\t\t |   | \\ \\ / /__  _   _  | |    ___  ___  ___| | |   | " + RESET);
+            System.out.println(RED + "\t\t\t\t |   |  \\ V / _ \\| | | | | |   / _ \\/ __|/ _ \\ | |   | " + RESET);
+            System.out.println(RED + "\t\t\t\t |   |   | | (_) | |_| | | |__| (_) \\__ \\  __/_| |   | " + RESET);
+            System.out.println(RED + "\t\t\t\t |   |   |_|\\___/ \\__,_| |_____\\___/|___/\\___(_) |   | " + RESET);
+            System.out.println(RED + "\t\t\t\t |___|                                           |___| " + RESET);
+            System.out.println(RED + "\t\t\t\t(_____)-----------------------------------------(_____)" + RESET);
+            System.out.println(BRIGHT_RED + "\t\t\t\t" + enemy.getName() + " defeated you." + RESET);
+            System.out.println(BRIGHT_RED + "\t\t\t\t===================================" + RESET);
         }
 
         System.out.println("\n\t\t\t\tPress ENTER to return...");
         sc.nextLine();
 
-        // Stop final result sound
-        if (winSFXClip != null && winSFXClip.isRunning()) {
-            winSFXClip.stop();
-            winSFXClip.close();
-        }
-        if (loseSFXClip != null && loseSFXClip.isRunning()) {
-            loseSFXClip.stop();
-            loseSFXClip.close();
-        }
     }
 
     private boolean playRound() {
         boolean playerTurn = true;
         turnCount = 1;
-
-        displayBattleStart();
 
         while (player.hp > 0 && enemy.hp > 0) {
             if (playerTurn) {
@@ -172,7 +172,7 @@ public class GameMechanics {
                 executePlayerAction(action);
             } else {
                 clearScreen();
-                System.out.println("\n\t\t\t\t" + BRIGHT_RED + enemy.getName() + "'s Turn!" + RESET);
+                System.out.println("\n" + BRIGHT_RED + "\t\t\t\t" + enemy.getName() + "'s Turn!" + RESET);
                 executeEnemyAction();
             }
 
@@ -189,42 +189,57 @@ public class GameMechanics {
             playerTurn = !playerTurn;
 
             System.out.println("\n\t\t\t\tPress ENTER to continue...");
-            System.out.print("\t\t\t\t");
+            System.out.print("\t\t\t\t> ");
             sc.nextLine();
-        }
+         playSound("Hit.wav");
 
+           
+        }
+       
         clearScreen();
         return player.hp > 0;
     }
 
-    private void displayBattleStart() {
-        System.out.println("\n\t\t\t\t" + BRIGHT_BLUE + "========================" + RESET);
-        System.out.println("\t\t\t\t" + BRIGHT_GREEN + player.getName() + RESET + " vs " + BRIGHT_RED + enemy.getName() + RESET);
-        System.out.println("\t\t\t\t" + BRIGHT_BLUE + "========================" + RESET);
-    }
-
     private void displayTurnHeader() {
-        System.out.println("\n\t\t\t\t" + BRIGHT_BLUE + "========================" + RESET);
-        System.out.println("\t\t\t\t" + BRIGHT_YELLOW + "Turn " + turnCount + RESET);
-        System.out.println("\t\t\t\t" + BRIGHT_BLUE + "========================" + RESET);
+        System.out.println("\n" + BRIGHT_YELLOW + "\t\t\t\t============================" + RESET);
+        System.out.println(BRIGHT_YELLOW + "\t\t\t\tTurn " + turnCount + RESET);
+        System.out.println(BRIGHT_YELLOW + "\t\t\t\t============================" + RESET);
         turnCount++;
     }
 
     private void displayPlayerStats() {
         String playerHPColor = getHPColor(player.hp, player.maxHp);
         String enemyHPColor = getHPColor(enemy.hp, enemy.maxHp);
-        System.out.println("\n\t\t\t\t" + BRIGHT_GREEN + player.getName() + ": " + playerHPColor + player.hp + "/" + player.maxHp + " HP" + RESET
-                + " | " + BRIGHT_BLUE + player.mana + "/" + MAX_MANA + " Mana" + RESET);
-        System.out.println("\t\t\t\t" + BRIGHT_RED + enemy.getName() + ": " + enemyHPColor + enemy.hp + "/" + enemy.maxHp + " HP" + RESET
-                + " | " + BRIGHT_BLUE + enemy.mana + "/" + MAX_MANA + " Mana" + RESET);
+        System.out.println("\n" + BRIGHT_GREEN + "\t\t\t\t" + player.getName() + "'s Turn" + RESET);
+        System.out.println("\t\t\t\tPlayer 1 - Cooldowns: " +
+            "S1: " + (playerCD.canUseSkill(1) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + playerCD.getFormattedCooldown(1)) + RESET +
+            " | S2: " + (playerCD.canUseSkill(2) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + playerCD.getFormattedCooldown(2)) + RESET +
+            " | S3: " + (playerCD.canUseSkill(3) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + playerCD.getFormattedCooldown(3)) + RESET);
+        System.out.println("\t\t\t\t" + BRIGHT_GREEN + "HP: " + playerHPColor + player.hp + "/" + player.maxHp + RESET + 
+                          " | " + BRIGHT_BLUE + "Mana: " + player.mana + "/100" + RESET);
+        System.out.println("\n\t\t\t\t" + BRIGHT_RED + "Enemy: " + enemy.getName() + RESET);
+        System.out.println("\t\t\t\t" + BRIGHT_GREEN + "HP: " + enemyHPColor + enemy.hp + "/" + enemy.maxHp + RESET + 
+                          " | " + BRIGHT_BLUE + "Mana: " + enemy.mana + "/100" + RESET);
     }
-
+  
     private void displaySkillOptions() {
-        System.out.println("\n\t\t\t\t" + BRIGHT_YELLOW + "ACTIONS:" + RESET);
-        System.out.println("\t\t\t\t0. Basic Attack (no mana)");
-        System.out.println("\t\t\t\t1. " + player.getSkill1() + " (" + player.sk1Cost + " mana) - " + (playerCD.canUseSkill(1) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + playerCD.getFormattedCooldown(1)) + RESET);
-        System.out.println("\t\t\t\t2. " + player.getSkill2() + " (" + player.sk2Cost + " mana) - " + (playerCD.canUseSkill(2) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + playerCD.getFormattedCooldown(2)) + RESET);
-        System.out.println("\t\t\t\t3. " + player.getSkill3() + " (" + player.sk3Cost + " mana) - " + (playerCD.canUseSkill(3) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + playerCD.getFormattedCooldown(3)) + RESET);
+        System.out.println("\n\t\t\t\tChoose your action:" + RESET);
+        
+        // Skill 0
+        System.out.println("\t\t\t\t0. "+BRIGHT_YELLOW +"Basic Attack (no mana)"+RESET);
+        
+        // Skill 1
+        String s1Cooldown = playerCD.canUseSkill(1) ? "" : " (" + playerCD.getFormattedCooldown(1) + ")";
+        System.out.println("\t\t\t\t1. " + BRIGHT_YELLOW + player.getSkill1() + " - Deals " + player.sk1Damage + " damage - " + BRIGHT_BLUE + player.sk1Cost + " mana" + RESET + s1Cooldown);
+        
+        // Skill 2
+        String s2Cooldown = playerCD.canUseSkill(2) ? "" : " (" + playerCD.getFormattedCooldown(2) + ")";
+        System.out.println("\t\t\t\t2. "+BRIGHT_YELLOW + player.getSkill2() + " - Deals " + player.sk2Damage + " damage - " + BRIGHT_BLUE + player.sk2Cost + " mana" + RESET + s2Cooldown);
+        
+        // Skill 3
+        String s3Cooldown = playerCD.canUseSkill(3) ? "" : " (" + playerCD.getFormattedCooldown(3) + ")";
+        System.out.println("\t\t\t\t3. "+BRIGHT_YELLOW + player.getSkill3() + " - Deals " + player.sk3Damage + " damage - " + BRIGHT_BLUE + player.sk3Cost + " mana" + RESET + s3Cooldown);
+        
         System.out.print("\t\t\t\t> ");
     }
 
@@ -238,7 +253,7 @@ public class GameMechanics {
         } catch (Exception e) {
             sc.nextLine();
         }
-        System.out.println("\t\t\t\t" + BRIGHT_RED + "Invalid! Turn skipped." + RESET);
+        System.out.println("\n" + BRIGHT_RED + "\t\t\t\tInvalid input! Turn skipped." + RESET);
         return -1;
     }
 
@@ -248,17 +263,18 @@ public class GameMechanics {
         if (action == 0) {
             int damage = 10 + rand.nextInt(11);
             enemy.hp -= damage;
-            System.out.println("\n\t\t\t\t" + BRIGHT_GREEN + "Basic Attack! " + BRIGHT_RED + damage + " damage!" + RESET);
+            System.out.println("\n" + BRIGHT_GREEN + "\t\t\t\tBasic Attack! " + BRIGHT_RED + damage + " damage!" + RESET);
+              playSound("Hit.wav");
         } else {
             int cost = action == 1 ? player.sk1Cost : (action == 2 ? player.sk2Cost : player.sk3Cost);
             int damage = action == 1 ? player.sk1Damage : (action == 2 ? player.sk2Damage : player.sk3Damage);
 
             if (!playerCD.canUseSkill(action)) {
-                System.out.println("\n\t\t\t\t" + BRIGHT_RED + "Skill on cooldown! Turn lost." + RESET);
+                System.out.println("\n" + BRIGHT_RED + "\t\t\t\tSkill on cooldown! Turn lost." + RESET);
                 return;
             }
             if (player.mana < cost) {
-                System.out.println("\n\t\t\t\t" + BRIGHT_RED + "Not enough mana! Turn lost." + RESET);
+                System.out.println("\n" + BRIGHT_RED + "\t\t\t\tNot enough mana! Turn lost." + RESET);
                 return;
             }
 
@@ -266,8 +282,9 @@ public class GameMechanics {
             player.mana -= cost;
             playerCD.applyCooldown(action);
             String skill = action == 1 ? player.getSkill1() : (action == 2 ? player.getSkill2() : player.getSkill3());
-            System.out.println("\n\t\t\t\t" + BRIGHT_GREEN + player.getName() + " uses " + skill + "!" + RESET);
-            System.out.println("\t\t\t\t" + BRIGHT_RED + damage + " damage!" + RESET);
+            System.out.println("\n" + BRIGHT_GREEN + "\t\t\t\t" + player.getName() + " uses " + skill + "!" + RESET);
+            System.out.println(BRIGHT_RED + "\t\t\t\t" + damage + " damage!" + RESET);
+             playSound("Hit.wav");
         }
     }
 
@@ -276,17 +293,21 @@ public class GameMechanics {
 
         if (enemy.mana >= enemy.sk3Cost && enemyCD.canUseSkill(3)) {
             action = 3;
+           
         } else if (enemy.mana >= enemy.sk2Cost && enemyCD.canUseSkill(2)) {
             action = 2;
+            
         } else if (enemy.mana >= enemy.sk1Cost && enemyCD.canUseSkill(1)) {
             action = 1;
+             
         }
 
         if (action == 1) {
             int damage = 10 + rand.nextInt(11);
             player.hp -= damage;
-            System.out.println("\n\t\t\t\t" + BRIGHT_RED + enemy.getName() + " uses Basic Attack!" + RESET);
-            System.out.println("\t\t\t\t" + BRIGHT_RED + damage + " damage!" + RESET);
+            System.out.println("\n" + BRIGHT_RED + "\t\t\t\t" + enemy.getName() + " uses Basic Attack!" + RESET);
+            System.out.println(BRIGHT_RED + "\t\t\t\t" + damage + " damage!" + RESET);
+               playSound("Hit.wav");
         } else {
             int cost = action == 1 ? enemy.sk1Cost : (action == 2 ? enemy.sk2Cost : enemy.sk3Cost);
             int damage = action == 1 ? enemy.sk1Damage : (action == 2 ? enemy.sk2Damage : enemy.sk3Damage);
@@ -295,8 +316,9 @@ public class GameMechanics {
             enemy.mana -= cost;
             enemyCD.applyCooldown(action);
             player.hp -= damage;
-            System.out.println("\n\t\t\t\t" + BRIGHT_RED + enemy.getName() + " uses " + skill + "!" + RESET);
-            System.out.println("\t\t\t\t" + BRIGHT_RED + damage + " damage!" + RESET);
+            System.out.println("\n" + BRIGHT_RED + "\t\t\t\t" + enemy.getName() + " uses " + skill + "!" + RESET);
+            System.out.println(BRIGHT_RED + "\t\t\t\t" + damage + " damage!" + RESET);
+          
         }
     }
 
@@ -332,7 +354,7 @@ public class GameMechanics {
         }
     }
 
-    // === Sound Methods ===
+
 
     public void playSound(String filename) {
         try {
