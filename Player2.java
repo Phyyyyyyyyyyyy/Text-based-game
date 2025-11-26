@@ -39,7 +39,6 @@ public class Player2 extends SelectScreen {
 
                 switch (choice) {
                     case 1:
-                        // Iron Man - Nerfed: Third skill damage 50 → 40
                         player = new Character("Iron Man", 110, 110, 15,
                                 "Repulsor Blast - Deals 13 damage",
                                 "Unibeam Strike - Deals 15 damage",
@@ -63,7 +62,6 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 3:
-                        // Thor - Nerfed: Third skill damage 20 → 18
                         player = new Character("Thor", 110, 110, 15,
                                 "Lightning Strike - Deals 11 damage",
                                 "Mjolnir Impact - Deals 13 damage",
@@ -75,7 +73,6 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 4:
-                        // Spider-Man - All skills converted to damage
                         player = new Character("Spider-Man", 110, 110, 15,
                                 "Web Strike - Deals 12 damage",
                                 "Venom Blast - Deals 18 damage",
@@ -87,7 +84,6 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 5:
-                        // Hulk - Nerfed: Base attack 20 → 18, skills 25 → 22
                         player = new Character("Hulk", 110, 110, 15,
                                 "Hulk Smash - Deals 14 damage",
                                 "Thunder Clap - Deals 15 damage",
@@ -99,7 +95,6 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 6:
-                        // Black Widow - All skills converted to damage
                         player = new Character("Black Widow", 100, 100, 15,
                                 "Widow's Bite - Deals 16 damage",
                                 "Combat Kick - Deals 18 damage",
@@ -111,7 +106,6 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 7:
-                        // Ant-Man - All skills converted to damage
                         player = new Character("Ant-Man", 100, 100, 15,
                                 "Pym Particle Blast - Deals 18 damage",
                                 "Quantum Strike - Deals 20 damage",
@@ -123,7 +117,6 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 8:
-                        // The Falcon - All skills converted to damage
                         player = new Character("The Falcon", 100, 100, 15,
                                 "Aerial Strike - Deals 14 damage",
                                 "Redwing Assault - Deals 22 damage",
@@ -159,7 +152,6 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 71:
-                        // Reuben Navarrete - Added with specified stats
                         player = new Character("Reuben Navarrete", 120, 120, 15, 
                                 "HE Grenade! - Deals 10 damage", 
                                 "Binary Tree Confusion! - Deals 10 damage", 
