@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class MainMenu {
@@ -17,29 +18,28 @@ public class MainMenu {
         System.out.println(RED + "\t\t\t/\\ \"-./  \\   /\\  __ \\   /\\  == \\   /\\ \\ / /  /\\  ___\\   /\\ \\          /\\  ___\\   /\\ \\       /\\  __ \\   /\\  ___\\   /\\ \\_\\ \\   " + RESET);
         System.out.println(RED + "\t\t\t\\ \\ \\-/\\  \\  \\ \\  __ \\  \\ \\  __<   \\ \\ \\'/   \\ \\  __\\   \\ \\ \\____     \\ \\ \\____  \\ \\ \\____  \\ \\  __ \\  \\ \\___  \\  \\ \\  __ \\  " + RESET);
         System.out.println(RED + "\t\t\t \\ \\_\\ \\ \\_\\  \\ \\_\\ \\_\\  \\ \\_\\ \\_\\  \\ \\__|    \\ \\_____\\  \\ \\_____\\     \\ \\_____\\  \\ \\_____\\  \\ \\_\\ \\_\\  \\/\\_____\\  \\ \\_\\ \\_\\ " + RESET);
-        System.out.println(RED + "\t\t\t  \\/_/  \\/_/   \\/_/\\/_/   \\/_/ /_/   \\/_/      \\/_____/   \\/_____/      \\/_____/   \\/_____/   \\/_/\\/_/   \\/_____/   \\/_/\\/_/ " + RESET);                                                                                                                 
+        System.out.println(RED + "\t\t\t  \\/_/  \\/_/   \\/_/\\/_/   \\/_/ /_/   \\/_/      \\/_____/   \\/_____/      \\/_____/   \\/_____/   \\/_/\\/_/   \\/_____/   \\/_/\\/_/ " + RESET);
         System.out.println();
-        System.out.println(" \t\t\t\t\t\t\t\t\t>> A Turn-Queued Project <<"); 
+        System.out.println(" \t\t\t\t\t\t\t\t\t>> A Turn-Queued Project <<");
         System.out.println();
         System.out.println();
         System.out.println();
-        
 
         do {
-        
-            System.out.println(                 "\t\t\t\t\t\t\t=========================================");
-            System.out.println(                 "\t\t\t\t\t\t\t|   Select Game Mode:                   |");
-            System.out.println(                 "\t\t\t\t\t\t\t|     1. Player vs Player               |");
-            System.out.println(                 "\t\t\t\t\t\t\t|     2. Player vs AI                   |");
-            System.out.println(                 "\t\t\t\t\t\t\t|     3. Arcade Mode                    |");
-            System.out.println(                 "\t\t\t\t\t\t\t|     0. Exit                           |");
-            System.out.print(                   "\t\t\t\t\t\t\t> ");
+
+            System.out.println("\t\t\t\t\t\t\t=========================================");
+            System.out.println("\t\t\t\t\t\t\t|   Select Game Mode:                   |");
+            System.out.println("\t\t\t\t\t\t\t|     1. Player vs Player               |");
+            System.out.println("\t\t\t\t\t\t\t|     2. Player vs AI                   |");
+            System.out.println("\t\t\t\t\t\t\t|     3. Arcade Mode                    |");
+            System.out.println("\t\t\t\t\t\t\t|     0. Exit                           |");
+            System.out.print("\t\t\t\t\t\t\t> ");
             while (!sc.hasNextInt()) {
                 System.out.print("     \n\t\t\t\t>>> Invalid input, enter a number: ");
                 sc.next();
             }
             choice = sc.nextInt();
-         
+
             switch (choice) {
                 case 1:
                     playerVsPlayerMenu(sc);
@@ -63,7 +63,9 @@ public class MainMenu {
         System.out.println("\n\t>>> PvP Match Starting...\n");
 
         Character player1 = Player1.select();
-        if (player1 == null) return; 
+        if (player1 == null) {
+            return;
+        }
         player1.displayIntro();
 
         System.out.println("\n\t\t\t\tPress ENTER for Player 2 to choose...");
@@ -71,7 +73,9 @@ public class MainMenu {
         sc.nextLine();
 
         Character player2 = Player2.select();
-        if (player2 == null) return; 
+        if (player2 == null) {
+            return;
+        }
         player2.displayIntro();
 
         System.out.println("\n\t\t\t\tPress ENTER to begin the battle...");
@@ -86,29 +90,35 @@ public class MainMenu {
         System.out.println("\n\t\t\t\t>>> PlayerVsAI Match Starting...\n");
 
         Character player = SelectScreen.select();
-        if (player == null) return; 
+        if (player == null) {
+            return;
+        }
         player.displayIntro();
 
-        Enemy enemy = Enemy.getRandomEnemy();   
+        Enemy enemy = Enemy.getRandomEnemy();
         enemy.displayIntro();
 
         System.out.println("\t\t\t\tPress ENTER to begin the battle...");
+        System.out.print("\t\t\t\t");
         sc.nextLine();
         sc.nextLine();
 
         clearScreen();
         GameMechanics game = new GameMechanics(player, enemy);
-        game.game();
+        game.startMatch();
     }
 
     public static void arcadeModeMenu(Scanner sc) {
         System.out.println("\n\t\t\t\t>>> Arcade Mode Starting...\n");
 
         Character player = ArcadeSelect.select();
-        if (player == null) return;
+        if (player == null) {
+            return;
+        }
         player.displayIntro();
 
         System.out.println("\t\t\t\tPress ENTER to begin your arcade run...");
+        System.out.print("\t\t\t\t");
         sc.nextLine();
         sc.nextLine();
 
