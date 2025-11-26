@@ -5,7 +5,7 @@ Study and familiarize code.
 
 TO DOS AS OF 24/11/2025:
 
-1. SFX when attacking all (PvAI, PvP & Arcade).
+1. SFX when attacking all (PvAI & PvP).
 2. PlayervsPlayer and PvAi round System.
 3. GameMechanics and PlayerMechanics bugs/issues (GameMechanics is one with ArcadeMode, etc.)
 4. I-same ang UI sa kada game mode. (pvai, pvp, arcade)
