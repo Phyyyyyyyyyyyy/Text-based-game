@@ -293,6 +293,8 @@ public class PlayerMechanics extends SelectScreen {
             String s3Color = var3.canUseSkill(3) ? BRIGHT_YELLOW : BRIGHT_RED;
             PrintStream var10000 = System.out;
             String var10001 = var1.getSkill1();
+            var10000.println("\t\t\t" + "0. " + BRIGHT_YELLOW  + "Basic Attack (no mana) " + RESET);
+            var10000 = System.out;
             var10000.println("\t\t\t" + "1. " + s1Color + var10001 + RESET + " - " + BRIGHT_BLUE + var1.sk1Cost + " mana" + RESET + " " + (s1Color == BRIGHT_RED ? "(" + var3.getFormattedCooldown(1) + ")" : ""));
             var10000 = System.out;
             var10001 = var1.getSkill2();
