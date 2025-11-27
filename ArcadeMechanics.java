@@ -3,6 +3,7 @@ import java.util.Random;
 import java.util.Scanner;
 import javax.sound.sampled.*;
 import java.io.File;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ArcadeMechanics {
 
@@ -129,7 +130,7 @@ public class ArcadeMechanics {
         enemy.regenerateMana(10);
         int enemyManaGained = enemy.mana - currentMana;
         boolean playerTurn = true;
-
+        // TO DISPLAY INITIAL STATS
         System.out.println("\n\t\t\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
         System.out.println(GREEN + "\t\t\t\t\t\tYour Character: " + RESET);
         String playerHPColor = getHPColor(player.hp, player.maxHp);
@@ -275,8 +276,9 @@ public class ArcadeMechanics {
                 System.out.println("\t\t\t\t\t" + BRIGHT_RED + "Enemy: " + RESET);
                 displayEnemyStats();
                 System.out.println("\t\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
-                player.regenerateMana(10);
-                enemy.regenerateMana(10);
+                int randomNumber = ThreadLocalRandom.current().nextInt(5, 1);
+                player.regenerateMana(randomNumber);
+                enemy.regenerateMana(randomNumber);
             }
 
             if (player.hp < 0) {
