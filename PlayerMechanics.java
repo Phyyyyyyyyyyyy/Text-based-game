@@ -186,24 +186,48 @@ public class PlayerMechanics extends SelectScreen {
         
         clearScreen();
         
-        System.out.println("\t\t\t\t" + GREEN + " _____                                                                    _____ " + RESET);
-        System.out.println("\t\t\t\t" + GREEN + "( ___ )------------------------------------------------------------------( ___ )" + RESET);
-        System.out.println("\t\t\t\t" + GREEN + " |   |                                                                    |   | " + RESET);
-        System.out.println("\t\t\t\t" + GREEN + " |   |  ____  _                         ____   __        ___           _  |   | " + RESET);
-        System.out.println("\t\t\t\t" + GREEN + " |   | |  _ \\| | __ _ _   _  ___ _ __  |___ \\  \\ \\      / (_)_ __  ___| | |   | " + RESET);
-        System.out.println("\t\t\t\t" + GREEN + " |   | | |_) | |/ _` | | | |/ _ \\ '__|   __) |  \\ \\ /\\ / /| | '_ \\/ __| | |   | " + RESET);
-        System.out.println("\t\t\t\t" + GREEN + " |   | |  __/| | (_| | |_| |  __/ |     / __/    \\ V  V / | | | | \\__ \\_| |   | " + RESET);
-        System.out.println("\t\t\t\t" + GREEN + " |   | |_|   |_|\\__,_|\\__, |\\___|_|    |_____|    \\_/\\_/  |_|_| |_|___(_) |   | " + RESET);
-        System.out.println("\t\t\t\t" + GREEN + " |   |                |___/                                               |   | " + RESET);
-        System.out.println("\t\t\t\t" + GREEN + " |___|                                                                    |___| " + RESET);
-        System.out.println("\t\t\t\t" + GREEN + "(_____)------------------------------------------------------------------(_____)" + RESET);
-        System.out.println("\t\t\t\t\t\t" + BRIGHT_GREEN + winner.getName() + " WINS THE FINAL ROUND!" + RESET);
-        
-        System.out.println("\n\t\t\t\t\t\t" + BRIGHT_YELLOW + "Final Score: " + player1.getName() + " " + player1RoundWins + " - " + player2RoundWins + " " + player2.getName() + RESET);
+        if(winner == player1){
+            System.out.println("\t\t\t\t" + GREEN + " _____                                                                    _____ " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + "( ___ )------------------------------------------------------------------( ___ )" + RESET);
+            System.out.println("\t\t\t\t" + GREEN + " |   |                                                                    |   | " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + " |   |  ____  _                           _    __        ___           _  |   | " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + " |   | |  _ \\| | __ _ _   _  ___ _ __    / |   \\ \\      / (_)_ __  ___| | |   | " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + " |   | | |_) | |/ _` | | | |/ _ \\ '__|   | |    \\ \\ /\\ / /| | '_ \\/ __| | |   | " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + " |   | |  __/| | (_| | |_| |  __/ |      | |     \\ V  V / | | | | \\__ \\_| |   | " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + " |   | |_|   |_|\\__,_|\\__, |\\___|_|      |_|      \\_/\\_/  |_|_| |_|___(_) |   | " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + " |   |                |___/                                               |   | " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + " |___|                                                                    |___| " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + "(_____)------------------------------------------------------------------(_____)" + RESET);
 
-        System.out.println("\n\t\t\t\t\t\tPress ENTER to continue...");
-        sc.nextLine();
-        clearScreen();
+            System.out.println("\t\t\t\t\t\t" + BRIGHT_GREEN + winner.getName() + " WINS THE FINAL ROUND!" + RESET);
+        
+            System.out.println("\n\t\t\t\t\t\t" + BRIGHT_YELLOW + "Final Score: " + player1.getName() + " " + player1RoundWins + " - " + player2RoundWins + " " + player2.getName() + RESET);
+
+            System.out.println("\n\t\t\t\t\t\tPress ENTER to continue...");
+            sc.nextLine();
+            clearScreen();
+
+        } else {
+            System.out.println("\t\t\t\t" + GREEN + " _____                                                                    _____ " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + "( ___ )------------------------------------------------------------------( ___ )" + RESET);
+            System.out.println("\t\t\t\t" + GREEN + " |   |                                                                    |   | " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + " |   |  ____  _                         ____   __        ___           _  |   | " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + " |   | |  _ \\| | __ _ _   _  ___ _ __  |___ \\  \\ \\      / (_)_ __  ___| | |   | " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + " |   | | |_) | |/ _` | | | |/ _ \\ '__|   __) |  \\ \\ /\\ / /| | '_ \\/ __| | |   | " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + " |   | |  __/| | (_| | |_| |  __/ |     / __/    \\ V  V / | | | | \\__ \\_| |   | " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + " |   | |_|   |_|\\__,_|\\__, |\\___|_|    |_____|    \\_/\\_/  |_|_| |_|___(_) |   | " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + " |   |                |___/                                               |   | " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + " |___|                                                                    |___| " + RESET);
+            System.out.println("\t\t\t\t" + GREEN + "(_____)------------------------------------------------------------------(_____)" + RESET);
+            System.out.println("\t\t\t\t\t\t" + BRIGHT_GREEN + winner.getName() + " WINS THE FINAL ROUND!" + RESET);
+        
+            System.out.println("\n\t\t\t\t\t\t" + BRIGHT_YELLOW + "Final Score: " + player1.getName() + " " + player1RoundWins + " - " + player2RoundWins + " " + player2.getName() + RESET);
+
+            System.out.println("\n\t\t\t\t\t\tPress ENTER to continue...");
+            sc.nextLine();
+            clearScreen();
+
+        }
     }
 
     private void displayDrawScreen() {
