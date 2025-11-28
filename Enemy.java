@@ -12,11 +12,11 @@ public class Enemy extends Character {
 
     @Override
     void displayIntro() {
-        System.out.println("\n\t\t\t\tEnemy: " + name);
-        System.out.println("\t\t\t\tStats - HP: " + hp + " | Attack: " + attack + " | Mana: " + mana);
-        System.out.println("\t\t\t\t1 " + skill1 + " - " +sk1Cost+" mana");
-        System.out.println("\t\t\t\t2 " + skill2 + " - " +sk2Cost+" mana");
-        System.out.println("\t\t\t\t3 " + skill3 + " - " +sk3Cost+" mana");
+        System.out.println("\n\t\t\t\t\t\t\tEnemy: " + name);
+        System.out.println("\t\t\t\t\t\t\tStats - HP: " + hp + " | Attack: " + attack + " | Mana: " + mana);
+        System.out.println("\t\t\t\t\t\t\t1 " + skill1 + " - " +sk1Cost+" mana");
+        System.out.println("\t\t\t\t\t\t\t2 " + skill2 + " - " +sk2Cost+" mana");
+        System.out.println("\t\t\t\t\t\t\t3 " + skill3 + " - " +sk3Cost+" mana");
         System.out.println();
     }
 
@@ -90,7 +90,7 @@ public class Enemy extends Character {
                 12, 13, 15, 12, 13, 15, 100));
 
         // HP 150: Total damage = 60 (Boss enemy - Thanos)
-        enemies.add(new Enemy("Thanos", 150, 150, 20,
+        enemies.add(new Enemy("Thanos", 130, 130, 20,
                 "Power Stone Punch - 18 damage", "Space Stone Snap - 20 damage", "Reality Warp - 22 damage",
                 18, 20, 22, 18, 20, 22, 100));
 
