@@ -276,7 +276,7 @@ public class ArcadeMechanics {
                 System.out.println("\t\t\t\t\t" + BRIGHT_RED + "Enemy: " + RESET);
                 displayEnemyStats();
                 System.out.println("\t\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
-                int randomNumber = ThreadLocalRandom.current().nextInt(5, 1);
+                int randomNumber = ThreadLocalRandom.current().nextInt(1, 5);
                 player.regenerateMana(randomNumber);
                 enemy.regenerateMana(randomNumber);
             }
