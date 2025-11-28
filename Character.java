@@ -58,8 +58,8 @@ public class Character {
     }
 
     void displayIntro() {
-        System.out.println("\n\t\t\t\t\tYou choose: " + name);
-        System.out.println("\t\t\t\t\tStats - HP: " + hp + " | Attack: " + attack + " | Mana: " + mana);
+        System.out.println("\n\t\t\t\t\t\t\tYou choose: " + name);
+        System.out.println("\t\t\t\t\t\t\tStats - HP: " + hp + " | Attack: " + attack + " | Mana: " + mana);
         if ("Iron Man".equals(name)) {
             System.out.println("\t\t\t\t\t\t\tSkills:");
             System.out.println("\t\t\t\t\t\t\t" + skill1 + " - " + sk1Cost + " mana");
@@ -110,6 +110,36 @@ public class Character {
 
         if ("The Falcon".equals(name)) {
            System.out.println("\t\t\t\t\t\t\tSkills:");
+            System.out.println("\t\t\t\t\t\t\t" + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("\t\t\t\t\t\t\t" + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("\t\t\t\t\t\t\t" + skill3 + " - " + sk3Cost + " mana");
+        }
+        if("Jan Clark".equals(name)){
+            System.out.println("\t\t\t\t\t\t\tSkills:");
+            System.out.println("\t\t\t\t\t\t\t" + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("\t\t\t\t\t\t\t" + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("\t\t\t\t\t\t\t" + skill3 + " - " + sk3Cost + " mana");
+        }
+        if("John Micoh".equals(name)){
+            System.out.println("\t\t\t\t\t\t\tSkills:");
+            System.out.println("\t\t\t\t\t\t\t" + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("\t\t\t\t\t\t\t" + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("\t\t\t\t\t\t\t" + skill3 + " - " + sk3Cost + " mana");
+        }
+        if(" Reuben Navarrete".equals(name)){
+            System.out.println("\t\t\t\t\t\t\tSkills:");
+            System.out.println("\t\t\t\t\t\t\t" + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("\t\t\t\t\t\t\t" + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("\t\t\t\t\t\t\t" + skill3 + " - " + sk3Cost + " mana");
+        }
+        if("Ethan Manto".equals(name)){
+            System.out.println("\t\t\t\t\t\t\tSkills:");
+            System.out.println("\t\t\t\t\t\t\t" + skill1 + " - " + sk1Cost + " mana");
+            System.out.println("\t\t\t\t\t\t\t" + skill2 + " - " + sk2Cost + " mana");
+            System.out.println("\t\t\t\t\t\t\t" + skill3 + " - " + sk3Cost + " mana");
+        }
+        if("Thanos".equals(name)){
+            System.out.println("\t\t\t\t\t\t\tSkills:");
             System.out.println("\t\t\t\t\t\t\t" + skill1 + " - " + sk1Cost + " mana");
             System.out.println("\t\t\t\t\t\t\t" + skill2 + " - " + sk2Cost + " mana");
             System.out.println("\t\t\t\t\t\t\t" + skill3 + " - " + sk3Cost + " mana");
