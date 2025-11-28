@@ -19,6 +19,13 @@ public class ArcadeMode {
     }
 
     public void startArcadeRun() {
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
         System.out.println("\n" + BRIGHT_BLUE + "\t\t\t\t\t\t========== WELCOME TO ARCADE MODE ==========" + RESET);
         System.out.println(BRIGHT_YELLOW + "\t\t\t\t\t\tWin 5 consecutive matches to beat Arcade Mode!" + RESET);
         System.out.println(BRIGHT_YELLOW + "\t\t\t\t\t\tEach match is Best of 3 (First to 2 wins)" + RESET);
