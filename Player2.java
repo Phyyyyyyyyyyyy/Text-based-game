@@ -19,20 +19,21 @@ public class Player2 extends SelectScreen {
                 System.out.println();
                 System.out.println();
                 System.out.println();
-                System.out.println("\t\t\t\t\t=========================================");
-                System.out.println("\t\t\t\t\t====    Player 2 Choose Hero         ====");
-                System.out.println("\t\t\t\t\t=========================================");
-                System.out.println("\t\t\t\t\t|   Choose your hero:                   |");
-                System.out.println("\t\t\t\t\t|     1. Iron Man                       |");
-                System.out.println("\t\t\t\t\t|     2. Captain America                |");
-                System.out.println("\t\t\t\t\t|     3. Thor                           |");
-                System.out.println("\t\t\t\t\t|     4. Spider-Man                     |");
-                System.out.println("\t\t\t\t\t|     5. Hulk                           |");
-                System.out.println("\t\t\t\t\t|     6. Black Widow                    |");
-                System.out.println("\t\t\t\t\t|     7. Ant-Man                        |");
-                System.out.println("\t\t\t\t\t|     8. The Falcon                     |");
-                System.out.println("\t\t\t\t\t|     9. Back                           |");
-                System.out.print("\t\t\t\t\t > ");
+                System.err.println("\n\n\n\n\n\n\n");
+                System.out.println("\t\t\t\t\t\t\t=========================================");
+                System.out.println("\t\t\t\t\t\t\t====    Player 2 Choose Hero         ====");
+                System.out.println("\t\t\t\t\t\t\t=========================================");
+                System.out.println("\t\t\t\t\t\t\t|   Choose your hero:                   |");
+                System.out.println("\t\t\t\t\t\t\t|     1. Iron Man                       |");
+                System.out.println("\t\t\t\t\t\t\t|     2. Captain America                |");
+                System.out.println("\t\t\t\t\t\t\t|     3. Thor                           |");
+                System.out.println("\t\t\t\t\t\t\t|     4. Spider-Man                     |");
+                System.out.println("\t\t\t\t\t\t\t|     5. Hulk                           |");
+                System.out.println("\t\t\t\t\t\t\t|     6. Black Widow                    |");
+                System.out.println("\t\t\t\t\t\t\t|     7. Ant-Man                        |");
+                System.out.println("\t\t\t\t\t\t\t|     8. The Falcon                     |");
+                System.out.println("\t\t\t\t\t\t\t|     9. Back                           |");
+                System.out.print("\t\t\t\t\t\t\t > ");
 
                 choice = sc.nextInt();
                 clearScreen();
@@ -45,9 +46,9 @@ public class Player2 extends SelectScreen {
                                 "Rocket Barrage - Deals 22 damage",
                                 13, 15, 22, 13, 15, 22, 100);
                         showStoryWithSkip("Iron Man", new String[]{
-                            "\n\t\t\tIron Man: Genius billionaire Tony Stark built his armored suit after a near-death experience.",
-                            "\t\t\t\tHe uses advanced technology to protect the world as Iron Man.",
-                            "\t\t\t\tDespite his arrogance, his heart pushes him to fight for others.\n"
+                            "\n\t\t\t\t\t\t\tIron Man: Genius billionaire Tony Stark built his armored suit after a near-death experience.",
+                            "\t\t\t\t\t\t\tHe uses advanced technology to protect the world as Iron Man.",
+                            "\t\t\t\t\t\t\tDespite his arrogance, his heart pushes him to fight for others.\n"
                         }, 40, player);
                         break;
                     case 2:
@@ -57,8 +58,8 @@ public class Player2 extends SelectScreen {
                                 "Shield Combo - Deals 24 damage",
                                 12, 14, 24, 12, 14, 24, 100);
                         showStoryWithSkip("Captain America", new String[]{
-                            "\n\t\t\tSteve Rogers - the super soldier from WWII.",
-                            "\t\t\tArmed with his vibranium shield, he defends freedom and justice.\n"
+                            "\n\t\t\t\t\t\t\tSteve Rogers - the super soldier from WWII.",
+                            "\t\t\t\t\t\t\tArmed with his vibranium shield, he defends freedom and justice.\n"
                         }, 40, player);
                         break;
                     case 3:
@@ -68,8 +69,8 @@ public class Player2 extends SelectScreen {
                                 "Thunder Crash - Deals 26 damage",
                                 11, 13, 26, 11, 13, 26, 100);
                         showStoryWithSkip("Thor", new String[]{
-                            "\n\t\t\tThor: The God of Thunder wields Mjolnir to protect the Nine Realms.",
-                            "\t\t\ttHe commands storms and possesses incredible strength.\n"
+                            "\n\t\t\t\t\t\t\tThor: The God of Thunder wields Mjolnir to protect the Nine Realms.",
+                            "\t\t\t\t\t\t\tHe commands storms and possesses incredible strength.\n"
                         }, 40, player);
                         break;
                     case 4:
@@ -79,8 +80,8 @@ public class Player2 extends SelectScreen {
                                 "Spider Fury - Deals 20 damage",
                                 12, 18, 20, 12, 18, 20, 100);
                         showStoryWithSkip("Spider-Man", new String[]{
-                            "\n\t\t\tPeter Parker: Bitten by a radioactive spider, he gained amazing powers.",
-                            "\t\t\tLives by 'with great power comes great responsibility.'\n"
+                            "\n\t\t\t\t\t\t\tPeter Parker: Bitten by a radioactive spider, he gained amazing powers.",
+                            "\t\t\t\t\t\t\tLives by 'with great power comes great responsibility.'\n"
                         }, 40, player);
                         break;
                     case 5:
@@ -90,8 +91,8 @@ public class Player2 extends SelectScreen {
                                 "Gamma Crush - Deals 21 damage",
                                 14, 15, 21, 14, 15, 21, 100);
                         showStoryWithSkip("Hulk", new String[]{
-                            "\n\t\t\tDr. Bruce Banner transforms into the Hulk when angered.",
-                            "\t\t\tHis unstoppable strength makes him both feared and admired.\n"
+                            "\n\t\t\t\t\t\t\tDr. Bruce Banner transforms into the Hulk when angered.",
+                            "\t\t\t\t\t\t\tHis unstoppable strength makes him both feared and admired.\n"
                         }, 40, player);
                         break;
                     case 6:
@@ -101,8 +102,8 @@ public class Player2 extends SelectScreen {
                                 "Assassin Strike - Deals 26 damage",
                                 16, 18, 26, 16, 18, 26, 100);
                         showStoryWithSkip("Black Widow", new String[]{
-                            "\n\t\tNatasha Romanoff: Trained as a deadly assassin.",
-                            "\t\t\tNow an Avenger, agile and cunning.\n"
+                            "\n\t\t\t\t\t\t\tNatasha Romanoff: Trained as a deadly assassin.",
+                            "\t\t\t\t\t\t\tNow an Avenger, agile and cunning.\n"
                         }, 40, player);
                         break;
                     case 7:
@@ -112,8 +113,8 @@ public class Player2 extends SelectScreen {
                                 "Giant Slam - Deals 22 damage",
                                 18, 20, 22, 18, 20, 22, 100);
                         showStoryWithSkip("Ant-Man", new String[]{
-                            "\n\t\t\tScott Lang uses Hank Pyms shrinking technology.",
-                            "\t\t\tA thief turned hero protecting those in need.\n"
+                            "\n\t\t\t\t\t\t\tScott Lang uses Hank Pyms shrinking technology.",
+                            "\t\t\t\t\t\t\tA thief turned hero protecting those in need.\n"
                         }, 40, player);
                         break;
                     case 8:
@@ -123,8 +124,8 @@ public class Player2 extends SelectScreen {
                                 "Tactical Barrage - Deals 24 damage",
                                 14, 22, 24, 14, 22, 24, 100);
                         showStoryWithSkip("The Falcon", new String[]{
-                            "\n\t\t\tSam Wilson uses advanced wing technology to soar the skies.",
-                            "\t\t\tA loyal soldier and hero with unmatched speed.\n"
+                            "\n\t\t\t\t\t\t\tSam Wilson uses advanced wing technology to soar the skies.",
+                            "\t\t\t\t\t\t\tA loyal soldier and hero with unmatched speed.\n"
                         }, 40, player);
                         break;
                     case 9:
@@ -137,8 +138,8 @@ public class Player2 extends SelectScreen {
                                 "System Overload - Deals 18 damage",
                                 10, 12, 18, 10, 12, 18, 100);
                         showStoryWithSkip("Jan Clark", new String[]{
-                            "\n\t\t\tJan Clark: Known for unstoppable drip and endless energy in class.",
-                            "\t\t\tTurns tough coding battles into a stage for style.\n"
+                            "\n\t\t\t\t\t\t\tJan Clark: Known for unstoppable drip and endless energy in class.",
+                            "\t\t\t\t\t\t\tTurns tough coding battles into a stage for style.\n"
                         }, 40, player);
                         break;
                     case 70:
@@ -148,7 +149,7 @@ public class Player2 extends SelectScreen {
                                 "Code Fury - Deals 20 damage",
                                 8, 12, 20, 8, 12, 20, 100);
                         showStoryWithSkip("John Micoh", new String[]{
-                            "\n\t\t\tJohn Micoh: Laid-back warrior balancing jokes and determination.\n"
+                            "\n\t\t\t\t\t\t\tJohn Micoh: Laid-back warrior balancing jokes and determination.\n"
                         }, 40, player);
                         break;
                     case 71:
@@ -158,10 +159,10 @@ public class Player2 extends SelectScreen {
                                 "Tik-Tok of Doom(scroll) - Deals 20 damage", 
                                 10, 10, 20, 10, 10, 20, 100);
                         showStoryWithSkip("Reuben Navarrete", new String[]{
-                            "\n\t\t\tReuben Navarrete: A modern warrior who codes by day and scrolls by night.",
-                            "\t\t\t\tHe analyzes enemies like binary trees - searching for their weakest nodes with precision.",
-                            "\t\t\t\tHis TikTok-scrolling fingers move at lightning speed, predicting patterns before they form.",
-                            "\t\t\t\tWhen he's not optimizing algorithms, he's optimizing combat strategies with viral efficiency.\n"
+                            "\n\t\t\t\t\t\t\tReuben Navarrete: A modern warrior who codes by day and scrolls by night.",
+                            "\t\t\t\t\t\t\tHe analyzes enemies like binary trees - searching for their weakest nodes with precision.",
+                            "\t\t\t\t\t\t\tHis TikTok-scrolling fingers move at lightning speed, predicting patterns before they form.",
+                            "\t\t\t\t\t\t\tWhen he's not optimizing algorithms, he's optimizing combat strategies with viral efficiency.\n"
                         }, 40, player);
                         break;
                     case 8700:
@@ -171,8 +172,8 @@ public class Player2 extends SelectScreen {
                                 "Beat Drop - Deals 15 damage",
                                 12, 13, 15, 12, 13, 15, 100);
                         showStoryWithSkip("Ethan Manto", new String[]{
-                            "\n\t\t\tEthan Manto: A warrior fueled by rhythm and style.",
-                            "\t\t\t\tTurns every battle into a stage with iconic moves.\n"
+                            "\n\t\t\t\t\t\t\tEthan Manto: A warrior fueled by rhythm and style.",
+                            "\t\t\t\t\t\t\tTurns every battle into a stage with iconic moves.\n"
                         }, 40, player);
                         break;
                     case 7355608:
@@ -182,18 +183,17 @@ public class Player2 extends SelectScreen {
                                 "Titan Punch - Deals 100 damage",
                                 30, 50, 30, 200, 999, 100, 100);
                         showStoryWithSkip("Thanos", new String[]{
-                            "\n\t\t\tThanos: The Mad Titan seeking universal balance.",
-                            "\t\t\tArmed with Infinity Stones, bends reality with a flick of his hand.\n"
+                            "\n\t\t\t\t\t\t\tThanos: The Mad Titan seeking universal balance.",
+                            "\t\t\t\t\t\t\tArmed with Infinity Stones, bends reality with a flick of his hand.\n"
                         }, 40, player);
                         break;
                     default:
-                        System.out.println("\t\t\tInvalid choice! Please select a valid hero number.\n");
+                        System.out.println("\t\t\t\t\t\t\tInvalid choice! Please select a valid hero number.\n");
                         break;
-
                 }
             } catch (Exception e) {
                 clearScreen();
-                System.out.println("\t\t\tUnexpected exception caught: " + e);
+                System.out.println("\t\t\t\t\t\t\tUnexpected exception caught: " + e);
                 sc.next();
             }
         }
@@ -201,38 +201,49 @@ public class Player2 extends SelectScreen {
     }
 
     public static void showStoryWithSkip(String heroName, String[] storyLines, int delay, Character hero) {
-        try {
-            sc.nextLine();
+    try {
+        sc.nextLine();
 
-            String input = "";
-            boolean validInput = false;
+        String input = "";
+        boolean validInput = false;
 
-            while (!validInput) {
-                System.out.print("\t\t\tPress ENTER to view " + heroName + "'s story, or type '0' to skip: ");
-                input = sc.nextLine().trim();
+        while (!validInput) {
+            System.out.println("\n\n\n\n\n\n\n");
+            System.out.print("\t\t\t\t\t\t\tPress ENTER to view " + heroName + "'s story, or type '0' to skip: ");
+            input = sc.nextLine().trim();
 
-                if (input.isEmpty()) {
-                    for (String line : storyLines) {
-                        typeWriter(line, delay);
-                    }
-                    validInput = true;
-                } else if (input.equalsIgnoreCase("0")) {
-                    System.out.println("\n\t\t\tYou chose to skip " + heroName + "'s story.\n");
-                    validInput = true;
-                } else {
-                    System.out.println("\t\t\tInvalid input. Please try again.");
+            if (input.isEmpty()) {
+                for (String line : storyLines) {
+                    typeWriter(line, delay);
                 }
+                validInput = true;
+            } else if (input.equalsIgnoreCase("0")) {
+                System.out.println("\n\t\t\t\t\t\t\tYou chose to skip " + heroName + "'s story.\n");
+                validInput = true;
+            } else {
+                System.out.println("\t\t\t\t\t\t\tInvalid input. Please try again.");
             }
-            System.out.println("\t\t\t--- " + heroName + "s Stats ---");
-            hero.displayIntro();
-
-        } catch (Exception e) {
-            System.out.println("\t\t\tUnexpected exception caught: " + e);
-            sc.next();
-
-            System.out.println("\t\t\t--- " + heroName + "s Stats ---");
-            hero.displayIntro();
         }
 
+        System.out.println("\t\t\t\t\t\t\t--- " + heroName + "'s Stats ---");
+        hero.displayIntro();
+
+        System.out.println("\n\t\t\t\t\t\t\tPress ENTER to begin the battle...");
+        System.out.print("\t\t\t\t\t\t\t> ");
+        sc.nextLine();
+        clearScreen();
+
+    } catch (Exception e) {
+        System.out.println("\t\t\t\t\t\t\tUnexpected exception caught: " + e);
+        sc.next();
+
+        System.out.println("\t\t\t\t\t\t\t--- " + heroName + "'s Stats ---");
+        hero.displayIntro();
+        
+        System.out.println("\n\t\t\t\t\t\t\tPress ENTER to begin the battle...");
+        System.out.print("\t\t\t\t\t\t\t> ");
+        sc.nextLine();
+        clearScreen();
     }
+}
 }
