@@ -56,6 +56,7 @@ public class Character {
             this.mana = 100;
         }
     }
+    
 
     void displayIntro() {
         System.out.println("\n\t\t\t\t\t\t\tYou choose: " + name);
@@ -152,6 +153,5 @@ public class Character {
         System.out.println("\t\t\t\t\t" + name + " - HP: " + hp + "/" + maxHp + " | Mana: " + mana);
     }
 }
-
 
 
