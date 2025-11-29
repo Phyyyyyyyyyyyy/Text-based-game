@@ -1,14 +1,22 @@
 
+import java.io.File;
+import java.util.Random;
 import java.util.Scanner;
+import javax.sound.sampled.Clip;
 
-public class MainMenu {
+public class MainMenu extends SelectScreen {
 
+    private Clip backgroundMusicClip;
+    public int turnCount = 1;
+
+    
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
     public static void start(Scanner sc) {
+        playSound("OpeningSound.wav");
         String[] colors = {
             "\u001B[31m", // Red
             "\u001B[33m", // Yellow
@@ -122,16 +130,20 @@ public class MainMenu {
 
             switch (choice) {
                 case 1:
+                     playSound("InputSound.wav");
                     playerVsPlayerMenu(sc);
                     break;
                 case 2:
+                    playSound("InputSound.wav");
                     playerVsAiMenu(sc);
                     break;
                 case 3:
+                    playSound("InputSound.wav");
                     arcadeModeMenu(sc);
                     break;
                 case 0:
-                    System.out.println("                            \n\t\t\t\t>>> Exiting... Goodbye!\n");
+                    playSound("InputSound.wav");
+                    System.out.println("                            \n\t\t\t\t>>> Exiting... Thank you for playing <3\n");
                     System.exit(0); // Use 0 for normal exit
                 default:
                     System.out.println("                            \n\t\t\t\t>>> Invalid choice, please try again!\n");
@@ -206,4 +218,6 @@ public class MainMenu {
         ArcadeMode arcade = new ArcadeMode(player);
         arcade.startArcadeRun();
     }
+
+
 }
