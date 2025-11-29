@@ -1,10 +1,9 @@
+
 import java.util.Scanner;
 
-public class Player2 extends SelectScreen {
+public class Player1 extends SelectScreen {
 
     static Scanner sc = new Scanner(System.in);
-    static Player1 player1 = new Player1();
-    
 
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
@@ -23,7 +22,7 @@ public class Player2 extends SelectScreen {
                 System.out.println();
                 System.err.println("\n\n\n\n\n\n\n");
                 System.out.println("\t\t\t\t\t\t\t=========================================");
-                System.out.println("\t\t\t\t\t\t\t====    Player 2 Choose Hero         ====");
+                System.out.println("\t\t\t\t\t\t\t====    Player 1 Choose Hero         ====");
                 System.out.println("\t\t\t\t\t\t\t=========================================");
                 System.out.println("\t\t\t\t\t\t\t|   Choose your hero:                   |");
                 System.out.println("\t\t\t\t\t\t\t|     1. Iron Man                       |");
@@ -55,7 +54,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 2:
-                    playSound("InputSound.wav");
+                        playSound("InputSound.wav");
                         player = new Character("Captain America", 110, 110, 15,
                                 "Shield Throw - Deals 12 damage",
                                 "Shield Bash - Deals 14 damage",
@@ -67,7 +66,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 3:
-                    playSound("InputSound.wav");
+                        playSound("InputSound.wav");
                         player = new Character("Thor", 110, 110, 15,
                                 "Lightning Strike - Deals 11 damage",
                                 "Mjolnir Impact - Deals 13 damage",
@@ -79,7 +78,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 4:
-                    playSound("InputSound.wav");
+                        playSound("InputSound.wav");
                         player = new Character("Spider-Man", 110, 110, 15,
                                 "Web Strike - Deals 12 damage",
                                 "Venom Blast - Deals 18 damage",
@@ -91,7 +90,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 5:
-                    playSound("InputSound.wav");
+                        playSound("InputSound.wav");
                         player = new Character("Hulk", 110, 110, 15,
                                 "Hulk Smash - Deals 14 damage",
                                 "Thunder Clap - Deals 15 damage",
@@ -103,7 +102,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 6:
-                    playSound("InputSound.wav");
+                        playSound("InputSound.wav");
                         player = new Character("Black Widow", 100, 100, 15,
                                 "Widow's Bite - Deals 16 damage",
                                 "Combat Kick - Deals 18 damage",
@@ -115,7 +114,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 7:
-                    playSound("InputSound.wav");
+                        playSound("InputSound.wav");
                         player = new Character("Ant-Man", 100, 100, 15,
                                 "Pym Particle Blast - Deals 18 damage",
                                 "Quantum Strike - Deals 20 damage",
@@ -127,7 +126,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 8:
-                    playSound("InputSound.wav");
+                        playSound("InputSound.wav");
                         player = new Character("The Falcon", 100, 100, 15,
                                 "Aerial Strike - Deals 14 damage",
                                 "Redwing Assault - Deals 22 damage",
@@ -139,11 +138,11 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 9:
-                    playSound("InputSound.wav");
-                        player1.select();
+                        playSound("InputSound.wav");
+                        MainMenu.start(sc);
                         return null;
                     case 69:
-                    playSound("InputSound.wav");
+                        playSound("InputSound.wav");
                         player = new Character("Jan Clark", 120, 120, 15,
                                 "Code Crash - Deals 10 damage",
                                 "Debug Strike - Deals 12 damage",
@@ -155,7 +154,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 70:
-                    playSound("InputSound.wav");
+                        playSound("InputSound.wav");
                         player = new Character("John Micoh", 120, 120, 15,
                                 "CIT Crash - Deals 8 damage",
                                 "Bug Blast - Deals 12 damage",
@@ -165,12 +164,12 @@ public class Player2 extends SelectScreen {
                             "\n\t\t\t\t\t\t\tJohn Micoh: Laid-back warrior balancing jokes and determination.\n"
                         }, 40, player);
                         break;
-                    case 71:
-                    playSound("InputSound.wav");
-                        player = new Character("Reuben Navarrete", 120, 120, 15, 
-                                "HE Grenade! - Deals 10 damage", 
-                                "Binary Tree Confusion! - Deals 10 damage", 
-                                "Tik-Tok of Doom(scroll) - Deals 20 damage", 
+                    case 72:
+                        playSound("InputSound.wav");
+                        player = new Character("Reuben Navarrete", 120, 120, 15,
+                                "HE Grenade! - Deals 10 damage",
+                                "Binary Tree Confusion! - Deals 10 damage",
+                                "Tik-Tok of Doom(scroll) - Deals 20 damage",
                                 10, 10, 20, 10, 10, 20, 100);
                         showStoryWithSkip("Reuben Navarrete", new String[]{
                             "\n\t\t\t\t\t\t\tReuben Navarrete: A modern warrior who codes by day and scrolls by night.",
@@ -179,8 +178,8 @@ public class Player2 extends SelectScreen {
                             "\t\t\t\t\t\t\tWhen he's not optimizing algorithms, he's optimizing combat strategies with viral efficiency.\n"
                         }, 40, player);
                         break;
-                    case 8700:
-                    playSound("InputSound.wav");
+                    case 71:
+                        playSound("InputSound.wav");
                         player = new Character("Ethan Manto", 120, 120, 15,
                                 "Rhythm Strike - Deals 12 damage",
                                 "Dance Blast - Deals 13 damage",
@@ -192,7 +191,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 7355608:
-                    playSound("InputSound.wav");
+                        playSound("InputSound.wav");
                         player = new Character("Thanos", 500, 500, 200,
                                 "Power Stone Blast - Deals 200 damage",
                                 "Infinity Snap - Deals 999 damage",
@@ -204,7 +203,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     default:
-                    playSound("InputSound.wav");
+                        playSound("InputSound.wav");
                         System.out.println("\t\t\t\t\t\t\tInvalid choice! Please select a valid hero number.\n");
                         break;
                 }
@@ -218,49 +217,49 @@ public class Player2 extends SelectScreen {
     }
 
     public static void showStoryWithSkip(String heroName, String[] storyLines, int delay, Character hero) {
-    try {
-        sc.nextLine();
+        try {
+            sc.nextLine();
 
-        String input = "";
-        boolean validInput = false;
+            String input = "";
+            boolean validInput = false;
 
-        while (!validInput) {
-            System.out.println("\n\n\n\n\n\n\n");
-            System.out.print("\t\t\t\t\t\t\tPress ENTER to view " + heroName + "'s story, or type '0' to skip: ");
-            input = sc.nextLine().trim();
+            while (!validInput) {
+                System.out.println("\n\n\n\n\n\n\n");
+                System.out.print("\t\t\t\t\t\t\tPress ENTER to view " + heroName + "'s story, or type '0' to skip: ");
+                input = sc.nextLine().trim();
 
-            if (input.isEmpty()) {
-                for (String line : storyLines) {
-                    typeWriter(line, delay);
+                if (input.isEmpty()) {
+                    for (String line : storyLines) {
+                        typeWriter(line, delay);
+                    }
+                    validInput = true;
+                } else if (input.equalsIgnoreCase("0")) {
+                    System.out.println("\n\t\t\t\t\t\t\tYou chose to skip " + heroName + "'s story.\n");
+                    validInput = true;
+                } else {
+                    System.out.println("\t\t\t\t\t\t\tInvalid input. Please try again.");
                 }
-                validInput = true;
-            } else if (input.equalsIgnoreCase("0")) {
-                System.out.println("\n\t\t\t\t\t\t\tYou chose to skip " + heroName + "'s story.\n");
-                validInput = true;
-            } else {
-                System.out.println("\t\t\t\t\t\t\tInvalid input. Please try again.");
             }
+
+            System.out.println("\t\t\t\t\t\t\t--- " + heroName + "'s Stats ---");
+            hero.displayIntro();
+
+            System.out.println("\n\t\t\t\t\t\t\tPress ENTER to begin the battle...");
+            System.out.print("\t\t\t\t\t\t\t> ");
+            sc.nextLine();
+            clearScreen();
+
+        } catch (Exception e) {
+            System.out.println("\t\t\t\t\t\t\tUnexpected exception caught: " + e);
+            sc.next();
+
+            System.out.println("\t\t\t\t\t\t\t--- " + heroName + "'s Stats ---");
+            hero.displayIntro();
+
+            System.out.println("\n\t\t\t\t\t\t\tPress ENTER to begin the battle...");
+            System.out.print("\t\t\t\t\t\t\t> ");
+            sc.nextLine();
+            clearScreen();
         }
-
-        System.out.println("\t\t\t\t\t\t\t--- " + heroName + "'s Stats ---");
-        hero.displayIntro();
-
-        System.out.println("\n\t\t\t\t\t\t\tPress ENTER to begin the battle...");
-        System.out.print("\t\t\t\t\t\t\t> ");
-        sc.nextLine();
-        clearScreen();
-
-    } catch (Exception e) {
-        System.out.println("\t\t\t\t\t\t\tUnexpected exception caught: " + e);
-        sc.next();
-
-        System.out.println("\t\t\t\t\t\t\t--- " + heroName + "'s Stats ---");
-        hero.displayIntro();
-        
-        System.out.println("\n\t\t\t\t\t\t\tPress ENTER to begin the battle...");
-        System.out.print("\t\t\t\t\t\t\t> ");
-        sc.nextLine();
-        clearScreen();
     }
-}
 }
