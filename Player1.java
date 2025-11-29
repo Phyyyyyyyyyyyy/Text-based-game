@@ -139,7 +139,8 @@ public class Player1 extends SelectScreen {
                         break;
                     case 9:
                         playSound("InputSound.wav");
-                        MainMenu.start(sc);
+                        MainMenu menu= new MainMenu(sc);
+                        menu.start(sc);
                         return null;
                     case 69:
                         playSound("InputSound.wav");
