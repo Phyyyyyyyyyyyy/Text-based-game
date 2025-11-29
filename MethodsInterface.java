@@ -1,4 +1,3 @@
-
 import java.io.File;
 
 import javax.sound.sampled.AudioInputStream;
@@ -21,6 +20,8 @@ public interface MethodsInterface {
     void playerVsPlayerMenu(java.util.Scanner sc);
 
     void playerVsAiMenu(java.util.Scanner sc);
+
+    void arcadeModeMenu(java.util.Scanner sc);
 
     void startArcadeRun();
 
@@ -56,3 +57,4 @@ public interface MethodsInterface {
 
     }
 }
+
