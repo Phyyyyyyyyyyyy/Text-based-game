@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class Player2 extends SelectScreen {
 
     static Scanner sc = new Scanner(System.in);
+    static Player1 player1 = new Player1();
+    
 
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
@@ -40,6 +42,7 @@ public class Player2 extends SelectScreen {
 
                 switch (choice) {
                     case 1:
+                        playSound("InputSound.wav");
                         player = new Character("Iron Man", 110, 110, 15,
                                 "Repulsor Blast - Deals 13 damage",
                                 "Unibeam Strike - Deals 15 damage",
@@ -52,6 +55,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 2:
+                    playSound("InputSound.wav");
                         player = new Character("Captain America", 110, 110, 15,
                                 "Shield Throw - Deals 12 damage",
                                 "Shield Bash - Deals 14 damage",
@@ -63,6 +67,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 3:
+                    playSound("InputSound.wav");
                         player = new Character("Thor", 110, 110, 15,
                                 "Lightning Strike - Deals 11 damage",
                                 "Mjolnir Impact - Deals 13 damage",
@@ -74,6 +79,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 4:
+                    playSound("InputSound.wav");
                         player = new Character("Spider-Man", 110, 110, 15,
                                 "Web Strike - Deals 12 damage",
                                 "Venom Blast - Deals 18 damage",
@@ -85,6 +91,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 5:
+                    playSound("InputSound.wav");
                         player = new Character("Hulk", 110, 110, 15,
                                 "Hulk Smash - Deals 14 damage",
                                 "Thunder Clap - Deals 15 damage",
@@ -96,6 +103,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 6:
+                    playSound("InputSound.wav");
                         player = new Character("Black Widow", 100, 100, 15,
                                 "Widow's Bite - Deals 16 damage",
                                 "Combat Kick - Deals 18 damage",
@@ -107,6 +115,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 7:
+                    playSound("InputSound.wav");
                         player = new Character("Ant-Man", 100, 100, 15,
                                 "Pym Particle Blast - Deals 18 damage",
                                 "Quantum Strike - Deals 20 damage",
@@ -118,6 +127,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 8:
+                    playSound("InputSound.wav");
                         player = new Character("The Falcon", 100, 100, 15,
                                 "Aerial Strike - Deals 14 damage",
                                 "Redwing Assault - Deals 22 damage",
@@ -129,9 +139,11 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 9:
-                        MainMenu.start(sc);
+                    playSound("InputSound.wav");
+                        player1.select();
                         return null;
                     case 69:
+                    playSound("InputSound.wav");
                         player = new Character("Jan Clark", 120, 120, 15,
                                 "Code Crash - Deals 10 damage",
                                 "Debug Strike - Deals 12 damage",
@@ -143,6 +155,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 70:
+                    playSound("InputSound.wav");
                         player = new Character("John Micoh", 120, 120, 15,
                                 "CIT Crash - Deals 8 damage",
                                 "Bug Blast - Deals 12 damage",
@@ -153,6 +166,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 71:
+                    playSound("InputSound.wav");
                         player = new Character("Reuben Navarrete", 120, 120, 15, 
                                 "HE Grenade! - Deals 10 damage", 
                                 "Binary Tree Confusion! - Deals 10 damage", 
@@ -166,6 +180,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 8700:
+                    playSound("InputSound.wav");
                         player = new Character("Ethan Manto", 120, 120, 15,
                                 "Rhythm Strike - Deals 12 damage",
                                 "Dance Blast - Deals 13 damage",
@@ -177,6 +192,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     case 7355608:
+                    playSound("InputSound.wav");
                         player = new Character("Thanos", 500, 500, 200,
                                 "Power Stone Blast - Deals 200 damage",
                                 "Infinity Snap - Deals 999 damage",
@@ -188,6 +204,7 @@ public class Player2 extends SelectScreen {
                         }, 40, player);
                         break;
                     default:
+                    playSound("InputSound.wav");
                         System.out.println("\t\t\t\t\t\t\tInvalid choice! Please select a valid hero number.\n");
                         break;
                 }
