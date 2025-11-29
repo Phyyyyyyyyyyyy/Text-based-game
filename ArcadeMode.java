@@ -189,20 +189,7 @@ public class ArcadeMode {
         enemy.mana = 10;
     }
 
-    private EnemyHierarchy.Difficulty getDifficultyByWinStreak(int wins) {
-        if (wins < 1) {
-            return EnemyHierarchy.Difficulty.EASY;
-        }
-        if (wins < 2) {
-            return EnemyHierarchy.Difficulty.MEDIUM;
-        }
-        if (wins < 4) {
-            return EnemyHierarchy.Difficulty.HARD;
-        }
-
-        return EnemyHierarchy.Difficulty.BOSS;
-
-    }
+    
 
     private void displayRoundScore(int playerWins, int enemyWins, int currentRound) {
         System.out.println("\n\t\t\t\t\t\t" + BRIGHT_BLUE + "Round Score: " + BRIGHT_GREEN + playerWins + RESET
@@ -221,14 +208,7 @@ public class ArcadeMode {
         System.out.println("\t\t\t\t\t\t" + BRIGHT_BLUE + "========================================\n" + RESET);
     }
 
-    private void displayArcadeModeFailed() {
-        System.out.println("\n\n\t\t\t\t\t\t" + BRIGHT_RED + "========================================" + RESET);
-        System.out.println("\t\t\t\t\t\t" + BRIGHT_RED + "    ARCADE MODE COMPLETE! YOU LOST!" + RESET);
-        System.out.println("\t\t\t\t\t\t" + BRIGHT_RED + "========================================" + RESET);
-        System.out.println("\t\t\t\t\t\t" + BRIGHT_RED + "Total Matches Won: " + matchWins + RESET);
-        System.out.println("\t\t\t\t\t\t" + BRIGHT_RED + "Total Rounds Won: " + totalArcadeWins + RESET);
-        System.out.println("\t\t\t\t\t\t" + BRIGHT_RED + "========================================\n" + RESET);
-    }
+   
 
     public boolean isArcadeModeBeat() {
         return matchWins >= 5;
