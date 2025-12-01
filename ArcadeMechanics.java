@@ -6,14 +6,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class ArcadeMechanics {
 
-    private final String BLACK = "\u001B[30m";
     private final String RED = "\u001B[31m";
     private final String GREEN = "\u001B[32m";
-    private final String YELLOW = "\u001B[33m";
-    private final String BLUE = "\u001B[34m";
-    private final String PURPLE = "\u001B[35m";
-    private final String CYAN = "\u001B[36m";
-    private final String WHITE = "\u001B[37m";
     private final String BRIGHT_GREEN = "\u001B[92m";
     private final String BRIGHT_YELLOW = "\u001B[93m";
     private final String BRIGHT_RED = "\u001B[91m";
@@ -103,8 +97,8 @@ public class ArcadeMechanics {
     }
 
     private void useSkill(int skillNumber, Character user, Character target, CooldownManager cd) {
-        int cost = skillNumber == 1 ? user.sk1Cost : (skillNumber == 2 ? user.sk2Cost : user.sk3Cost);
-        int damage = skillNumber == 1 ? user.sk1Damage : (skillNumber == 2 ? user.sk2Damage : user.sk3Damage);
+        int cost = skillNumber == 1 ? user.getSk1Cost() : (skillNumber == 2 ? user.getSk2Cost() : user.getSk3Cost());
+        int damage = skillNumber == 1 ? user.getSk1Damage() : (skillNumber == 2 ? user.getSk2Damage() : user.getSk3Damage());
       
         if (!cd.canUseSkill(skillNumber)) {
             System.out.println("\t\t\t\t" + BRIGHT_YELLOW + "Skill is on cooldown! " + RESET + "(" + cd.getFormattedCooldown(skillNumber) + ")" + ", " + BRIGHT_RED + "You missed your turn, Enemy's turn now." + RESET);
@@ -113,7 +107,7 @@ public class ArcadeMechanics {
             return;
         }
 
-        if (user.mana < cost) {
+        if (user.getMana() < cost) {
             System.out.println();
             System.out.println("\t\t\t\t\t" + BRIGHT_RED + "Not enough mana!" + RESET);
             System.out.println("\t\t\t\t\tPress ENTER to continue...");
@@ -121,11 +115,11 @@ public class ArcadeMechanics {
             return;
         }
 
-        target.hp -= damage;
+        target.setHp(target.getHp() - damage);
         System.out.println();
         System.out.println("\t\t\t\t\t" + BRIGHT_RED + target.getName() + " takes " + damage + " damage!" + RESET);
 
-        user.mana -= cost;
+        user.setMana(user.getMana() - cost);
         cd.applyCooldown(skillNumber);
     }
 
@@ -136,7 +130,6 @@ public class ArcadeMechanics {
         return (int) (baseAttack * multiplier);
     }
 
-    // ✅ NEW HELPER: Handles input with skip-on-ENTER logic
     private int getPlayerAction() {
         String input = sc.nextLine().trim();
         
@@ -170,19 +163,19 @@ public class ArcadeMechanics {
 
         System.out.println("\n\t\t\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
         System.out.println(GREEN + "\t\t\t\t\t\tYour Character: " + RESET);
-        String playerHPColor = getHPColor(player.hp, player.maxHp);
-        System.out.println("\t\t\t\t\t\t" + player.getName() + " - " + playerHPColor + "HP: " + player.hp + "/" + player.maxHp + RESET
-                + " | " + BRIGHT_BLUE + "Mana: " + player.mana + "/" + MAX_MANA + RESET);
+        String playerHPColor = getHPColor(player.getHp(), player.getMaxHp());
+        System.out.println("\t\t\t\t\t\t" + player.getName() + " - " + playerHPColor + "HP: " + player.getHp() + "/" + player.getMaxHp() + RESET
+                + " | " + BRIGHT_BLUE + "Mana: " + player.getMana() + "/" + MAX_MANA + RESET);
 
         System.out.println("\t\t\t\t\t\t" + RED + "\nEnemy: " + RESET);
-        String enemyHPColor = getHPColor(enemy.hp, enemy.maxHp);
-        System.out.println("\t\t\t\t\t\t" + enemy.getName() + " - " + enemyHPColor + "HP: " + enemy.hp + "/" + enemy.maxHp + RESET
-                + " | " + BRIGHT_BLUE + "Mana: " + enemy.mana + "/" + MAX_MANA + RESET);
+        String enemyHPColor = getHPColor(enemy.getHp(), enemy.getMaxHp());
+        System.out.println("\t\t\t\t\t\t" + enemy.getName() + " - " + enemyHPColor + "HP: " + enemy.getHp() + "/" + enemy.getMaxHp() + RESET
+                + " | " + BRIGHT_BLUE + "Mana: " + enemy.getMana() + "/" + MAX_MANA + RESET);
         System.out.println("\t\t\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
 
         boolean playerTurn = true;
 
-        while (player.hp > 0 && enemy.hp > 0) {
+        while (player.getHp() > 0 && enemy.getHp() > 0) {
             if (playerTurn) {
                 clearScreen();
                 System.out.println();
@@ -193,7 +186,6 @@ public class ArcadeMechanics {
                 System.out.println("\t\t\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
                 turnCount++;
 
-                // ✅ INLINE COOLDOWN DISPLAY (MATCHING SCREENSHOT STYLE)
                 String s1Status = playerCD.canUseSkill(1) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + playerCD.getFormattedCooldown(1);
                 String s2Status = playerCD.canUseSkill(2) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + playerCD.getFormattedCooldown(2);
                 String s3Status = playerCD.canUseSkill(3) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + playerCD.getFormattedCooldown(3);
@@ -205,18 +197,17 @@ public class ArcadeMechanics {
                     "S3: " + s3Status + RESET);
                 System.out.println();
 
-                // ✅ SKILL OPTIONS WITH DAMAGE, MANA, AND COOLDOWN HINT
                 System.out.println("\t\t\t\t\t\t0. Basic Attack (no mana, no cooldown)");
-                System.out.println("\t\t\t\t\t\t1. " + player.getSkill1() + " - Deals " + BRIGHT_RED + player.sk1Damage + " damage" + RESET + " - " + BRIGHT_BLUE + player.sk1Cost + " mana" + RESET);
-                System.out.println("\t\t\t\t\t\t2. " + player.getSkill2() + " - Deals " + BRIGHT_RED + player.sk2Damage + " damage" + RESET + " - " + BRIGHT_BLUE + player.sk2Cost + " mana" + RESET);
-                System.out.print("\t\t\t\t\t\t3. " + player.getSkill3() + " - Deals " + BRIGHT_RED + player.sk3Damage + " damage" + RESET + " - " + BRIGHT_BLUE + player.sk3Cost + " mana" + RESET);
+                System.out.println("\t\t\t\t\t\t1. " + player.getSkill1() + " " + BRIGHT_BLUE + player.getSk1Cost() + " mana" + RESET);
+                System.out.println("\t\t\t\t\t\t2. " + player.getSkill2() + " " + BRIGHT_BLUE + player.getSk2Cost() + " mana" + RESET);
+                System.out.print("\t\t\t\t\t\t3. " + player.getSkill3() + " " + BRIGHT_BLUE + player.getSk3Cost() + " mana" + RESET);
                 if (!playerCD.canUseSkill(3)) {
                     System.out.print(" (" + BRIGHT_RED + playerCD.getFormattedCooldown(3) + RESET + ")");
                 }
                 System.out.println();
 
                 System.out.print("\t\t\t\t\t\t> ");
-                int action = getPlayerAction(); // ✅ Uses new safe input handler
+                int action = getPlayerAction();
 
                 if (action == -1) {
                     // Turn skipped — message already shown
@@ -224,9 +215,9 @@ public class ArcadeMechanics {
                     switch (action) {
                         case 0:
                             playSound("Hit.wav");
-                            int damage = calculateBasicAttackDamage(player.attack);
+                            int damage = calculateBasicAttackDamage(player.getAttack());
                             System.out.println("\n\t\t\t\t\t\tYou perform a basic attack!");
-                            enemy.hp -= damage;
+                            enemy.setHp(enemy.getHp() - damage);
                             System.out.println("\t\t\t\t\t\tYou deal " + BRIGHT_RED + damage + " damage!" + RESET);
                             break;
                         case 1:
@@ -247,7 +238,6 @@ public class ArcadeMechanics {
                 System.out.println("\t\t\t\t\t" + BRIGHT_RED + enemy.getName() + "'s Turn!" + RESET);
                 System.out.println("\t\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
 
-                // ✅ ENEMY COOLDOWN DISPLAY (OPTIONAL, FOR CONSISTENCY)
                 String es1 = enemyCD.canUseSkill(1) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + enemyCD.getFormattedCooldown(1);
                 String es2 = enemyCD.canUseSkill(2) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + enemyCD.getFormattedCooldown(2);
                 String es3 = enemyCD.canUseSkill(3) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + enemyCD.getFormattedCooldown(3);
@@ -258,36 +248,36 @@ public class ArcadeMechanics {
                     "S3: " + es3 + RESET);
 
                 int action;
-                if (enemy.mana >= enemy.sk3Cost && enemyCD.canUseSkill(3)) {
+                if (enemy.getMana() >= enemy.getSk3Cost() && enemyCD.canUseSkill(3)) {
                     action = 3;
-                } else if (enemy.mana >= enemy.sk2Cost && enemyCD.canUseSkill(2)) {
+                } else if (enemy.getMana() >= enemy.getSk2Cost() && enemyCD.canUseSkill(2)) {
                     action = 2;
-                } else if (enemy.mana >= enemy.sk1Cost && enemyCD.canUseSkill(1)) {
+                } else if (enemy.getMana() >= enemy.getSk1Cost() && enemyCD.canUseSkill(1)) {
                     action = 1;
                 } else {
-                    action = 0; // basic attack
+                    action = 0;
                 }
 
                 switch (action) {
                     case 0:
-                        int damage = calculateBasicAttackDamage(enemy.attack);
-                        System.out.println("\t\t\t\t\t" + enemy.name + " attacks!");
+                        int damage = calculateBasicAttackDamage(enemy.getAttack());
+                        System.out.println("\t\t\t\t\t" + enemy.getName() + " attacks!");
                         playSound("Hit.wav");
-                        player.hp -= damage;
-                        System.out.println("\t\t\t\t\t" + enemy.name + " deals " + BRIGHT_RED + damage + " damage!" + RESET);
+                        player.setHp(player.getHp() - damage);
+                        System.out.println("\t\t\t\t\t" + enemy.getName() + " deals " + BRIGHT_RED + damage + " damage!" + RESET);
                         break;
                     case 1:
-                        System.out.println("\t\t\t\t\t" + enemy.name + " uses " + enemy.skill1 + "!");
+                        System.out.println("\t\t\t\t\t" + enemy.getName() + " uses " + enemy.getSkill1() + "!");
                         playSound("Hit.wav");
                         useSkill(1, enemy, player, enemyCD);
                         break;
                     case 2:
-                        System.out.println("\t\t\t\t\t" + enemy.name + " uses " + enemy.skill2 + "!");
+                        System.out.println("\t\t\t\t\t" + enemy.getName() + " uses " + enemy.getSkill2() + "!");
                         playSound("Hit.wav");
                         useSkill(2, enemy, player, enemyCD);
                         break;
                     case 3:
-                        System.out.println("\t\t\t\t\t" + enemy.name + " uses " + enemy.skill3 + "!");
+                        System.out.println("\t\t\t\t\t" + enemy.getName() + " uses " + enemy.getSkill3() + "!");
                         playSound("Hit.wav");
                         useSkill(3, enemy, player, enemyCD);
                         break;
@@ -302,15 +292,14 @@ public class ArcadeMechanics {
                 displayEnemyStats();
                 System.out.println("\t\t\t\t\t" + BRIGHT_BLUE + "==============================" + RESET);
 
-                // ===== 💎 BOTH GET +10 MANA =====
-                int playerManaBeforeBase = player.mana;
-                int enemyManaBeforeBase = enemy.mana;
+                int playerManaBeforeBase = player.getMana();
+                int enemyManaBeforeBase = enemy.getMana();
 
                 player.regenerateMana(10);
                 enemy.regenerateMana(10);
 
-                int playerBaseGain = player.mana - playerManaBeforeBase;
-                int enemyBaseGain = enemy.mana - enemyManaBeforeBase;
+                int playerBaseGain = player.getMana() - playerManaBeforeBase;
+                int enemyBaseGain = enemy.getMana() - enemyManaBeforeBase;
 
                 if (playerBaseGain > 0) {
                     System.out.println("\t\t\t\t\t" + BRIGHT_BLUE + "+" + playerBaseGain + " mana (you) - base regen" + RESET);
@@ -319,18 +308,17 @@ public class ArcadeMechanics {
                     System.out.println("\t\t\t\t\t" + BRIGHT_BLUE + "+" + enemyBaseGain + " mana (" + enemy.getName() + ") - base regen" + RESET);
                 }
 
-                // ===== ✨ BONUS: +5 to +10 MORE =====
                 int playerBonus = ThreadLocalRandom.current().nextInt(5, 11);
                 int enemyBonus = ThreadLocalRandom.current().nextInt(5, 11);
 
-                int playerManaBeforeBonus = player.mana;
-                int enemyManaBeforeBonus = enemy.mana;
+                int playerManaBeforeBonus = player.getMana();
+                int enemyManaBeforeBonus = enemy.getMana();
 
                 player.regenerateMana(playerBonus);
                 enemy.regenerateMana(enemyBonus);
 
-                int playerBonusGain = player.mana - playerManaBeforeBonus;
-                int enemyBonusGain = enemy.mana - enemyManaBeforeBonus;
+                int playerBonusGain = player.getMana() - playerManaBeforeBonus;
+                int enemyBonusGain = enemy.getMana() - enemyManaBeforeBonus;
 
                 if (playerBonusGain > 0) {
                     System.out.println("\t\t\t\t\t" + BRIGHT_GREEN + "+" + playerBonusGain + " mana (you) - bonus regen" + RESET);
@@ -340,8 +328,8 @@ public class ArcadeMechanics {
                 }
             }
 
-            if (player.hp < 0) player.hp = 0;
-            if (enemy.hp < 0) enemy.hp = 0;
+            if (player.getHp() < 0) player.setHp(0);
+            if (enemy.getHp() < 0) enemy.setHp(0);
 
             if (!playerTurn) {
                 playerCD.reduceCooldowns();
@@ -359,16 +347,16 @@ public class ArcadeMechanics {
 
         stopBackgroundMusic();
 
-        if (player.hp <= 0 && enemy.hp <= 0) {
+        if (player.getHp() <= 0 && enemy.getHp() <= 0) {
             System.out.println("\t\t\t\t" + BRIGHT_YELLOW + "It's a draw!" + RESET);
-        } else if (player.hp <= 0) {
+        } else if (player.getHp() <= 0) {
             loseSFXClip = playAndStoreSound("LoseSFX.wav");
             System.out.println();
             System.out.println();
             System.out.println();
             System.out.println();
             System.out.println();
-            System.out.println(BRIGHT_RED + "\t\t\t\tYou lost! " + enemy.name + " wins!" + RESET);
+            System.out.println(BRIGHT_RED + "\t\t\t\tYou lost! " + enemy.getName() + " wins!" + RESET);
             System.out.println("\n\t\t\t\tPress ENTER to continue...");
             System.out.print("\t\t\t\t");
             sc.nextLine();
@@ -386,7 +374,7 @@ public class ArcadeMechanics {
             System.out.println();
             System.out.println();
             System.out.println();
-            System.out.println(BRIGHT_GREEN + "\t\t\t\tCongratulations! You defeated " + enemy.name + "!" + RESET);
+            System.out.println(BRIGHT_GREEN + "\t\t\t\tCongratulations! You defeated " + enemy.getName() + "!" + RESET);
             System.out.println("\n\t\t\t\tPress ENTER to continue...");
             System.out.print("\t\t\t\t");
             sc.nextLine();
@@ -416,17 +404,17 @@ public class ArcadeMechanics {
     }
 
     private void displayPlayerStats() {
-        String playerHPColor = getHPColor(player.hp, player.maxHp);
-        System.out.println("\t\t\t\t\t\t" + player.getName() + " - " + playerHPColor + "HP: " + player.hp + "/" + player.maxHp + RESET
-                + " | " + BRIGHT_BLUE + "Mana: " + player.mana + "/" + MAX_MANA + RESET
-                + " | " + RED + "Attack: " + player.attack + RESET);
+        String playerHPColor = getHPColor(player.getHp(), player.getMaxHp());
+        System.out.println("\t\t\t\t\t\t" + player.getName() + " - " + playerHPColor + "HP: " + player.getHp() + "/" + player.getMaxHp() + RESET
+                + " | " + BRIGHT_BLUE + "Mana: " + player.getMana() + "/" + MAX_MANA + RESET
+                + " | " + RED + "Attack: " + player.getAttack() + RESET);
     }
 
     private void displayEnemyStats() {
-        String enemyHPColor = getHPColor(enemy.hp, enemy.maxHp);
-        System.out.println("\t\t\t\t\t\t" + enemy.getName() + " - " + enemyHPColor + "HP: " + enemy.hp + "/" + enemy.maxHp + RESET
-                + " | " + BRIGHT_BLUE + "Mana: " + enemy.mana + "/" + MAX_MANA + RESET
-                + " | " + RED + "Attack: " + enemy.attack + RESET);
+        String enemyHPColor = getHPColor(enemy.getHp(), enemy.getMaxHp());
+        System.out.println("\t\t\t\t\t\t" + enemy.getName() + " - " + enemyHPColor + "HP: " + enemy.getHp() + "/" + enemy.getMaxHp() + RESET
+                + " | " + BRIGHT_BLUE + "Mana: " + enemy.getMana() + "/" + MAX_MANA + RESET
+                + " | " + RED + "Attack: " + enemy.getAttack() + RESET);
     }
 
     public void stopBackgroundMusic() {
