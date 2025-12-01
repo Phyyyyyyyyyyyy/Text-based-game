@@ -1,7 +1,6 @@
-
 import java.util.Scanner;
 
-public class ArcadeMode {
+public class ArcadeMode{
 
     private Character player;
     private int matchWins = 0;
@@ -34,19 +33,19 @@ public class ArcadeMode {
         // Display player stats overview
         System.out.println("\t\t\t\t\t\t" + BRIGHT_GREEN + "YOUR CHARACTER OVERVIEW:" + RESET);
         System.out.println("\t\t\t\t\t\t" + BRIGHT_GREEN + "Name: " + RESET + player.getName());
-        System.out.println("\t\t\t\t\t\t" + BRIGHT_GREEN + "HP: " + RESET + player.hp + "/" + player.maxHp);
+        System.out.println("\t\t\t\t\t\t" + BRIGHT_GREEN + "HP: " + RESET + player.getHp() + "/" + player.getMaxHp());
         System.out.println("\t\t\t\t\t\t" + BRIGHT_GREEN + "Mana: " + RESET + "10/100 (Range, 5-15 regeneration per turn)");
-        System.out.println("\t\t\t\t\t\t" + BRIGHT_GREEN + "Attack: " + RESET + player.attack + " (Damage randomly multiplied by 0.8 to 1.2)");
+        System.out.println("\t\t\t\t\t\t" + BRIGHT_GREEN + "Attack: " + RESET + player.getAttack() + " (Damage randomly multiplied by 0.8 to 1.2)");
         System.out.println("\t\t\t\t\t\t" + BRIGHT_GREEN + "\n\t\t\t\t\t\tSKILLS:" + RESET);
-        System.out.println("\t\t\t\t\t\t1. " + player.getSkill1() + " - " + BRIGHT_BLUE + player.sk1Cost + " mana" + RESET);
-        System.out.println("\t\t\t\t\t\t2. " + player.getSkill2() + " - " + BRIGHT_BLUE + player.sk2Cost + " mana" + RESET);
-        System.out.println("\t\t\t\t\t\t3. " + player.getSkill3() + " - " + BRIGHT_BLUE + player.sk3Cost + " mana" + RESET);
+        System.out.println("\t\t\t\t\t\t1. " + player.getSkill1() + " - " + BRIGHT_BLUE + player.getSk1Cost() + " mana" + RESET);
+        System.out.println("\t\t\t\t\t\t2. " + player.getSkill2() + " - " + BRIGHT_BLUE + player.getSk2Cost() + " mana" + RESET);
+        System.out.println("\t\t\t\t\t\t3. " + player.getSkill3() + " - " + BRIGHT_BLUE + player.getSk3Cost() + " mana" + RESET);
         System.out.println("\n\t\t\t\t\t\t" + BRIGHT_BLUE + "==========================================" + RESET);
 
         EnemyHierarchy.displayAllEnemies();
 
-        player.hp = player.maxHp;
-        player.mana = 10;
+        player.setHp(player.getMaxHp());
+        player.setMana(10);
 
         for (int match = 0; match < 5; match++) {
             EnemyHierarchy.Difficulty difficulty;
@@ -67,8 +66,8 @@ public class ArcadeMode {
                 break;
             }
 
-            player.hp = player.maxHp;
-            player.mana = 10;
+            player.setHp(player.getMaxHp());
+            player.setMana(10);
 
             System.out.println("\n\t\t\t\t\t\t" + BRIGHT_YELLOW + "Press ENTER to continue to the next match..." + RESET);
             System.out.print("\t\t\t\t\t\t");
@@ -90,12 +89,10 @@ public class ArcadeMode {
         int enemyRoundWins = 0;
         int roundNumber = 1;
 
-        // Play rounds until someone wins 2 (or max 5 rounds)
         while (playerRoundWins < 2 && enemyRoundWins < 2 && roundNumber <= 5) {
             playRound(roundNumber, enemy);
 
-            // Check who won the round (based on HP)
-            if (player.hp > 0 && enemy.hp <= 0) {
+            if (player.getHp() > 0 && enemy.getHp() <= 0) {
                 playerRoundWins++;
                 System.out.println();
                 System.out.println();
@@ -105,7 +102,7 @@ public class ArcadeMode {
                 System.out.println();
                 System.out.println("\n\t\t\t\t\t\t" + BRIGHT_GREEN + "ROUND " + roundNumber + " WON!" + RESET);
                 totalArcadeWins++;
-            } else if (enemy.hp > 0 && player.hp <= 0) {
+            } else if (enemy.getHp() > 0 && player.getHp() <= 0) {
                 enemyRoundWins++;
                 System.out.println();
                 System.out.println();
@@ -115,7 +112,6 @@ public class ArcadeMode {
                 System.out.println();
                 System.out.println("\n\t\t\t\t\t\t" + BRIGHT_RED + "ROUND " + roundNumber + " LOST!" + RESET);
             } else {
-                // Draw - doesn't count
                 System.out.println();
                 System.out.println();
                 System.out.println();
@@ -164,32 +160,25 @@ public class ArcadeMode {
         System.out.print("\t\t\t\t\t\t");
         sc.nextLine();
 
-        player.mana = 10;
-        enemy.mana = 10;
+        player.setMana(10);
+        enemy.setMana(10);
 
         try {
-            Thread.sleep(1000); // Add 1 second delay
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
 
         ArcadeMechanics mechanics = new ArcadeMechanics(player, enemy);
         mechanics.game();
-
-    
-
-    //////////naa ra HAHAHAHADHHA 
     }
 
     private void resetRound(Enemy enemy) {
-        player.hp = player.maxHp;
-        player.mana = 10;
-
-        enemy.hp = enemy.maxHp;
-        enemy.mana = 10;
+        player.setHp(player.getMaxHp());
+        player.setMana(10);
+        enemy.setHp(enemy.getMaxHp());
+        enemy.setMana(10);
     }
-
-    
 
     private void displayRoundScore(int playerWins, int enemyWins, int currentRound) {
         System.out.println("\n\t\t\t\t\t\t" + BRIGHT_BLUE + "Round Score: " + BRIGHT_GREEN + playerWins + RESET
@@ -207,8 +196,6 @@ public class ArcadeMode {
         System.out.println("\t\t\t\t\t\t" + BRIGHT_YELLOW + "Total Rounds Won: " + totalArcadeWins + RESET);
         System.out.println("\t\t\t\t\t\t" + BRIGHT_BLUE + "========================================\n" + RESET);
     }
-
-   
 
     public boolean isArcadeModeBeat() {
         return matchWins >= 5;
