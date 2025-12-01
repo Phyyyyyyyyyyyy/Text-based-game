@@ -149,7 +149,7 @@ public class ArcadeSelect extends SelectScreen {
                             "\n\t\t\t\t\t\t\tJohn Micoh: Laid-back warrior balancing jokes and determination.\n"
                         }, 40, player);
                         break;
-                    case 71:
+                    case 72:
                         player = new Character("Reuben Navarrete", 120, 120, 15, 
                                 "HE Grenade! - Deals 10 damage", 
                                 "Binary Tree Confusion! - Deals 10 damage", 
@@ -162,7 +162,7 @@ public class ArcadeSelect extends SelectScreen {
                             "\t\t\t\t\t\t\tWhen he's not optimizing algorithms, he's optimizing combat strategies with viral efficiency.\n"
                         }, 40, player);
                         break;
-                    case 8700:
+                    case 71:
                         player = new Character("Ethan Manto", 120, 120, 15,
                                 "Rhythm Strike - Deals 12 damage",
                                 "Dance Blast - Deals 13 damage",
@@ -249,4 +249,3 @@ public class ArcadeSelect extends SelectScreen {
 
     }
 }
-
