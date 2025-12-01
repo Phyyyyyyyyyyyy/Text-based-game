@@ -1,3 +1,4 @@
+
 import java.io.File;
 import java.util.Scanner;
 
@@ -43,6 +44,8 @@ public class SelectScreen {
 
                 choice = sc.nextInt();
                 clearScreen();
+
+                
 
                 switch (choice) {
                     case 1:
@@ -144,7 +147,7 @@ public class SelectScreen {
                         break;
                     case 9:
                         playSound("InputSound.wav");
-                         MainMenu menu= new MainMenu(sc);
+                        MainMenu menu = new MainMenu(sc);
                         menu.start(sc);
                         return null;
                     case 69:
@@ -237,7 +240,7 @@ public class SelectScreen {
         try {
             sc.nextLine();
 
-            String input = "";
+            String input = " ";
             boolean validInput = false;
 
             while (!validInput) {
@@ -267,7 +270,7 @@ public class SelectScreen {
         }
     }
 
-     public static void playSound(String filename) {
+    public static void playSound(String filename) {
         try {
             File file = new File(filename);
             if (!file.exists()) {
