@@ -1,10 +1,9 @@
 
 import java.util.Scanner;
 
-public class Player2 extends SelectScreen {
+public class Player1 extends SelectScreen {
 
     static Scanner sc = new Scanner(System.in);
-    static Player1 player1 = new Player1();
 
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
@@ -23,7 +22,7 @@ public class Player2 extends SelectScreen {
                 System.out.println();
                 System.err.println("\n\n\n\n\n\n\n");
                 System.out.println("\t\t\t\t\t\t\t=========================================");
-                System.out.println("\t\t\t\t\t\t\t====    Player 2 Choose Hero         ====");
+                System.out.println("\t\t\t\t\t\t\t====    Player 1 Choose Hero         ====");
                 System.out.println("\t\t\t\t\t\t\t=========================================");
                 System.out.println("\t\t\t\t\t\t\t|   Choose your hero:                   |");
                 System.out.println("\t\t\t\t\t\t\t|     1. Iron Man                       |");
