@@ -1,6 +1,5 @@
-import java.io.File;
+// MainMenu.java
 import java.util.Scanner;
-import javax.sound.sampled.*;
 
 public class MainMenu implements MethodsInterface {
     private Scanner sc;
@@ -12,34 +11,7 @@ public class MainMenu implements MethodsInterface {
         this.sc = scanner;
     }
 
-    // ============= Override playSound from MethodsInterface =============
-    @Override
-    public void playSound(String filename) {
-        try {
-            File file = new File(filename);
-            if (!file.exists()) {
-                System.out.println("\t\t\t\tSound file not found: " + filename);
-                return;
-            }
-
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-
-            clip.addLineListener(event -> {
-                if (event.getType() == LineEvent.Type.STOP) {
-                    clip.close();
-                }
-            });
-
-            clip.start();
-
-        } catch (Exception e) {
-            System.out.println("\t\t\t\tCould not play sound: " + e.getMessage());
-        }
-    }
-
-    // ============= Other interface methods =============
+    // ============= Implemented from MethodsInterface =============
 
     @Override
     public void clearScreen() {
@@ -75,15 +47,9 @@ public class MainMenu implements MethodsInterface {
     }
 
     @Override
-    public Character select() {
-        return SelectScreen.select();
-    }
-
-    @Override
     public void start(Scanner sc) {
         this.sc = sc;
 
-        // Play opening sound
         playSound("OpeningSound.wav");
 
         String[] colors = {
@@ -115,7 +81,7 @@ public class MainMenu implements MethodsInterface {
                 System.out.println();
             }
 
-            for ( int j = 0; j < i; j++) {
+            for (int j = 0; j < i; j++) {
                 System.out.println(logoLines[j]);
             }
 
@@ -196,30 +162,29 @@ public class MainMenu implements MethodsInterface {
                 }
                 choice = Integer.parseInt(input);
 
+                playSound("InputSound.wav");
+
                 switch (choice) {
                     case 1:
-                        playSound("InputSound.wav");
                         playerVsPlayerMenu(sc);
                         break;
                     case 2:
-                        playSound("InputSound.wav");
                         playerVsAiMenu(sc);
                         break;
                     case 3:
-                        playSound("InputSound.wav");
                         arcadeModeMenu(sc);
                         break;
                     case 0:
-                        playSound("InputSound.wav");
                         System.out.println("                            \n\t\t\t\t>>> Exiting... Thank you for playing <3\n");
                         System.exit(0);
                         break;
                     default:
                         System.out.println("                            \n\t\t\t\t>>> Invalid choice, please try again!\n");
+                        choice = -1;
                 }
             } catch (NumberFormatException e) {
                 System.out.println("                            \n\t\t\t\t>>> Invalid input! Please enter a number (0-3).\n");
-                choice = -1; // ensure loop continues
+                choice = -1;
             }
         }
     }
@@ -229,14 +194,15 @@ public class MainMenu implements MethodsInterface {
         clearScreen();
         System.out.println("\n\t>>> PvP Match Starting...\n");
 
-        Character player1 = Player1.select();
+        Character player1 = CharacterSelector.selectHero("Player 1 Choose Hero", true);
         if (player1 == null) return;
         player1.displayIntro();
 
         System.out.println("\n\t\t\t\tPress ENTER for Player 2 to choose...");
-        sc.nextLine(); sc.nextLine();
+        sc.nextLine(); // Clear buffer
+        sc.nextLine(); // Wait for Enter
 
-        Character player2 = Player2.select();
+        Character player2 = CharacterSelector.selectHero("Player 2 Choose Hero", true);
         if (player2 == null) return;
         player2.displayIntro();
 
@@ -253,7 +219,7 @@ public class MainMenu implements MethodsInterface {
         clearScreen();
         System.out.println("\n\t\t\t\t>>> Player vs AI Match Starting...\n");
 
-        Character player = SelectScreen.select();
+        Character player = CharacterSelector.selectHero("PVSAI", true);
         if (player == null) return;
         player.displayIntro();
 
@@ -261,7 +227,8 @@ public class MainMenu implements MethodsInterface {
         enemy.displayIntro();
 
         System.out.println("\t\t\t\t\t\t\tPress ENTER to begin the battle...");
-        sc.nextLine(); sc.nextLine();
+        sc.nextLine();
+        sc.nextLine();
 
         clearScreen();
         GameMechanics game = new GameMechanics(player, enemy);
@@ -273,12 +240,13 @@ public class MainMenu implements MethodsInterface {
         clearScreen();
         System.out.println("\n\t\t\t\t>>> Arcade Mode Starting...\n");
 
-        Character player = ArcadeSelect.select();
+        Character player = CharacterSelector.selectHero("Arcade Select", true);
         if (player == null) return;
         player.displayIntro();
 
         System.out.println("\t\t\t\tPress ENTER to begin your arcade run...");
-        sc.nextLine(); sc.nextLine();
+        sc.nextLine();
+        sc.nextLine();
 
         clearScreen();
         ArcadeMode arcade = new ArcadeMode(player);
@@ -293,7 +261,6 @@ public class MainMenu implements MethodsInterface {
     }
 
     // ============= Getters =============
-
     @Override
     public boolean isArcadeModeBeat() {
         return arcadeModeBeat;
