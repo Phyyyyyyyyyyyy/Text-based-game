@@ -1,5 +1,6 @@
-public class Character {
-
+// Character.java
+public abstract class Character {
+    
     private String name;
     private int hp;
     private int maxHp;
@@ -33,7 +34,7 @@ public class Character {
         this.mana = mana;
     }
 
-    
+    // Getters
     public String getName() { return name; }
     public int getHp() { return hp; }
     public int getMaxHp() { return maxHp; }
@@ -49,29 +50,26 @@ public class Character {
     public int getSk3Damage() { return sk3Damage; }
     public int getMana() { return mana; }
 
-   
+    // Setters
     public void setHp(int hp) {
         this.hp = Math.max(0, Math.min(hp, maxHp));
     }
+
     public void setMana(int mana) {
         this.mana = Math.max(0, Math.min(mana, 100));
     }
 
     public void regenerateMana(int amount) {
-        this.mana = Math.min(100, this.mana + amount);
+        setMana(this.mana + amount); // Use setter for safety
     }
 
-    public void displayIntro() {
-        System.out.println("\n\t\t\t\t\t\t\tYou choose: " + name);
-        System.out.println("\t\t\t\t\t\t\tStats - HP: " + hp + " | Attack: " + attack + " | Mana: " + mana);
-        System.out.println("\t\t\t\t\t\t\tSkills:");
-        System.out.println("\t\t\t\t\t\t\t" + skill1 + " - " + sk1Cost + " mana");
-        System.out.println("\t\t\t\t\t\t\t" + skill2 + " - " + sk2Cost + " mana");
-        System.out.println("\t\t\t\t\t\t\t" + skill3 + " - " + sk3Cost + " mana");
-        System.out.println();
-    }
+    // Abstract methods
+    public abstract void displayIntro();
+    public abstract void displayStats();
 
-    public void displayStats() {
-        System.out.println("\t\t\t\t\t" + name + " - HP: " + hp + "/" + maxHp + " | Mana: " + mana);
+    // Common concrete method — now uses getters
+    protected String getBaseStats() {
+        return getName() + " - HP: " + getHp() + "/" + getMaxHp() +
+               " | Attack: " + getAttack() + " | Mana: " + getMana();
     }
 }
