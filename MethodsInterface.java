@@ -1,50 +1,41 @@
-import java.io.File;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineEvent;
+// MethodsInterface.java
+import java.util.Scanner;
 
 public interface MethodsInterface {
-
+    // Core UI/UX utilities
     void clearScreen();
-
+    void typeWriter(String text, int delay);
     void showStoryWithSkip(String heroName, String[] storyLines, int delay, Object hero);
 
-    Character select();
-
-    void typeWriter(String text, int delay);
-
-    void start(java.util.Scanner sc);
-
-    void playerVsPlayerMenu(java.util.Scanner sc);
-
-    void playerVsAiMenu(java.util.Scanner sc);
-
-    void arcadeModeMenu(java.util.Scanner sc);
-
+    // Game mode entry points
+    void start(Scanner sc);
+    void playerVsPlayerMenu(Scanner sc);
+    void playerVsAiMenu(Scanner sc);
+    void arcadeModeMenu(Scanner sc);
     void startArcadeRun();
 
+    // Game state accessors
     boolean isArcadeModeBeat();
-
     int getMatchWins();
-
     int getTotalArcadeWins();
 
+    // Default sound implementation (no need to override unless customizing)
     default void playSound(String filename) {
         try {
-            File file = new File(filename);
+            java.io.File file = new java.io.File(filename);
             if (!file.exists()) {
                 System.out.println("\t\t\t\tSound file not found: " + filename);
                 return;
             }
 
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-            Clip clip = AudioSystem.getClip();
+            javax.sound.sampled.AudioInputStream audioStream =
+                javax.sound.sampled.AudioSystem.getAudioInputStream(file);
+            javax.sound.sampled.Clip clip =
+                javax.sound.sampled.AudioSystem.getClip();
             clip.open(audioStream);
 
             clip.addLineListener(event -> {
-                if (event.getType() == LineEvent.Type.STOP) {
+                if (event.getType() == javax.sound.sampled.LineEvent.Type.STOP) {
                     clip.close();
                 }
             });
@@ -54,7 +45,5 @@ public interface MethodsInterface {
         } catch (Exception e) {
             System.out.println("\t\t\t\tCould not play sound: " + e.getMessage());
         }
-
     }
 }
-
