@@ -217,8 +217,10 @@ public class CharacterSelector {
                     sc.nextLine();
                 }
             } catch (Exception e) {
-                System.out.println("\t\t\t\t\t\t\tInvalid input! Please enter a number.");
-                sc.nextLine(); // Clear invalid input
+                System.out.println("\t\t\t\t\t\t\tInvalid input! Please enter a number. (" + e + ")\n");
+                System.out.println("\t\t\t\t\t\t\tPress ENTER to continue...");
+                sc.nextLine();
+                sc.nextLine(); // Clear buffer
             }
         }
 
