@@ -1,7 +1,9 @@
 // MainMenu.java
+
 import java.util.Scanner;
 
 public class MainMenu implements MethodsInterface {
+
     private Scanner sc;
     private int matchWins = 0;
     private int totalArcadeWins = 0;
@@ -12,7 +14,6 @@ public class MainMenu implements MethodsInterface {
     }
 
     // ============= Implemented from MethodsInterface =============
-
     @Override
     public void clearScreen() {
         try {
@@ -23,7 +24,9 @@ public class MainMenu implements MethodsInterface {
                 System.out.flush();
             }
         } catch (Exception e) {
-            for (int i = 0; i < 50; i++) System.out.println();
+            for (int i = 0; i < 50; i++) {
+                System.out.println();
+            }
         }
     }
 
@@ -58,7 +61,7 @@ public class MainMenu implements MethodsInterface {
             "\u001B[32m", // Green
             "\u001B[36m", // Cyan
             "\u001B[34m", // Blue
-            "\u001B[35m"  // Magenta
+            "\u001B[35m" // Magenta
         };
         String RESET = "\u001B[0m";
         String CLEAR_SCREEN = "\033[H\033[2J";
@@ -183,7 +186,9 @@ public class MainMenu implements MethodsInterface {
                         choice = -1;
                 }
             } catch (NumberFormatException e) {
-                System.out.println("                            \n\t\t\t\t>>> Invalid input! Please enter a number (0-3).\n");
+                System.out.println("                            \n\t\t\t\t>>> Invalid input! Please enter a number (0-3). (" + e + ")\n");
+                 System.out.println("\t\t\t\t\t\t\tPress ENTER to continue...");
+                 sc.nextLine();
                 choice = -1;
             }
         }
@@ -195,7 +200,9 @@ public class MainMenu implements MethodsInterface {
         System.out.println("\n\t>>> PvP Match Starting...\n");
 
         Character player1 = CharacterSelector.selectHero("Player 1 Choose Hero", true);
-        if (player1 == null) return;
+        if (player1 == null) {
+            return;
+        }
         player1.displayIntro();
 
         System.out.println("\n\t\t\t\tPress ENTER for Player 2 to choose...");
@@ -203,7 +210,9 @@ public class MainMenu implements MethodsInterface {
         sc.nextLine(); // Wait for Enter
 
         Character player2 = CharacterSelector.selectHero("Player 2 Choose Hero", true);
-        if (player2 == null) return;
+        if (player2 == null) {
+            return;
+        }
         player2.displayIntro();
 
         System.out.println("\n\t\t\t\tPress ENTER to begin the battle...");
@@ -220,7 +229,9 @@ public class MainMenu implements MethodsInterface {
         System.out.println("\n\t\t\t\t>>> Player vs AI Match Starting...\n");
 
         Character player = CharacterSelector.selectHero("PVSAI", true);
-        if (player == null) return;
+        if (player == null) {
+            return;
+        }
         player.displayIntro();
 
         Enemy enemy = Enemy.getRandomEnemy();
@@ -241,7 +252,9 @@ public class MainMenu implements MethodsInterface {
         System.out.println("\n\t\t\t\t>>> Arcade Mode Starting...\n");
 
         Character player = CharacterSelector.selectHero("Arcade Select", true);
-        if (player == null) return;
+        if (player == null) {
+            return;
+        }
         player.displayIntro();
 
         System.out.println("\t\t\t\tPress ENTER to begin your arcade run...");
