@@ -151,7 +151,7 @@ public class ArcadeMechanics {
                 return -1;
             }
         } catch (NumberFormatException e) {
-            System.out.println("\n\t\t\t\t" + BRIGHT_RED + "Invalid action! Turn skipped." + RESET);
+            System.out.println("\n\t\t\t\t" + BRIGHT_RED + "Invalid action! Turn skipped." + RESET + e.getMessage());
             System.out.println("\t\t\t\tPress ENTER to continue...");
             sc.nextLine();
             return -1;
