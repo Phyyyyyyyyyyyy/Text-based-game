@@ -27,6 +27,9 @@ public class PlayerMechanics {
     private int currentRound = 1;
     private final int ROUNDS_TO_WIN = 2;
     private boolean player1StartsNextRound;
+    
+    private int lastP1ManaRegen = 0;
+    private int lastP2ManaRegen = 0;
 
     public PlayerMechanics(Character player1, Character player2) {
         this.sc = new Scanner(System.in);
@@ -95,7 +98,6 @@ public class PlayerMechanics {
             System.out.print("\t\t\t\t\t\t\t> ");
             sc.nextLine();
 
-            // Stop win sound
             if (winSFXClip != null && winSFXClip.isRunning()) {
                 winSFXClip.stop();
                 winSFXClip.close();
@@ -123,6 +125,8 @@ public class PlayerMechanics {
         p1CD.resetCooldowns();
         p2CD.resetCooldowns();
         turnCount = 1;
+        lastP1ManaRegen = 0;
+        lastP2ManaRegen = 0;
     }
 
     private boolean playSingleRound() {
@@ -141,17 +145,18 @@ public class PlayerMechanics {
                 playerAction(player2, player1, p2CD, "Player 2");
             }
 
-            // Regenerate mana & reduce cooldowns AFTER EVERY FULL TURN (both players)
             if (!player1Turn) {
-                int p1Regen = 10 + rand.nextInt(11);
-                int p2Regen = 10 + rand.nextInt(11);
-                player1.regenerateMana(p1Regen);
-                player2.regenerateMana(p2Regen);
+                lastP1ManaRegen = 10 + rand.nextInt(11);
+                lastP2ManaRegen = 10 + rand.nextInt(11);
+                player1.regenerateMana(lastP1ManaRegen);
+                player2.regenerateMana(lastP2ManaRegen);
                 p1CD.reduceCooldowns();
                 p2CD.reduceCooldowns();
+            } else {
+                lastP1ManaRegen = 0;
+                lastP2ManaRegen = 0;
             }
 
-            // Clamp HP to 0
             if (player1.getHp() < 0) player1.setHp(0);
             if (player2.getHp() < 0) player2.setHp(0);
 
@@ -181,14 +186,16 @@ public class PlayerMechanics {
             " | S2: " + (p1CD.canUseSkill(2) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + p1CD.getFormattedCooldown(2)) + RESET +
             " | S3: " + (p1CD.canUseSkill(3) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + p1CD.getFormattedCooldown(3)) + RESET);
         System.out.println("\t\t\t\t\t\t\t" + BRIGHT_GREEN + "HP: " + p1HPColor + player1.getHp() + "/" + player1.getMaxHp() + RESET + 
-                        " | " + BRIGHT_BLUE + "Mana: " + player1.getMana() + "/100" + RESET);
+                        " | " + BRIGHT_BLUE + "Mana: " + player1.getMana() + "/100" + 
+                        (lastP1ManaRegen > 0 ? " (+" + lastP1ManaRegen + ")" : "") + RESET);
 
         System.out.println("\n\t\t\t\t\t\t\tPlayer 2: " + player2.getName() + " - Cooldowns: " +
             "S1: " + (p2CD.canUseSkill(1) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + p2CD.getFormattedCooldown(1)) + RESET +
             " | S2: " + (p2CD.canUseSkill(2) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + p2CD.getFormattedCooldown(2)) + RESET +
             " | S3: " + (p2CD.canUseSkill(3) ? BRIGHT_GREEN + "READY" : BRIGHT_RED + p2CD.getFormattedCooldown(3)) + RESET);
         System.out.println("\t\t\t\t\t\t\t" + BRIGHT_GREEN + "HP: " + p2HPColor + player2.getHp() + "/" + player2.getMaxHp() + RESET + 
-                        " | " + BRIGHT_BLUE + "Mana: " + player2.getMana() + "/100" + RESET);
+                        " | " + BRIGHT_BLUE + "Mana: " + player2.getMana() + "/100" + 
+                        (lastP2ManaRegen > 0 ? " (+" + lastP2ManaRegen + ")" : "") + RESET);
     }
 
     private void playerAction(Character attacker, Character target, CooldownManager cd, String playerLabel) {
@@ -287,7 +294,6 @@ public class PlayerMechanics {
         return (int) Math.round(baseAttack * multiplier);
     }
 
-    // ===== AUDIO & UTILS =====
     public void playSound(String filename) {
         try {
             File file = new File(filename);
@@ -340,7 +346,6 @@ public class PlayerMechanics {
         }
     }
 
-    // ===== END GAME =====
     private void displayMatchResult() {
         clearScreen();
         stopBackgroundMusic();
